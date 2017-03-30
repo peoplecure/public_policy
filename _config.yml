@@ -1,7 +1,5 @@
-output:
-  html_document: 
-    theme: cosmo
-    highlight: textmate
+theme: jekyll-theme-minimal
+highlight: textmate
 
 name: "my-website"
 navbar:
@@ -13,4 +11,3 @@ navbar:
       href: about.html
     - text: "Statistics"
       href: statistics.html
-
