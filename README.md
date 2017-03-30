@@ -1,5 +1,8 @@
 
-## Jim's Public Policy and Management Blog
+## Jim's Public Policy Blog
+
+
+
 
 Dear Vistor,
 
