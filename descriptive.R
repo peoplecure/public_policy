@@ -9,28 +9,34 @@ d5 <- crime$WARD=="5"
 d6 <- crime$WARD=="6"
 d7 <- crime$WARD=="7"
 d8 <- crime$WARD=="8"
-raw.tot <- sum(d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8) + 1
+raw.tot <- sum(d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8)
+ds <- crime$WARD
+cr <- crime$CR
+dn <- crime$SHIFT
+descriptive <- data.frame(ds, dn, cr)
 
-# Crime Ratio
-summary(crime$WARD)
+# Crime Ratio by Raw Number
+descriptive.freq <- crosstab(descriptive, row.vars = "ds", col.vars = "cr", type = "f")
+descriptive.perc <- crosstab(descriptive, row.vars = "ds", col.vars = "cr", type = "r")
 
-sum(d1)/raw.tot
-sum(d2)/raw.tot
-sum(d3)/raw.tot
-sum(d4)/raw.tot
-sum(d5)/raw.tot
-sum(d6)/raw.tot
-sum(d7)/raw.tot
+# ... By hand: Crime Ratio by Raw Number
+district.table <- addmargins(table(crime$WARD, crime$CR))
+rownames(district.table) <- c('District 1','District 2','District 3','District 4','District 5','District 6','District 7','District 8','Total')
+colnames(district.table) <- c('Arson','Assault*','Burglary','Homicide','Veh Theft','Robbery','Sexual Abuse','Theft F/Auto','Theft/Other', 'Total')
+district.table
+
+# ... By hand: Crime Ratio by Percentage
+percent.table <- addmargins(round(prop.table(table(crime$WARD, crime$CR),2)*100,2))
+rownames(percent.table) <- c('District 1','District 2','District 3','District 4','District 5','District 6','District 7','District 8','Total')
+colnames(percent.table) <- c('Arson','Assault*','Burglary','Homicide','Veh Theft','Robbery','Sexual Abuse','Theft F/Auto','Theft/Other', 'Total')
+percent.table
 
 
-yes.CI <- CI>=1
-yes.EP <- EP>=1
-freq.table.CI.EP = addmargins(table(yes.CI, yes.EP)) 
-rownames(freq.table.CI.EP) <- c('No Injury', 'Civilian Injury', 'total')
-colnames(freq.table.CI.EP) <- c('No EMS', 'EMS Only', 'total')
-freq.table.CI.EP
+# Playground ————————————————————————————————————————
+sjt.df(crime)
+data(district.table)
+plot(district.table)
+sjt.frq(as.data.frame(district.table))
 
-percent.CI.EP <- addmargins(round(prop.table(table(yes.CI, yes.EP),2)*100,2))
-rownames(percent.CI.EP) <- c('No Injury', 'Civilian Injury', 'total')
-colnames(percent.CI.EP) <- c('No EMS', 'EMS Only', 'total')
-percent.CI.EP
+crosstab("crime$WARD", "crime$CR", type = "f")
+
