@@ -2,13 +2,5 @@
 title: "Washington D.C. Crime Map"
 ---
 
-
+<br>
 <iframe src="https://easytoremember.shinyapps.io/public_policy/" style="border: none; width: 100%; height: 700px"></iframe>
-
-
-<table>
-<tr>
-<td>*one*</td>
-<td>[a link](http://google.com)</td>
-</tr>
-</table>
