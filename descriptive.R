@@ -9,13 +9,19 @@ d5 <- crime$WARD=="5"
 d6 <- crime$WARD=="6"
 d7 <- crime$WARD=="7"
 d8 <- crime$WARD=="8"
-raw.tot <- sum(d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8)
+raw.tot <- sum(d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8) + 1
 
 # Crime Ratio
-freq.tb.d <- addmargins(table(d1,d2,d3,d4,d5,d6,d7,d8))
+summary(crime$WARD)
 
-rownames(freq.tb.d) <- c('Distrct 1','Distrct 2','Distrct 3','District 4','District 5','Distrct 6','District 7','District 8')
-colnames(freq.tb.d) <- c('1','2')
+sum(d1)/raw.tot
+sum(d2)/raw.tot
+sum(d3)/raw.tot
+sum(d4)/raw.tot
+sum(d5)/raw.tot
+sum(d6)/raw.tot
+sum(d7)/raw.tot
+
 
 yes.CI <- CI>=1
 yes.EP <- EP>=1
