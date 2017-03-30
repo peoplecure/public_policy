@@ -1,1 +1,16 @@
-theme: jekyll-theme-minimal
+output:
+  html_document: 
+    theme: cosmo
+    highlight: textmate
+
+name: "my-website"
+navbar:
+  title: "My Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Statistics"
+      href: statistics.html
+
