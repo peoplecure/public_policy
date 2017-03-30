@@ -1,6 +1,6 @@
 name: "my-website"
 navbar:
-  title: "My Website"
+  title: "Public Policy Analysis"
   left:
     - text: "Home"
       href: index.html
