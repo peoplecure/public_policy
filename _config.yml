@@ -1,9 +1,6 @@
-theme: jekyll-theme-minimal
-highlight: textmate
-
 name: "my-website"
 navbar:
-  title: "My Website"
+  title: "Public Analyst Blog"
   left:
     - text: "Home"
       href: index.html
@@ -11,3 +8,8 @@ navbar:
       href: about.html
     - text: "Statistics"
       href: statistics.html
+
+output:
+  html_document: 
+    theme: cosmo
+    highlight: textmate

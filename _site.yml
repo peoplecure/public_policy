@@ -1,6 +1,6 @@
 name: "my-website"
 navbar:
-  title: "Public Policy Analysis"
+  title: "Public Analyst Blog"
   left:
     - text: "Home"
       href: index.html
