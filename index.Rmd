@@ -21,8 +21,6 @@ Team Home is a nonprofit organization whose members are dedicatedd to serving th
 <br>
 <br>
 <br>
-<br>
-<br>
 <table style="height: 100%;" width="100%" cellpadding="5px">
 <tbody>
 <tr>
