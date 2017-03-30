@@ -5,7 +5,7 @@ The Washington D.C. Night-Time Childcare Project
 </span>
 </p>
 
-<p style="text-align: center;"><span style="font-family:calibri;">Created by Jim H. Ong, Lead Analyst
+<p style="text-align: center;"><span style="font-family:calibri;">Informatics created by Jim H. Ong, Lead Analyst
 </span>
 </p>
 <br>
