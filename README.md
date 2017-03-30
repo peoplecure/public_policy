@@ -1,6 +1,10 @@
 
-## Public Policy Blog
-Summarizing public policy and public health information using open source data.
+## Jim's Public Policy and Management Blog
+
+Dear vistor,
+
+Welcome to my public policy and management blog. Here, I summarize public policy and public health information using open source data. 
+
 
 You can use the [editor on GitHub](https://github.com/peoplecure/public_policy/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
