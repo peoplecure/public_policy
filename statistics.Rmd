@@ -1,8 +1,8 @@
 <br>
 <br>
 <br>
-
-<p style="text-align: center;">Washington D.C. Crime Map</p>
+<br>
+<p style="text-align: center;"><span style="font-size:24px;"><span style="font-family:georgia,serif;">Washington D.C. Crime Map</span></span></p>
 <br>
 <p style="text-align: justify;">Team Home is a nonprofit organization whose members are dedicatedd to serving the residents of District 7. We are building substantive findings for the District 6 in a promising effort to alleviate the burdens of those living in poverty. Through affordable housing and community projects, we wish to enhance the standard of living.</p>
 
