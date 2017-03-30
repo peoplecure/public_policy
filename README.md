@@ -2,11 +2,7 @@
 ## Jim's Public Policy Blog
 
 <iframe src="https://stla.shinyapps.io/3Dsliced/" style="border: none; width: 900px; height: 500px"></iframe>
-
-(m <- leaflet() %>% addTiles())
-m %>% setView(lng = -77.02, lat = 38.9, zoom = 12) # set centre and extent of map
-
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 Dear Visitor,
 
 Welcome to my blog. Here, you will find summaries of public health and public safety policies in the view of open source data. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. 
