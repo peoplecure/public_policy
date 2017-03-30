@@ -1,6 +1,6 @@
 name: "my-website"
 navbar:
-  title: "Public Analyst Blog"
+  title: "TEAM HOPE"
   left:
     - text: "Home"
       href: index.html
