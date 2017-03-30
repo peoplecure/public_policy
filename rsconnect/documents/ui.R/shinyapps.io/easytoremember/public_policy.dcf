@@ -1,0 +1,11 @@
+name: public_policy
+title:
+account: easytoremember
+server: shinyapps.io
+appId: 168315
+bundleId: 769869
+url: https://easytoremember.shinyapps.io/public_policy/
+when: 1490842884.68283
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: _config.yml|_site.yml|about.Rmd|index.Rmd|README.md|statistics.Rmd
