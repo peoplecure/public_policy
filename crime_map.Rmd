@@ -1,1 +1,1 @@
-<iframe src="https://easytoremember.shinyapps.io/public_policy/" style="border: none; width: 100%; height: 600px"></iframe>
+<iframe src="https://easytoremember.shinyapps.io/public_policy/" style="border: none; width: 100%; height: 770px"></iframe>
