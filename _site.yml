@@ -5,7 +5,7 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Crime Map"
-      href: Crime Map.html
+      href: crime_map.html
     - text: "Statistics"
       href: statistics.html
 
