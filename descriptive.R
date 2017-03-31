@@ -1,5 +1,5 @@
-crime <- read.csv("attach/Crime_Incidents_2016.csv")
-
+crime.attach <- read.csv("attach/Crime_Incidents_2016.csv")
+crime <- read.table("https://peoplecure.github.io/public_policy/attach/a.txt")
 
 # Naming Districts  ————————————————————————————————————————
 d1 <- crime$WARD=="1"
@@ -11,15 +11,15 @@ d6 <- crime$WARD=="6"
 d7 <- crime$WARD=="7"
 d8 <- crime$WARD=="8"
 raw.tot <- sum(d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8)
-tot <- crime$TOT
+tot <- crime$tot
 X <- crime$X
 Y <- crime$Y
-shift <- crime$SHIFT
-ward <- crime$WARD
-cr <- crime$CR
-year <- crime$YR
-month <- crime$MO
-descriptive <- data.frame(ds, shift, cr)
+shift <- crime$shift
+ward <- crime$ward
+cr <- crime$cr
+year <- crime$year
+month <- crime$month
+descriptive <- data.frame(ward, shift, cr)
 df <- data.frame(ward, shift, year, month, cr, tot, X, Y) 
 # End of Naming  ————————————————————————————————————————
 
@@ -27,11 +27,11 @@ df <- data.frame(ward, shift, year, month, cr, tot, X, Y)
 
 # Tabling: Crime Ratio by Raw Number  ————————————————————————————————————————
 source("http://pcwww.liv.ac.uk/~william/R/crosstab.r")
-descriptive.freq <- crosstab(descriptive, row.vars = "ward", col.vars = "cr", type = "f")
-descriptive.freq.joint <- crosstab(descriptive, row.vars = c("ward", "shift"), col.vars = "cr", type = "f")
-descriptive.perc.col <- crosstab(descriptive, row.vars = "ward", col.vars = "cr", type = "c")
-descriptive.perc.row <- crosstab(descriptive, row.vars = "ward", col.vars = "cr", type = "r")
-descriptive.perc.joint <- crosstab(descriptive, row.vars = c("ward", "shift"), col.vars = "cr", type = "t")
+descriptive.freq <- crosstab(df, row.vars = "ward", col.vars = "cr", type = "f")
+descriptive.freq.joint <- crosstab(df, row.vars = c("ward", "shift"), col.vars = "cr", type = "f")
+descriptive.perc.col <- crosstab(df, row.vars = "ward", col.vars = "cr", type = "c")
+descriptive.perc.row <- crosstab(df, row.vars = "ward", col.vars = "cr", type = "r")
+descriptive.perc.joint <- crosstab(df, row.vars = c("ward", "shift"), col.vars = "cr", type = "t")
 descriptive.freq.joint
 descriptive.perc.joint
 
