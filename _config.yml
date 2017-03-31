@@ -9,8 +9,7 @@ navbar:
     - text: "Statistics"
       href: statistics.html
     - text: "Appendix"
-
-
+      href: appendix.html
 output:
   html_document: 
     theme: cosmo
