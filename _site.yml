@@ -8,6 +8,7 @@ navbar:
       href: crime_map.html
     - text: "Statistics"
       href: statistics.html
+    - text: "Appendix"
 
 
 output:
