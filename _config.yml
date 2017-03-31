@@ -4,6 +4,8 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Demographics"
+      href: demographics.html
     - text: "Crime Map"
       href: crime_map.html
     - text: "Statistics"
