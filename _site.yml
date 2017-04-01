@@ -9,10 +9,11 @@ navbar:
     - text: "Interactive Maps"
       menu: 
         - text: "Heading 1"
-        - text: "Page A"
+        - text: "Fire Data"
           href: interactive_map.html
-        - text: 
-        - text: "International Economics""
+        - text: "Team Hope"
+          href: interactive_map.html
+        - text: "International Economics"
           href: world_sample.html
     - text: "Statistics"
       href: statistics.html
@@ -20,9 +21,6 @@ navbar:
       href: about.html
     - text: "Appendix"
       href: appendix.html
-
-
-
 
 output:
   html_document: 
