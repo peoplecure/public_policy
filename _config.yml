@@ -1,15 +1,17 @@
 name: "my-website"
 navbar:
-  title: "TEAM HOPE"
+  title: "Jim's Policy Blog"
   left:
     - text: "Home"
       href: index.html
     - text: "Demographics"
       href: demographics.html
-    - text: "Crime Map"
-      href: crime_map.html
+    - text: "Interactive Maps"
+      href: interactive_map.html
     - text: "Statistics"
       href: statistics.html
+    - text: "Author"
+      href: about.html
     - text: "Appendix"
       href: appendix.html
 output:

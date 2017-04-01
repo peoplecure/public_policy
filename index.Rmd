@@ -1,18 +1,18 @@
 <br><br><br><br><br/></tr>
 <p style="text-align: center;"><span style="font-size:28px;"><span style="font-family:georgia,serif;">
-The Washington D.C. Night-Time Childcare Project
+Welcome to Jim's Policy Blog
 </span>
 </span>
 </p>
 
-<p style="text-align: center;"><span style="font-family:calibri;">Informatics created by Jim H. Ong, Lead Analyst
+<p style="text-align: center;"><span style="font-family:calibri;">Blog for Open Source Informatics.
 </span>
 </p>
 <br>
 <p style="text-align: center;"><img src="http://open.dc.gov/open-source-guidelines/assets/img/dc_logo.png" height="20px" width="20px" /></p>
 <br>
 <p style="text-align: justify;">
-Team Hope is a nonprofit organization whose members are dedicated to serving the residents of District 7. We are building substantive findings for the community in a promising effort to alleviate the burdens of those suffering hardship. Through affordable housing and community projects, we wish to improve the standard of living and pave success pathways for the members of our community. By next summer, our new renovated facility will include a late-night childcare center and a homeschool facility. Right here on Fort Chaplin.</p>
+Hi there. Jim's Policy Blog is my playground. You see, I have quite an odd hobby.</p>
 <br>
 <br>
 <p>
