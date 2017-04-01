@@ -1,5 +1,5 @@
 crime.attach <- read.csv("attach/Crime_Incidents_2016.csv")
-crime <- read.table("https://peoplecure.github.io/public_policy/attach/a.txt")
+crime <- read.table("https://peoplecure.github.io/public_policy/attach/crime.txt")
 
 # Naming Districts  ————————————————————————————————————————
 d1 <- crime$WARD=="1"
