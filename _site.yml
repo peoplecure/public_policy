@@ -7,13 +7,23 @@ navbar:
     - text: "Demographics"
       href: demographics.html
     - text: "Interactive Maps"
-      href: interactive_map.html
+      menu: 
+        - text: "Heading 1"
+        - text: "Page A"
+          href: interactive_map.html
+        - text: 
+        - text: "International Economics""
+          href: world_sample.html
     - text: "Statistics"
       href: statistics.html
     - text: "Author"
       href: about.html
     - text: "Appendix"
       href: appendix.html
+
+
+
+
 output:
   html_document: 
     theme: cosmo
