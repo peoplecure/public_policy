@@ -162,6 +162,7 @@ $(document).ready(function () {
 
 
 
+
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -180,8 +181,24 @@ $(document).ready(function () {
 <li>
   <a href="demographics.html">Demographics</a>
 </li>
-<li>
-  <a href="interactive_map.html">Interactive Maps</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Interactive Maps
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Heading 1</li>
+    <li>
+      <a href="interactive_map.html">Fire Data</a>
+    </li>
+    <li>
+      <a href="interactive_map.html">Team Hope</a>
+    </li>
+    <li>
+      <a href="world_sample.html">International Economics</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="statistics.html">Statistics</a>
@@ -199,8 +216,6 @@ $(document).ready(function () {
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
-
-<div class="fluid-row" id="header">
 
 
 
