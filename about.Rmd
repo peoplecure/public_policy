@@ -7,10 +7,9 @@ Hello, my name is Jim.
 
 <h5>
 <p style="text-align: center;">
-I promise, my personality is more interesting than where I went to school.
+
 <br>
-But, in case you're wondering:
-<br>
+Big personality, Life and Mentors.
 <br>
 M.A. Candidate, Johns Hopkins University.
 <br>
