@@ -1,4 +1,19 @@
----
-title: "Hello, my name is Jim."
----
-Jim
+<h1> 
+<br><br/>
+<p style="text-align: center;"><span style="font-size:28px;">
+Hello, my name is Jim.
+</span>
+</p>
+
+<h5>
+<p style="text-align: center;">
+I promise, my personality is more interesting than where I went to school.
+<br>
+But, in case you're wondering:
+<br>
+<br>
+M.A. Candidate, Johns Hopkins University.
+<br>
+B.A. University of California, Los Angeles.
+</span>
+</p>

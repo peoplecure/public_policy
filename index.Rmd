@@ -1,16 +1,21 @@
-<br><br><br><br><br/></tr>
-<p style="text-align: center;"><span style="font-size:28px;"><span style="font-family:georgia,serif;">
+<h1> 
+<br><br/>
+<p style="text-align: center;"><span style="font-size:28px;">
 Welcome to Jim's Policy Blog
-</span>
 </span>
 </p>
 
-<p style="text-align: center;"><span style="font-family:calibri;">A blog for Open Source Informatics - because public policy shouln't have to be boring.
+<h5>
+<p style="text-align: center;">
+A blog for Open Source Informatics - because public policy shouln't have to be boring.
 </span>
 </p>
 <br>
+
 <p style="text-align: center;"><img src="http://open.dc.gov/open-source-guidelines/assets/img/dc_logo.png" height="20px" width="20px" /></p>
 <br>
+
+<h5>
 <p style="text-align: justify;">
 Hello, welcome to my blog! This blog was inspired by a weird hobby of mine. It's something that I do out of curiosity and typically does not involve anyone other than myself. What is my hobby you ask? Well, on my spare time, I analyze public policies through open data and write papers about them. Unsurprisingly, many find it unique and sometimes . . . weird!</p>
 

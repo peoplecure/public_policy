@@ -4,23 +4,22 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Demographics"
-      href: demographics.html
-    - text: "Interactive Maps"
+    - text: "Public Health"
+      href: under_construction.html
+    - text: "Public Safety"
+      menu:
+        - text: "Fire - San Francisco"
+          href: under_construction.html
+        - text: "Crime"
+          href: under_construction.html
+    - text: "Cool Maps"
       menu: 
-        - text: "Heading 1"
-        - text: "Fire Data"
-          href: interactive_map.html
         - text: "Team Hope"
           href: interactive_map.html
         - text: "International Economics"
           href: world_sample.html
-    - text: "Statistics"
-      href: statistics.html
     - text: "Author"
       href: about.html
-    - text: "Appendix"
-      href: appendix.html
 
 output:
   html_document: 
