@@ -5,7 +5,9 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Public Health"
-      href: under_construction.html
+      menu:
+        - text: "NIH Neuroimaging"
+          href: DICOM_learning.html
     - text: "Public Safety"
       menu:
         - text: "Fire - San Francisco"

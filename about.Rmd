@@ -7,9 +7,9 @@ Hello, my name is Jim.
 
 <h5>
 <p style="text-align: center;">
-
 <br>
-Big personality, Life and Mentors.
+<br>
+Ph.D. in Personality, Life and Mentors.
 <br>
 M.A. Candidate, Johns Hopkins University.
 <br>
