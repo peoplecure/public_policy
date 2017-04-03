@@ -1,6 +1,6 @@
 <iframe width="100%" height="800px" src="https://www.arcgis.com/apps/3DViz/index.html?appid=c8e5e6e22c62498e941abbfd80a82bca" frameborder="0" scrolling="no"></iframe>
 <p style="text-align: right;">
-Publisher credit: ArcGIS</p><br>
+Source credit: ArcGIS</p><br>
 <br>
 
 <h3>
