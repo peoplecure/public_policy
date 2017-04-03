@@ -6,7 +6,7 @@ Welcome to Jim's Policy Blog
 
 <h5>
 <p style="text-align: center;">
-A blog for Open Source Informatics - because public policy should be fun for everyone.
+A blog made of visual informatics — because public policy should be fun for everyone.
 </span>
 </p>
 <br>
