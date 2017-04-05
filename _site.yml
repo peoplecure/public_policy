@@ -11,7 +11,7 @@ navbar:
     - text: "Public Safety"
       menu:
         - text: "Fire - San Francisco"
-          href: under_construction.html
+          href: fire_sf.html
         - text: "Crime - Washington D.C."
           href: DC_crime_map.html
     - text: "Cool Maps"
