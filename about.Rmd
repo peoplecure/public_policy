@@ -1,17 +1,24 @@
 ---
 output: html_document
 ---
+<head><link rel="stylesheet" href="css/animate.css"></head>
 <center>
 <br><br><br>
+
 <h2> 
 <p style="text-align: center;">
-Hello, my name is Jim.
+<div class="tada animated">Hello!! :)</div>
 </p>
 <h5>
 <p style="text-align: center;">
+My name is Jim.
 <br>
+
+<h5>
+<p style="text-align: center;">
 <br>
-![](attach/jimface.png)
+<br><div class="tada animated">
+![](attach/jimface.png)</div>
 <br>
 <br>
 Degree:
@@ -36,7 +43,7 @@ She is the multiplier of joy and divider of sorrow.
 <br>
 <br>
 <br>
-![](attach/eggie.png)
+<div class="swing animated">![](attach/eggie.png)</div>
 <br>
 <br>
 Pedigree:
