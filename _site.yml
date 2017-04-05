@@ -18,7 +18,7 @@ navbar:
       menu: 
         - text: "Team Hope"
           href: interactive_map.html
-        - text: "International Economics"
+        - text: "Economics"
           href: world_sample.html
     - text: "Author"
       href: about.html
