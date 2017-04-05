@@ -22,10 +22,10 @@ hr {
 <br>
 <br>
 
-<hr>
+<div class="fadeInUp animated"><hr></div>
 <br>
 <br>
-<div class="fadeInDown animated"><center>
+<div class="fadeInUp animated"><center>
 <h3>Injury Prediction Model for Non-Medical Responses
 <br>
 <br>
@@ -44,7 +44,7 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <br>
 <br>
 
-<hr>
+<div class="fadeInDown animated"><hr></div>
 <br>
 <br>
 
