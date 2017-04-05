@@ -1,8 +1,9 @@
 <style type="text/css">
-.1{
-  width: 100%;
+body {
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  background-color: #f2f2f2;
 }
 </style>
 
