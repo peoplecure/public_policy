@@ -1,20 +1,45 @@
+<style type="text/css">
+.1{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+
+
 <iframe width="100%" height="800px" src="https://www.arcgis.com/apps/3DViz/index.html?appid=c8e5e6e22c62498e941abbfd80a82bca" frameborder="0" scrolling="no"></iframe>
+
+<p class="1">
+```
+<iframe width="100%" height="800px" src="https://www.arcgis.com/apps/3DViz/index.html?appid=c8e5e6e22c62498e941abbfd80a82bca" frameborder="0" scrolling="no"></iframe>
+```
+</p>
 <p style="text-align: right;">
 Source credit: ArcGIS</p><br>
-<br>
+<br></p>
+
+
 
 <h3>
-<p style="text-align: center;">
-The Classical Model vs. Keynesian Economics: The Basics</p><br>
-
+<center>
+The Classical Model vs. Keynesian Economics: The Basics
+<br>
+<center>
+<br>
+<br>
 <h5>
-<p style="text-align: justify;">
-As with many academic disciplines, there are fundamental theories in the field of economics that functions as the foundation and bedrock of growing research. Today, I would like to briefly explain two important theories that complement quite well with each other. First is the **Classical Model**, which economists use to evaluate the *long-term* economic outcome of a nation. The Classical Model looks at elements like technology, working labor force, availability of physical and natural resources, and human capital to forecast economic trends. The second, which I misspell too often, is called **Keynesian Economics**, and this theory looks at the *short-term* impact of market activities by assessing government spending, consumption, investments, and net exports. In case you haven't noticed yet, the map above illustrates the absolute value of these elements in a global spectrum, and every slide is related to the two economic models you will learn here.</p>
+<center>
+<p style="text-align: justify; width: 600px;">
+As with many academic disciplines, there are fundamental theories in the field of economics that functions as the foundation and bedrock of growing research. Today, I would like to briefly explain two important theories that complement quite well with each other. First is the **Classical Model**, which economists use to evaluate the *long-term* economic outcome of a nation. The Classical Model looks at elements like technology, working labor force, availability of physical and natural resources, and human capital to forecast economic trends. The second, which I misspell too often, is called **Keynesian Economics**, and this theory looks at the *short-term* impact of market activities by assessing government spending, consumption, investments, and net exports. In case you haven't noticed yet, the map above illustrates the absolute value of these elements in a global spectrum, and every slide is related to the two economic models you will learn here.
+</p>
+</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
