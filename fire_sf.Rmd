@@ -1,7 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+hr { 
+    width: 800px;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+} 
+</style>
+</head>
+<body>
+
 <br>
 <br>
 <br>
 <br>
+
+<hr>
 <br>
 <center>
 <h3>Injury Prediction Model for Non-Medical Responses
@@ -20,6 +40,8 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <br>
 <br>
 <br>
+
+<hr>
 <br>
 <br>
 
