@@ -13,10 +13,10 @@ output: html_document
 <h2> <div class="wow fadeIn animated"> 
 <p style="text-align: center;"> Hello, my name is Jim. </p></div>
 <br>
-<br> <div class="wow fadeIn animated" data-wow-delay="0.2s">
+<br> <div class="wow fadeIn animated" data-wow-delay="1.5s">
 ![](attach/jimface.png)</div>
 <br>
-<h5> <div class="wow fadeIn animated" data-wow-delay="0.4s"> <p style="text-align: center;">
+<h5> <div class="wow fadeIn animated" data-wow-delay="2s"> <p style="text-align: center;">
 Degree:
 <br>
 Ph.D. in Personality, Life and Mentors.
@@ -29,21 +29,19 @@ B.A., University of California, Los Angeles.
 
 <h2> 
 <br><br><br>
-<div class="wow fadeIn animated" data-wow-delay="2s"> <p style="text-align: center;">
+<div class="wow fadeIn animated" data-wow-delay="4.5s"> <p style="text-align: center;">
 ... And, this is Eggie.
 </p></div>
-<h5><div class="wow fadeIn animated" data-wow-delay="2.5s"><p style="text-align: center;">
+<h5><div class="wow fadeIn animated" data-wow-delay="6s"><p style="text-align: center;">
 She is the multiplier of joy and divider of sorrow.</p></div>
 <br>
 <br>
 <br>
-<div class="wow fadeIn animated" data-wow-offset="300">![](attach/eggie.png)</div>
+<div class="wow fadeInUp animated" data-wow-offset="300">![](attach/eggie.png)
 <br>
 <br>
 Pedigree:
 <br>
 Cute, Genetics.
-</span>
-</p>
-</center>
+</p></div></center>
 <br><br><br><br><br><br><br><br><br>
