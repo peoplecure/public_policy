@@ -14,6 +14,10 @@
 A B S T R A C T : Using open data sourced by the City of San Francisco, we have constructed a regression model that predicts civilian injuries in non-medical fire incidents. The prediction model was computed by examining the number of first responders present at non-medical fire scenes. The result indicated that the likelihood of civilians requiring medical transportation at non-medical fire scenes is close to zero and higher number of first responders did not lower injury rate in non-medical responses. To test the effectiveness of our prediction model, we have used the 2003-2015 data (sample size = 389,180) to analyze every non-medical incident that occurred in 2016 (sample size = 30,991). The prediction model correctly estimated 99.94% of absent-injuries in non-medical emergency responses.
 </p>
 <br>
+<p style="text-align: justify; width: 500px;">
+**Keywords**: R, Simulation, Linear Regression, OLS, Ambulance, Fire, Healthcare, MPH, MPA, MPM, MPP.
+</p>
+<br>
 <br>
 <br>
 <br>
