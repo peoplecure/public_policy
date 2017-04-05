@@ -13,9 +13,10 @@ hr {
     border-width: 1px;
 } 
 </style>
+<link rel="stylesheet" href="css/animate.css">
 </head>
-<body>
 
+<body>
 <br>
 <br>
 <br>
@@ -24,7 +25,7 @@ hr {
 <hr>
 <br>
 <br>
-<center>
+<div class="fadeInDown animated"><center>
 <h3>Injury Prediction Model for Non-Medical Responses
 <br>
 <br>
@@ -38,6 +39,7 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <p style="text-align: justify; width: 500px;">
 **Keywords**: R, Simulation, Linear Regression, OLS, Ambulance, Fire, Healthcare, MPH, MPA, MPM, MPP.
 </p>
+</div>
 <br>
 <br>
 <br>
@@ -46,6 +48,7 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <br>
 <br>
 
+<center>
 <!DOCTYPE html>
 <html>
 <head>

@@ -26,6 +26,6 @@ navbar:
 output:
   html_document: 
     theme: cosmo
-    css: style.css
+    css: css/style.css
     highlight: textmate
   
