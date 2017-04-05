@@ -14,7 +14,6 @@ hr {
 } 
 </style>
 <link rel="stylesheet" href="css/animate.css">
-
 <script src="js/wow.min.js"> </script>
 <script> new WOW().init(); </script>
 </head>
@@ -28,26 +27,28 @@ hr {
 <div class="fadeInUp animated"><hr></div>
 <br>
 <br>
-<div class="wow fadeInUp animated" data-wow-delay="0.5s"><center>
+<div class="wow fadeInUp animated" data-wow-delay="0.1s">
+<center>
 <h3>Injury Prediction Model for Non-Medical Responses
-<br>
+</center></div>
 <br>
 <br>
 
+<div class="wow fadeInUp animated" data-wow-delay="0.2s">
+<center>
 <h5>
 <p style="text-align: justify; width: 500px;">
 A B S T R A C T : Using open data sourced by the City of San Francisco, we have constructed a regression model that predicts civilian injuries in non-medical fire incidents. The prediction model was computed by examining the number of first responders present at non-medical fire scenes. The result indicated that the likelihood of civilians requiring medical transportation at non-medical fire scenes is close to zero and higher number of first responders did not lower injury rate in non-medical responses. To test the effectiveness of our prediction model, we have used the 2003-2015 data (sample size = 389,180) to analyze every non-medical incident that occurred in 2016 (sample size = 30,991). The prediction model correctly estimated 99.94% of absent-injuries in non-medical emergency responses.
-</p>
+</p></center></div>
 <br>
+<div class="wow fadeInUp animated" data-wow-delay="0.3s"><center>
 <p style="text-align: justify; width: 500px;">
 **Keywords**: R, Simulation, Linear Regression, OLS, Ambulance, Fire, Healthcare, MPH, MPA, MPM, MPP.
-</p>
-</div>
-<br>
+</p></center></div>
 <br>
 <br>
 
-<div class="wow fadeInUp animated" data-wow-delay="1s"><hr></div>
+<div class="wow fadeInUp animated" data-wow-delay="0.5s"><hr></div>
 <br>
 <br>
 
@@ -67,6 +68,7 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 </head>
 
 <body>
+<div class="wow fadeIn animated" data-wow-delay="0.7s"><center>
 <h5><div class="newspaper">
 <p style="text-align: justify;">
 **Introduction**
@@ -110,7 +112,7 @@ Let’s assume that every patient suffers from the same injury. And then, let me
 <br>
 <br>
 
-<div class="wow bounceInUp">
+<div class="wow fadeIn">
 <p style="text-align: center;"><img src="http://open.dc.gov/open-source-guidelines/assets/img/dc_logo.png" height="20px" width="20px" /></p>
 <br>
 <h5> Inspired by Code for D.C.</div>
