@@ -1,6 +1,6 @@
 name: "my-website"
 navbar:
-  title: "Jim's Policy Blog"
+  title: "Jim H. Ong"
   left:
     - text: "Home"
       href: index.html
