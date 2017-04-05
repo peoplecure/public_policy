@@ -10,13 +10,13 @@ output: html_document
 <center>
 <br><br><br>
 
-<h2> <p style="text-align: center;"> Hello, my name is Jim. </p>
-<h5> <p style="text-align: center;">
+<h2> <div class="wow fadeIn animated"> 
+<p style="text-align: center;"> Hello, my name is Jim. </p></div>
 <br>
-<br><div class="tada animated">
+<br> <div class="wow fadeIn animated" data-wow-delay="0.2s">
 ![](attach/jimface.png)</div>
 <br>
-<br>
+<h5> <div class="wow fadeIn animated" data-wow-delay="0.4s"> <p style="text-align: center;">
 Degree:
 <br>
 Ph.D. in Personality, Life and Mentors.
@@ -24,22 +24,20 @@ Ph.D. in Personality, Life and Mentors.
 M.A. Candidate, Johns Hopkins University.
 <br>
 B.A., University of California, Los Angeles.
-</span>
-</p>
+</p></div>
 
 
 <h2> 
 <br><br><br>
-<p style="text-align: center;">
+<div class="wow fadeIn animated" data-wow-delay="2s"> <p style="text-align: center;">
 ... And, this is Eggie.
-</p>
-<h5>
-<p style="text-align: center;">
-She is the multiplier of joy and divider of sorrow.
+</p></div>
+<h5><div class="wow fadeIn animated" data-wow-delay="2.5s"><p style="text-align: center;">
+She is the multiplier of joy and divider of sorrow.</p></div>
 <br>
 <br>
 <br>
-<div class="wow swing animated">![](attach/eggie.png)</div>
+<div class="wow fadeIn animated" data-wow-offset="300">![](attach/eggie.png)</div>
 <br>
 <br>
 Pedigree:
