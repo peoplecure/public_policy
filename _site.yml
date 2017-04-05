@@ -12,8 +12,8 @@ navbar:
       menu:
         - text: "Fire - San Francisco"
           href: under_construction.html
-        - text: "Crime"
-          href: under_construction.html
+        - text: "Crime - Washington D.C."
+          href: DC_crime_map.html
     - text: "Cool Maps"
       menu: 
         - text: "Team Hope"

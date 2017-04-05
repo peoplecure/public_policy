@@ -5,18 +5,13 @@
 <p style="text-align: right;">
 Source credit: ArcGIS</p><br>
 <br>
-
-
-
-<h3>
-<center>
-The Classical Model vs. Keynesian Economics: The Basics
+<br>
 <br>
 <center>
+###The Classical Model vs. Keynesian Economics: The Basics
 <br>
 <br>
 <h5>
-<center>
 <p style="text-align: justify; width: 600px;">
 As with many academic disciplines, there are fundamental theories in the field of economics that functions as the foundation and bedrock of growing research. Today, I would like to briefly explain two important theories that complement quite well with each other. First is the **Classical Model**, which economists use to evaluate the *long-term* economic outcome of a nation. The Classical Model looks at elements like technology, working labor force, availability of physical and natural resources, and human capital to forecast economic trends. The second, which I misspell too often, is called **Keynesian Economics**, and this theory looks at the *short-term* impact of market activities by assessing government spending, consumption, investments, and net exports. In case you haven't noticed yet, the map above illustrates the absolute value of these elements in a global spectrum, and every slide is related to the two economic models you will learn here.
 </p>
@@ -28,5 +23,4 @@ As with many academic disciplines, there are fundamental theories in the field o
 <br>
 <br>
 <br>
-
 
