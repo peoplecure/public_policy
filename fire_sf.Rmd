@@ -1,9 +1,10 @@
 <br>
 <br>
 <br>
+<br>
+<br>
 <center>
-<h3>
-Injury Prediction Model for Non-Medical Responses
+<h3>Injury Prediction Model for Non-Medical Responses
 <br>
 <br>
 <br>
@@ -12,7 +13,6 @@ Injury Prediction Model for Non-Medical Responses
 <p style="text-align: justify; width: 500px;">
 A B S T R A C T : Using open data sourced by the City of San Francisco, we have constructed a regression model that predicts civilian injuries in non-medical fire incidents. The prediction model was computed by examining the number of first responders present at non-medical fire scenes. The result indicated that the likelihood of civilians requiring medical transportation at non-medical fire scenes is close to zero and higher number of first responders did not lower injury rate in non-medical responses. To test the effectiveness of our prediction model, we have used the 2003-2015 data (sample size = 389,180) to analyze every non-medical incident that occurred in 2016 (sample size = 30,991). The prediction model correctly estimated 99.94% of absent-injuries in non-medical emergency responses.
 </p>
-<br>
 <br>
 <br>
 <br>
@@ -36,13 +36,15 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <body>
 <h5><div class="newspaper">
 <p style="text-align: justify;">
-Introduction
-<br><br>When you hear me say, “… higher number of first responders did not lower injury rate in non-medical responses,” a question may come to mind — why would you predict the probability of injury by looking at the number of first responders? This is a fair question to have. After all, first responders respond to 9-1-1 calls. If there is one patient, then any number of first responders should not make a difference because there is going to be one patient, no matter how many people respond to the emergency call. Take the following hypothetical scenarios for example:
-<br><br>
+**Introduction**
+<br><br>When you hear me say, “… higher number of first responders did not lower injury rate in non-medical responses,” a question may come to mind — why would you predict the probability of injury by looking at the number of first responders? This is a fair question to have. After all, first responders respond to 9-1-1 calls. If there is one patient, then any number of first responders should not make a difference because there is going to be one patient, no matter how many people respond to the emergency call. Take the following hypothetical scenarios for example:</p>
+<br>
+<p style="text-align: left;">
 Scenario 1: 1 patient, 1 Truck, 3 EMS personnel respond.
 Scenario 2: 1 patient, 1 Truck, 4 EMS personnel respond.
-Scenario 3: 1 patient, 2 Trucks, 6 EMS personnel respond.
-<br><br>
+Scenario 3: 1 patient, 2 Trucks, 6 EMS personnel respond.</p>
+<br>
+<p style="text-align: justify;">
 Let’s assume that every patient suffers from the same injury. And then, let me ask you this question: Has the additional number of EMS personnel or truck reduced the chances of injury? Your answer may vary along the lines of No—Depends—Yes, or simply, I don’t know. What if above scenarios were not three but, instead, 400,000 incidents consisting of variation in the number of fatalities, injuries, medical technicians, firefighters, and police officers? Would you still have the same confidence in your answer? The essence of this study is my solid attempt to answer that same question in non-medical fire incidents, which, by the way, involved more than 400,000 incidents.
 <br><br>In non-medical fire calls, no one is expected to get hurt, so sending more first responders should not reduce injury because no matter how many EMS responders deploy to non-medical calls, no one is injured. So, if there is no one hurt, then there is no reason for an emergency technician to deploy. And, the data seems to agree with our reasoning. Of all the non-medical fire calls made in the City of San Francisco, precisely 99.9% resulted in neither injury nor fatality.
 <br><br>Strangely, between 2003 and 2015, there had been 44,414 incidents when EMS units have responded a fire call although no injury was reported (Figure 1a. Map 2). This should raise a red flag to public administrators because (1) only 1 out of every 161 ambulance response involved an injury, and (2) if you compute the expenses involved in non-medical ambulance responses, the total cost is staggering.
