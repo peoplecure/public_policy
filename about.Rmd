@@ -1,21 +1,17 @@
 ---
 output: html_document
 ---
-<head><link rel="stylesheet" href="css/animate.css"></head>
+<head>
+<link rel="stylesheet" href="css/animate.css">
+<script src="js/wow.min.js"> </script>
+<script> new WOW().init(); </script>
+</head>
+
 <center>
 <br><br><br>
 
-<h2> 
-<p style="text-align: center;">
-<div class="tada animated">Hello!! :)</div>
-</p>
-<h5>
-<p style="text-align: center;">
-My name is Jim.
-<br>
-
-<h5>
-<p style="text-align: center;">
+<h2> <p style="text-align: center;"> Hello, my name is Jim. </p>
+<h5> <p style="text-align: center;">
 <br>
 <br><div class="tada animated">
 ![](attach/jimface.png)</div>
@@ -43,7 +39,7 @@ She is the multiplier of joy and divider of sorrow.
 <br>
 <br>
 <br>
-<div class="swing animated">![](attach/eggie.png)</div>
+<div class="wow swing animated">![](attach/eggie.png)</div>
 <br>
 <br>
 Pedigree:
