@@ -94,23 +94,7 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <br>
 <br>
 
-**Scenario 2**: 1 patient, 1 Truck, 4 EMS personnel respond.
-<br>
-<br>
-<div style="width:200px">
-<div class="wow lightSpeedIn animated" data-wow-delay="1s">
-![](http://www.clipartlord.com/wp-content/uploads/2015/02/ambulance10.png)
-</div>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-**Scenario 3**: 1 patient, 2 Trucks, 6 EMS personnel respond.
+**Scenario 2**: 1 patient, 2 Trucks, 6 EMS personnel respond.
 <br>
 <br>
 <div style="width:200px">
@@ -130,10 +114,21 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <div class="wow fadeIn animated">
 <h5><div class="newspaper1">
 <p style="text-align: justify;">
-Let’s assume that every patient suffers from the same injury. And then, let me ask you this question: Has the additional number of EMS personnel or truck reduced the chances of injury? Your answer may vary along the lines of No—Depends—Yes, or simply, I don’t know. What if above scenarios were not three but, instead, 400,000 incidents consisting of variation in the number of fatalities, injuries, medical technicians, firefighters, and police officers? Would you still have the same confidence in your answer? The essence of this study is my solid attempt to answer that same question in non-medical fire incidents, which, by the way, involved more than 400,000 incidents.</p></div>
+Let’s assume that both patients suffer from the same injury. And then, let me ask you this question: Has the additional number of EMS personnel or truck reduced the chances of injury? Your answer may vary along the lines of No—Depends—Yes, or simply, I don’t know. What if above scenarios were not three but, instead, 400,000 incidents consisting of variation in the number of fatalities, injuries, medical technicians, firefighters, and police officers? Would you still have the same confidence in your answer? The essence of this study is my solid attempt to answer that same question in non-medical fire incidents, which, by the way, involved more than 400,000 incidents.</p></div>
 
-<br><br><br><br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+<iframe width="700" height="500" src="http://mywebsite.com/my_map.html"></iframe>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div class="wow fadeIn animated">
 <h5><div class="newspaper2">

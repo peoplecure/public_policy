@@ -1,5 +1,8 @@
-crime.attach <- read.csv("attach/Crime_Incidents_2016.csv")
+setwd("/Users/Jimbook/Google Drive/Documents/Code for DC/public_policy/attach/")
+getwd()
+crime.attach <- read.csv("Crime_Incidents_2016.csv")
 crime <- read.table("https://peoplecure.github.io/public_policy/attach/crime.txt")
+crime <- fread("Crime_Incidents_2016.csv")
 
 # Naming Districts  ————————————————————————————————————————
 d1 <- crime$WARD=="1"
@@ -11,17 +14,18 @@ d6 <- crime$WARD=="6"
 d7 <- crime$WARD=="7"
 d8 <- crime$WARD=="8"
 raw.tot <- sum(d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8)
-tot <- crime$tot
+tot <- crime$TOT
 X <- crime$X
 Y <- crime$Y
-shift <- crime$shift
-ward <- crime$ward
-cr <- crime$cr
-year <- crime$year
-month <- crime$month
-descriptive <- data.frame(ward, shift, cr)
-df <- data.frame(ward, shift, year, month, cr, tot, X, Y) 
+shift <- crime$SHIFT
+ward <- crime$WARD
+cr <- crime$CR
+year <- crime$YR
+month <- crime$MO
+descriptive <- data.table(ward, shift, cr)
+df <- data.table(ward, shift, year, month, cr, tot, X, Y) 
 # End of Naming  ————————————————————————————————————————
+data.table(..., keep.rownames=FALSE, check.names=FALSE, key=NULL, stringsAsFactors=FALSE)
 
 
 

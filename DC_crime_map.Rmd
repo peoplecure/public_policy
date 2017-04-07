@@ -1,6 +1,4 @@
----
-output: html_document
----
+
 <br>
 <br>
 <p>
@@ -13,7 +11,7 @@ output: html_document
 <tr>
 <td>
 <center>
-<p style="text-align: justify; width: 600px;">
+<p style="text-align: justify; width: 100%;">
 The map you see above is an interactive map illustrating every reported crime occurred in the month of January, 2016. You will see a lot of these interactive graphic tools on my blog. In case you're wondering what coding program I am using to generate these maps, my foundation is mainly R. But, I must add that although R is handy dandy, I generate many maps using various external packages such as ArcGIS and Shiny App. I use external packages because writing a script for each and every element is for one, out of my abilities (I'm considered a noob in the computer industry), and two, it doesn't make sense to create something when something better is already out in the market.</p>
 </center>
 </td>
