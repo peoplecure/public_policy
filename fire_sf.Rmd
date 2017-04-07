@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html>
 <head>
 <style>
-hr { 
-    width: 800px;
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
-} 
+.hr{thickness:1px}
+.newspaper {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    height: 50%
+}
 </style>
 <link rel="stylesheet" href="css/animate.css">
 <script src="js/wow.min.js"> </script>
@@ -30,21 +27,23 @@ hr {
 <div class="wow fadeInUp animated" data-wow-delay="0.1s">
 <center>
 <h3>Injury Prediction Model for Non-Medical Responses
-</center></div>
+</div>
 <br>
 <br>
 
 <div class="wow fadeInUp animated" data-wow-delay="0.2s">
 <center>
 <h5>
-<p style="text-align: justify; width: 500px;">
+<p style="text-align: justify; width: 55%;">
 A B S T R A C T : Using open data sourced by the City of San Francisco, we have constructed a regression model that predicts civilian injuries in non-medical fire incidents. The prediction model was computed by examining the number of first responders present at non-medical fire scenes. The result indicated that the likelihood of civilians requiring medical transportation at non-medical fire scenes is close to zero and higher number of first responders did not lower injury rate in non-medical responses. To test the effectiveness of our prediction model, we have used the 2003-2015 data (sample size = 389,180) to analyze every non-medical incident that occurred in 2016 (sample size = 30,991). The prediction model correctly estimated 99.94% of absent-injuries in non-medical emergency responses.
-</p></center></div>
+</p></div>
 <br>
-<div class="wow fadeInUp animated" data-wow-delay="0.3s"><center>
+
+<div class="wow fadeInUp animated" data-wow-delay="0.3s">
+<center>
 <p style="text-align: justify; width: 500px;">
 **Keywords**: R, Simulation, Linear Regression, OLS, Ambulance, Fire, Healthcare, MPH, MPA, MPM, MPP.
-</p></center></div>
+</p></div>
 <br>
 <br>
 
@@ -52,23 +51,9 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <br>
 <br>
 
-<center>
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-.newspaper {
-    -webkit-column-count: 2; /* Chrome, Safari, Opera */
-    -moz-column-count: 2; /* Firefox */
-    column-count: 2;
-    -moz-column-width: 800px; /* Firefox */
-    width: 800px;
-}
-</style>
-</head>
-
 <body>
-<div class="wow fadeIn animated" data-wow-delay="0.7s"><center>
+<center>
+<div class="wow fadeIn animated">
 <h5><div class="newspaper">
 <p style="text-align: justify;">
 **Introduction**
@@ -78,16 +63,36 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 Scenario 1: 1 patient, 1 Truck, 3 EMS personnel respond.
 Scenario 2: 1 patient, 1 Truck, 4 EMS personnel respond.
 Scenario 3: 1 patient, 2 Trucks, 6 EMS personnel respond.</p>
-<br>
+<br><br>
 <p style="text-align: justify;">
-Let’s assume that every patient suffers from the same injury. And then, let me ask you this question: Has the additional number of EMS personnel or truck reduced the chances of injury? Your answer may vary along the lines of No—Depends—Yes, or simply, I don’t know. What if above scenarios were not three but, instead, 400,000 incidents consisting of variation in the number of fatalities, injuries, medical technicians, firefighters, and police officers? Would you still have the same confidence in your answer? The essence of this study is my solid attempt to answer that same question in non-medical fire incidents, which, by the way, involved more than 400,000 incidents.
-<br><br>In non-medical fire calls, no one is expected to get hurt, so sending more first responders should not reduce injury because no matter how many EMS responders deploy to non-medical calls, no one is injured. So, if there is no one hurt, then there is no reason for an emergency technician to deploy. And, the data seems to agree with our reasoning. Of all the non-medical fire calls made in the City of San Francisco, precisely 99.9% resulted in neither injury nor fatality.
+Let’s assume that every patient suffers from the same injury. And then, let me ask you this question: Has the additional number of EMS personnel or truck reduced the chances of injury? Your answer may vary along the lines of No—Depends—Yes, or simply, I don’t know. What if above scenarios were not three but, instead, 400,000 incidents consisting of variation in the number of fatalities, injuries, medical technicians, firefighters, and police officers? Would you still have the same confidence in your answer? The essence of this study is my solid attempt to answer that same question in non-medical fire incidents, which, by the way, involved more than 400,000 incidents.</p></div><br>
+
+<br> 
+<div style="width:300px; height=200px">
+<div class="wow lightSpeedIn animated" data-wow-delay="1s">
+![](http://www.clipartlord.com/wp-content/uploads/2015/02/ambulance10.png)</div>
+</div>
+
+
+<br><br><br><br><br>
+
+
+<div class="wow fadeIn animated">
+<h5><div class="newspaper">
+<p style="text-align: justify;">
+In non-medical fire calls, no one is expected to get hurt, so sending more first responders should not reduce injury because no matter how many EMS responders deploy to non-medical calls, no one is injured. So, if there is no one hurt, then there is no reason for an emergency technician to deploy. And, the data seems to agree with our reasoning. Of all the non-medical fire calls made in the City of San Francisco, precisely 99.9% resulted in neither injury nor fatality.
 <br><br>Strangely, between 2003 and 2015, there had been 44,414 incidents when EMS units have responded a fire call although no injury was reported (Figure 1a. Map 2). This should raise a red flag to public administrators because (1) only 1 out of every 161 ambulance response involved an injury, and (2) if you compute the expenses involved in non-medical ambulance responses, the total cost is staggering.
 <br><br>Consider the variable costs of an ambulance response for example (Table 1). If you compute $39.55 as the average ambulance transportation cost, between 2003 and 2015, the City of San Francisco had spent nearly $1,749,692 on calls where no one was injured. That sounds quite expensive for responding to 99.9% of situations where no one was injured.
 <br><br>Frankly speaking, I do not know exactly how much would be spent in ambulatory services. In fact, according to the 2007 Ambulance Provider’s Cost report written by the Government Accountability Office, an investigative body of the Congress, “costs of ground ambulance services were highly variable across providers … reflecting differences in certain provider and community characteristics. Costs per transport among these providers varied from $99 per transport to $1,218.” 
 <br><br>Although ambulatory services are subsidized by a wide degree margin, we find the estimation reasonable because there is no established price tag on how much ambulance services should cost in the United States (Hatley, 2007). Since geographical characteristics, weather environment, and fuel prices vary by region, ambulatory budget should vary across every rescue station, and it would be silly to set a one-size fits all price tag at a national level. 
 <br><br>That said, let’s think about this for a second. Why had those EMS personnel responded to the non-medical fires incidents? I am not suggesting that there can never be a situation where EMS personnel should respond to a non-medical emergency. There probably were valid reasons as to why the EMS personnel responded to thousands of fire incidents that involved no injury. Borrowing the words of Deputy-Chief Reskin, a firefighting veteran with 28 years of experience, “every rescue station has a different protocol and costs involved in emergency response, and every station has their own unique procedures that accommodates to the characteristics of their communities.” This is true, no two station can be the same. A rescue station that specializes in helicopter extraction will have different protocols and expenses compared to those that do not possess a helicopter. Additionally, a protocol may involve preventative measures as well. According to Captain Stakes, the Friday night crew officer, “protocols may mandate ambulance trucks to deploy with firetrucks even when no injury is reported on a call. It is a safety procedure that prevents possible injury.”
-<br><br>Taking the pearls of wisdom to mind, I instructed my computer to calculate EMS personnel deployment with firefighter variable, and I was quick to find that the fire station leaders were right. The number of EMS deployment dropped from 44,413 to 1,073 when I computed firefighter variable in the equation (Figure 1b. Map 3). In other words, there had been only 1,073 cases when EMS personnel responded to non-medical fire incidents without firefighters. As it turns out, the question had an obvious answer to the experienced first responders, but it did not appear to me so clearly, even with a sophisticated computer coding program. 
+</p></div>
+<br><br>
+
+<div class="wow fadeIn animated">
+<h5><div class="newspaper">
+<p style="text-align: justify;">
+Taking the pearls of wisdom to mind, I instructed my computer to calculate EMS personnel deployment with firefighter variable, and I was quick to find that the fire station leaders were right. The number of EMS deployment dropped from 44,413 to 1,073 when I computed firefighter variable in the equation (Figure 1b. Map 3). In other words, there had been only 1,073 cases when EMS personnel responded to non-medical fire incidents without firefighters. As it turns out, the question had an obvious answer to the experienced first responders, but it did not appear to me so clearly, even with a sophisticated computer coding program. 
 <br><br>There is no denying my lack the experience in emergency management, but does this warrant the spending of millions of dollars on the 99.9% of non-medical calls that do not lead to an injury? Before we get any further, I would like to share my personal opinion: I think the money is well worth spending it on preventative measures. For one, the dispatchers at the City of San Francisco have done a great job of categorizing medical and non-medical incidents. Their excellent performance is reflected in the low injury and fatality turnout (0.07%). The money spent on ambulance deployments is the fire department’s attempt to prevent those unforeseen circumstances occurred during that 0.07% of calls. Nevertheless, we should still go through the reasoning process and be open to new ideas that might allow us to serve the public with greater efficiency.
 <br><br>Of all the non-medical fire episodes, 289 incidents have led to either an injury or fatality, and of those incidents, an EMS personnel was there to aid in 276 cases. But, how about the remaining 44,240 incidents when no one was injured? Is there room for speculation that somebody might have suffered an irreparable damage because an ambulance was busy responding to a non-medical fire incident and not to a medical emergency? If a split of a second is critical in certain situations, would time not be critical in situations where an injury has known to have occurred? Can any reasonable person confidently say that of the 44,240 false positive deployments, no one have gotten hurt as a result of the precautionary protocol? If the city had, by the process of deploying EMS personnel to non-injury calls and unintentionally created a systematic harm to bystanders, could we really say that a protocol that mandates ambulance trucks to deploy with firetrucks to a low-risk non-medical fire incidents —is it a sound public policy?
 <br><br>More importantly, I would also like to respectfully remind you again that I have little experience about the subject matter, and that this paper is really about showcasing my quantitative skills to the board members at the BCCRS. Upon your approval, I will be seeking guidance from experienced members and not be walking on massive data with assumptions. I wish to aid your scope of executive decision-making using my quantitative skills.
@@ -97,10 +102,9 @@ Let’s assume that every patient suffers from the same injury. And then, let me
 <br><br>Has spending millions of dollars on non-injury calls saved some people’s lives? Yes, it certainly has, about 0.41% of 44,414 EMS deployments to non-medical fire incidents have ended up in  and we will show the computations in the results section of this paper.
 <br><br>Still, I ask, “could there be a better way of using the money?” Maybe. But, I can’t say that it is not going to hurt trying since the risk is potential injury, and the cost of reducing that is 99.9945%
 <br><br>As a new volunteer member at the Rescue 1 station, I can comfortably say that there are more things I do not know about emergency rescue than what I do know. 
-<br><br>So, the purpose of this study is not about denigrating the hardworking first responders serving the City of San Francisco. As a matter of fact, I thank them for sharing their valuable data through the open source outlet. I want to show my appreciation by looking for possible areas of improvement so that we can make better use of public funding.</p>
-</div>
+<br><br>So, the purpose of this study is not about denigrating the hardworking first responders serving the City of San Francisco. As a matter of fact, I thank them for sharing their valuable data through the open source outlet. I want to show my appreciation by looking for possible areas of improvement so that we can make better use of public funding.
+</p></div>
 </body>
-</html>
 <br>
 <br>
 <br>
