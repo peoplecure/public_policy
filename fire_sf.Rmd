@@ -1,6 +1,14 @@
 <head>
 <style>
-.hr{thickness:1px}
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
 .newspaper1 {
     -webkit-column-count: 1; /* Chrome, Safari, Opera */
     -moz-column-count: 1; /* Firefox */
@@ -107,7 +115,7 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <br>
 <div style="width:200px">
 <div class="wow lightSpeedIn animated" data-wow-delay="1s">
-![](http://www.clipartlord.com/wp-content/uploads/2015/02/ambulance10.png)<br>
+![](http://www.clipartlord.com/wp-content/uploads/2015/02/ambulance10.png)
 ![](http://www.clipartlord.com/wp-content/uploads/2015/02/ambulance10.png)
 </div>
 </div>
