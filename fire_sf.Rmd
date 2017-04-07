@@ -122,7 +122,7 @@ Let’s assume that both patients suffer from the same injury. And then, let me 
 <br>
 <br>
 
-<iframe width="700" height="500" src="http://mywebsite.com/my_map.html"></iframe>
+<iframe width="100%" height="500" src="attach/Untitled.html"></iframe>
 
 <br>
 <br>
