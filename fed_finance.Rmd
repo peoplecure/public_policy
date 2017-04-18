@@ -1,1 +1,0 @@
-<iframe width="100%" height="800px" src="https://usafacts.org/the-big-picture?view=revenue"></iframe>
