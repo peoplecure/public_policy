@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Jim H. Ong</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Public Health
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="DICOM_learning.html">NIH Neuroimaging</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Public Safety
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="fire_sf.html">Fire - San Francisco</a>
+    </li>
+    <li>
+      <a href="DC_crime_map.html">Crime - Washington D.C.</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Cool Maps
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="interactive_map.html">Team Hope</a>
+    </li>
+    <li>
+      <a href="world_sample.html">Intro to Economics</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="about.html">Author</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<head>
+<style>
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+.newspaper1 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 60%;
+    min-width: 300px;
+    height: 50%
+}
+.newspaper2 {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    height: 50%
+}
+</style>
+<link rel="stylesheet" href="css/animate.css">
+<script src="js/wow.min.js"> </script>
+<script> new WOW().init(); </script>
+</head>
+<body>
+<p><br> <br> <br> <br></p>
+<div class="fadeInUp animated">
+<hr>
+</div>
+<br> <br>
+<div class="wow fadeInUp animated" data-wow-delay="0.1s">
+<center>
+<h3>
+Injury Prediction Model for Non-Medical Responses
+</div>
+<p><br> <br></p>
+<div class="wow fadeInUp animated" data-wow-delay="0.2s">
+<center>
+<h5>
+<p style="text-align: justify; width: 55%;">
+A B S T R A C T : Using open data sourced by the City of San Francisco, we have constructed a regression model that predicts civilian injuries in non-medical fire incidents. The prediction model was computed by examining the number of first responders present at non-medical fire scenes. The result indicated that the likelihood of civilians requiring medical transportation at non-medical fire scenes is close to zero and higher number of first responders did not lower injury rate in non-medical responses. To test the effectiveness of our prediction model, we have used the 2003-2015 data (sample size = 389,180) to analyze every non-medical incident that occurred in 2016 (sample size = 30,991). The prediction model correctly estimated 99.94% of absent-injuries in non-medical emergency responses.
+</p>
+</div>
+<p><br></p>
+<div class="wow fadeInUp animated" data-wow-delay="0.3s">
+<center>
+<p style="text-align: justify; width: 55%;">
+<strong>Keywords</strong>: R, Simulation, Linear Regression, OLS, Ambulance, Fire, Healthcare, MPH, MPA, MPM, MPP.
+</p>
+</div>
+<p><br> <br></p>
+<div class="wow fadeInUp animated" data-wow-delay="0.5s">
+<hr>
+</div>
+<p><br> <br></p>
+<body>
+<center>
+<div class="wow fadeIn animated">
+<h5>
+<div class="newspaper1">
+<p style="text-align: justify;">
+<strong>Introduction</strong> <br><br>When you hear me say, “higher number of first responders did not lower injury rate in non-medical responses,” a question may come to mind — why would you predict the probability of injury by looking at the number of first responders? This is a fair question to have. After all, most injuries occur before first responders respond to 9-1-1 calls. If there is one patient, then any number of first responders should not make a difference because there is going to be one patient, no matter how many people respond to the emergency call. Take the following hypothetical scenarios for example:
+</p>
+</div>
+<p><br> <br></p>
+<p style="text-align: center;">
+<strong>Scenario 1</strong>: 1 patient, 1 Truck, 3 EMS personnel respond. <br> <br>
+<div style="width:200px">
+<div class="wow lightSpeedIn animated" data-wow-delay="1s">
+<div class="figure">
+<img src="http://www.clipartlord.com/wp-content/uploads/2015/02/ambulance10.png" />
+
+</div>
+</div>
+</div>
+<p><br> <br> <br> <br> <br> <br></p>
+<strong>Scenario 2</strong>: 1 patient, 2 Trucks, 6 EMS personnel respond. <br> <br>
+<div style="width:200px">
+<div class="wow lightSpeedIn animated" data-wow-delay="1s">
+<p><img src="http://www.clipartlord.com/wp-content/uploads/2015/02/ambulance10.png" /> <img src="http://www.clipartlord.com/wp-content/uploads/2015/02/ambulance10.png" /></p>
+</div>
+</div>
+<p><br> <br> <br> <br> <br> <br></p>
+<div class="wow fadeIn animated">
+<h5>
+<div class="newspaper1">
+<p style="text-align: justify;">
+Let’s assume that both patients suffer from the same injury. And then, let me ask you this question: Has the additional number of EMS personnel or truck reduced the chances of injury? Your answer may vary along the lines of No—Depends—Yes, or simply, I don’t know. What if above scenarios were not three but, instead, 400,000 incidents consisting of variation in the number of fatalities, injuries, medical technicians, firefighters, and police officers? Would you still have the same confidence in your answer? The essence of this study is my solid attempt to answer that same question in non-medical fire incidents, which, by the way, involved more than 400,000 incidents.
+</p>
+</div>
+<p><br> <br> <br> <br> <br></p>
+<iframe width="100%" height="700" src="attach/Untitled.html">
+</iframe>
+<br> <br>
+<center>
+Above map shows ambulance response made to non-medical emergencies (2003-2015).
+</center>
+<p><br> <br> <br> <br> <br></p>
+<div class="wow fadeIn animated">
+<h5>
+<div class="newspaper2">
+<p style="text-align: justify;">
+In non-medical fire calls, no one is expected to get hurt, so sending more first responders should not reduce injury because no matter how many EMS responders deploy to non-medical calls, no one is injured. So, if there is no one hurt, then there is no reason for an emergency technician to deploy. And, the data seems to agree with our reasoning. Of all the non-medical fire calls made in the City of San Francisco, precisely 99.9% resulted in neither injury nor fatality. <br><br>Strangely, between 2003 and 2015, there had been 44,414 incidents when EMS units have responded a fire call although no injury was reported (Figure 1a. Map 2). This should raise a red flag to public administrators because (1) only 1 out of every 161 ambulance response involved an injury, and (2) if you compute the expenses involved in non-medical ambulance responses, the total cost is staggering. <br><br>Consider the variable costs of an ambulance response for example (Table 1). If you compute $39.55 as the average ambulance transportation cost, between 2003 and 2015, the City of San Francisco had spent nearly $1,749,692 on calls where no one was injured. That sounds quite expensive for responding to 99.9% of situations where no one was injured. <br><br>Frankly speaking, I do not know exactly how much would be spent in ambulatory services. In fact, according to the 2007 Ambulance Provider’s Cost report written by the Government Accountability Office, an investigative body of the Congress, “costs of ground ambulance services were highly variable across providers … reflecting differences in certain provider and community characteristics. Costs per transport among these providers varied from $99 per transport to $1,218.” <br><br>Although ambulatory services are subsidized by a wide degree margin, we find the estimation reasonable because there is no established price tag on how much ambulance services should cost in the United States (Hatley, 2007). Since geographical characteristics, weather environment, and fuel prices vary by region, ambulatory budget should vary across every rescue station, and it would be silly to set a one-size fits all price tag at a national level. <br><br>That said, let’s think about this for a second. Why had those EMS personnel responded to the non-medical fires incidents? I am not suggesting that there can never be a situation where EMS personnel should respond to a non-medical emergency. There probably were valid reasons as to why the EMS personnel responded to thousands of fire incidents that involved no injury. Borrowing the words of Deputy-Chief Reskin, a firefighting veteran with 28 years of experience, “every rescue station has a different protocol and costs involved in emergency response, and every station has their own unique procedures that accommodates to the characteristics of their communities.” This is true, no two station can be the same. A rescue station that specializes in helicopter extraction will have different protocols and expenses compared to those that do not possess a helicopter. Additionally, a protocol may involve preventative measures as well. According to Captain Stakes, the Friday night crew officer, “protocols may mandate ambulance trucks to deploy with firetrucks even when no injury is reported on a call. It is a safety procedure that prevents possible injury.”
+</p>
+</div>
+<p><br><br></p>
+<div class="wow fadeIn animated">
+<h5>
+<div class="newspaper2">
+<p style="text-align: justify;">
+Taking the pearls of wisdom to mind, I instructed my computer to calculate EMS personnel deployment with firefighter variable, and I was quick to find that the fire station leaders were right. The number of EMS deployment dropped from 44,413 to 1,073 when I computed firefighter variable in the equation (Figure 1b. Map 3). In other words, there had been only 1,073 cases when EMS personnel responded to non-medical fire incidents without firefighters. As it turns out, the question had an obvious answer to the experienced first responders, but it did not appear to me so clearly, even with a sophisticated computer coding program. <br><br>There is no denying my lack the experience in emergency management, but does this warrant the spending of millions of dollars on the 99.9% of non-medical calls that do not lead to an injury? Before we get any further, I would like to share my personal opinion: I think the money is well worth spending it on preventative measures. For one, the dispatchers at the City of San Francisco have done a great job of categorizing medical and non-medical incidents. Their excellent performance is reflected in the low injury and fatality turnout (0.07%). The money spent on ambulance deployments is the fire department’s attempt to prevent those unforeseen circumstances occurred during that 0.07% of calls. Nevertheless, we should still go through the reasoning process and be open to new ideas that might allow us to serve the public with greater efficiency. <br><br>Of all the non-medical fire episodes, 289 incidents have led to either an injury or fatality, and of those incidents, an EMS personnel was there to aid in 276 cases. But, how about the remaining 44,240 incidents when no one was injured? Is there room for speculation that somebody might have suffered an irreparable damage because an ambulance was busy responding to a non-medical fire incident and not to a medical emergency? If a split of a second is critical in certain situations, would time not be critical in situations where an injury has known to have occurred? Can any reasonable person confidently say that of the 44,240 false positive deployments, no one have gotten hurt as a result of the precautionary protocol? If the city had, by the process of deploying EMS personnel to non-injury calls and unintentionally created a systematic harm to bystanders, could we really say that a protocol that mandates ambulance trucks to deploy with firetrucks to a low-risk non-medical fire incidents —is it a sound public policy? <br><br>More importantly, I would also like to respectfully remind you again that I have little experience about the subject matter, and that this paper is really about showcasing my quantitative skills to the board members at the BCCRS. Upon your approval, I will be seeking guidance from experienced members and not be walking on massive data with assumptions. I wish to aid your scope of executive decision-making using my quantitative skills. <br><br>Of course, we cannot place benefits of financial capital above a human life. Hence, one could possibly argue that spending millions of dollars in public funding is justified, even when fatality accounted for less than 0.0065% of all non-medical fire incident. <br><br>In Principle of Economics, N. Gregory Mankiw, an economics professor at the Harvard University, talks about the cost-benefit analysis of public policy. Dr. Mankiw maintains that placing an implicit dollar value on a human life is nonsensical: “If we truly placed an infinite value on human life, [government] should place traffic lights on every street corner, and [private citizens] should all drive large cars loaded with all the latest safety features. Yet traffic lights are not at every corner, and people sometimes choose to pay less for smaller cars without safety options … In both our public and private decisions, we are at times willing to risk our lives to save some money.” Dr. Mankiw’s economic proposition makes the case that at some point, the city would have to draw the line on how much they are willing to spend on preventative measures like ambulance at non-medical fire scenes. <br><br>In our modest calculation, the total variable cost for the entire city was only at $1.8 Million, but what if the true variable cost was higher than our estimate? Unfortunately, it would not be possible to find the per deployment variable cost we need. According to one public records officer whom I have had the pleasure of speaking over the phone, the San Francisco’s Fire Department does not break down their annual budget by anticipated variable cost. <br><br>Has spending millions of dollars on non-injury calls saved some people’s lives? Yes, it certainly has, about 0.41% of 44,414 EMS deployments to non-medical fire incidents have ended up in and we will show the computations in the results section of this paper. <br><br>Still, I ask, “could there be a better way of using the money?” Maybe. But, I can’t say that it is not going to hurt trying since the risk is potential injury, and the cost of reducing that is 99.9945% <br><br>As a new volunteer member at the Rescue 1 station, I can comfortably say that there are more things I do not know about emergency rescue than what I do know. <br><br>So, the purpose of this study is not about denigrating the hardworking first responders serving the City of San Francisco. As a matter of fact, I thank them for sharing their valuable data through the open source outlet. I want to show my appreciation by looking for possible areas of improvement so that we can make better use of public funding.
+</p>
+</div>
+</body>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<div class="wow fadeIn">
+<p style="text-align: center;">
+<img src="http://open.dc.gov/open-source-guidelines/assets/img/dc_logo.png" height="20px" width="20px" />
+</p>
+<br>
+<h5>
+Inspired by Code for D.C.
+</div>
+<br> <br> <br>
+</center>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
