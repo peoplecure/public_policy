@@ -12,6 +12,10 @@ navbar:
       menu:
         - text: "Fire - San Francisco"
           href: fire_sf.html
+    - text: "Social Services"
+      menu:
+        - text: "SNAP (Food Stamp)"
+          href: SNAP_map.html
     - text: "Cool Maps"
       menu: 
         - text: "Team Hope"
