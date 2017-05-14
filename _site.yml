@@ -20,14 +20,17 @@ navbar:
           href: SNAP_map_timeline.html
         -
     - text: "Education"
+      menu: 
         - text: DC Bachaelor's +
           href: DC_Education_Attainment.html
-    - text: "Cool Maps"
-      menu: 
         - text: "Team Hope"
           href: interactive_map.html
+    - text: "Economics"
+      menu:
         - text: "Intro to Economics"
           href: world_sample.html
+        - text: "Arlington Poverty Timeline"
+          href: Poverty_map_timeline.html
     - text: "Author"
       href: about.html
 
