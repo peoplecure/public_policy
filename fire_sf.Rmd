@@ -128,7 +128,7 @@ Let’s assume that both patients suffer from the same injury. And then, let me 
 <br>
 <br>
 
-<iframe width="100%" height="700" src="attach/Untitled.html"></iframe>
+<iframe width="100%" height="550" src="attach/Untitled.html"></iframe>
 ```
 You can embed the map by copying and pasting this code in your HTML script:
 <iframe width="100%" height="700" src="attach/Untitled.html"></iframe>

@@ -8,3 +8,7 @@ br {
    margin: 8px 0;
    line-height:22px;
 }
+body .main-container {
+max-width: 100%;
+}
+
