@@ -1,7 +1,7 @@
 name: "my-website"
 output_dir: .
 navbar:
-  title: "Jim H. Ong"
+  title: "D.C. Policy Blog"
   left:
     - text: "Home"
       href: index.html
