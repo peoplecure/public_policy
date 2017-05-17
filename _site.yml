@@ -39,5 +39,4 @@ output:
   html_document: 
     theme: cosmo
     css: css/style.css
-    highlight: textmate
   
