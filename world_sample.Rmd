@@ -71,11 +71,3 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
 <br>
 <br>
 <br>
-
-<p style="text-align: center;"><img src="http://open.dc.gov/open-source-guidelines/assets/img/dc_logo.png" height="20px" width="20px" /></p>
-<br>
-<h5> Inspired by Code for D.C.
-<br>
-<br>
-<br>
-</center>
