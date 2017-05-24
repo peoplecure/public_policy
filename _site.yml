@@ -16,7 +16,7 @@ navbar:
     - text: "Social Services"
       menu:
         - text: "SNAP (Food Stamp)"
-          href: SNAP_map.html
+          href: SNAP_Arlington.html
         - text: "SNAP Timeline"
           href: SNAP_timeline.html
         -
