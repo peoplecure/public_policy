@@ -23,7 +23,7 @@ navbar:
     - text: "Education"
       menu: 
         - text: DC Bachaelor's +
-          href: DC_Education_Attainment.html
+          href: DC_Bachaelors.html
         - text: "Team Hope"
           href: interactive_map.html
     - text: "Economics"
@@ -31,7 +31,7 @@ navbar:
         - text: "Intro to Economics"
           href: world_sample.html
         - text: "Arlington Poverty Timeline"
-          href: Poverty_map_timeline.html
+          href: Poverty_Arlington.html
     - text: "Author"
       href: about.html
 
