@@ -39,4 +39,5 @@ output:
   html_document: 
     theme: cosmo
     css: css/style.css
-  
+    includes:
+      after_body: footer.html
