@@ -131,7 +131,7 @@ Let’s assume that both patients suffer from the same injury. And then, let me 
 <iframe width="100%" height="550" src="attach/Untitled.html"></iframe>
 ```
 You can embed the map by copying and pasting this code in your HTML script:
-<iframe width="100%" height="700" src="attach/Untitled.html"></iframe>
+<iframe width="100%" height="700" src="http://americanpolicy.me/attach/Untitled.html"></iframe>
 ```
 <br>
 <center>Above map shows ambulance response made to non-medical emergencies (2003-2015).</center>
