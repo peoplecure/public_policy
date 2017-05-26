@@ -1,7 +1,7 @@
 name: "my-website"
 output_dir: .
 navbar:
-  title: "D.C. Policy Blog"
+  title: "<img id=\"logo\" style=\"width: 204px;\" src=\"http://americanpolicy.me/attach/logo.png\" />"
   left:
     - text: "Home"
       href: index.html
