@@ -1,6 +1,6 @@
-<iframe width="100%" height="600" src="attach/Poverty_map_timeline.html"></iframe>
+<iframe width="100%" height="550" src="attach/Poverty_map_timeline.html"></iframe>
 <center>
 ```
 You can embed the map by copying and pasting this code in your HTML script:
-<iframe width="100%" height="600" src="http://americanpolicy.me/attach/Poverty_map_timeline.html"></iframe>
+<iframe width="100%" height="550" src="http://americanpolicy.me/attach/Poverty_map_timeline.html"></iframe>
 ```

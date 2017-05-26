@@ -8,6 +8,7 @@ hr {
     margin-right: auto;
     border-style: inset;
     border-width: 1px;
+    width: 60%;
 }
 .newspaper1 {
     -webkit-column-count: 1; /* Chrome, Safari, Opera */
@@ -128,10 +129,10 @@ Let’s assume that both patients suffer from the same injury. And then, let me 
 <br>
 <br>
 
-<iframe width="100%" height="550" src="attach/Untitled.html"></iframe>
+<iframe width="100%" height="400" src="attach/Untitled.html"></iframe>
 ```
 You can embed the map by copying and pasting this code in your HTML script:
-<iframe width="100%" height="700" src="http://americanpolicy.me/attach/Untitled.html"></iframe>
+<iframe width="100%" height="400" src="http://americanpolicy.me/attach/Untitled.html"></iframe>
 ```
 <br>
 <center>Above map shows ambulance response made to non-medical emergencies (2003-2015).</center>
