@@ -15,10 +15,8 @@ navbar:
           href: fire_sf.html
     - text: "Social Services"
       menu:
-        - text: "SNAP (Food Stamp)"
+        - text: "SNAP (Food Stamps)"
           href: SNAP_Arlington.html
-        - text: "SNAP Timeline"
-          href: SNAP_timeline.html
         -
     - text: "Education"
       menu: 
