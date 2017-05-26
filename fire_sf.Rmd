@@ -65,7 +65,7 @@ hr {
 <br>
 <div class="wow fadeInUp animated" data-wow-delay="0.2s">
 <center>
-<h5><div class="abstract">
+<h4><div class="abstract">
 <p style="text-align: justify;">
 A B S T R A C T : Using open data sourced by the City of San Francisco, we have constructed a regression model that predicts civilian injuries in non-medical fire incidents. The prediction model was computed by examining the number of first responders present at non-medical fire scenes. The result indicated that the likelihood of civilians requiring medical transportation at non-medical fire scenes is close to zero and higher number of first responders did not lower injury rate in non-medical responses. To test the effectiveness of our prediction model, we have used the 2003-2015 data (sample size = 389,180) to analyze every non-medical incident that occurred in 2016 (sample size = 30,991). The prediction model correctly estimated 99.94% of absent-injuries in non-medical emergency responses.
 </p></div>
@@ -86,14 +86,14 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 <body>
 <center>
 <div class="wow fadeIn animated">
-<h5><div class="newspaper1">
+<h4><div class="newspaper1">
 <p style="text-align: justify;">
 **Introduction**
 <br><br>When you hear me say, “higher number of first responders did not lower injury rate in non-medical responses,” a question may come to mind — why would you predict the probability of injury by looking at the number of first responders? This is a fair question to have. After all, injuries occur before ambulances arrive. I began examining the effect of first responders on injury rate because nearly 99% of non-medical ambulance deployments in the City of San Francisco do not result in fatality or injury. That said, I think it is fair to ask whether increasing the number of first responders can reduce the injury rate. If not, can the city spend those millions of dollars more efficiently?</p></div><br>
 
 <center>
 <div class="wow fadeIn animated">
-<h5><div class="newspaper1">
+<h4><div class="newspaper1">
 <p style="text-align: justify;">
 Now that you understand why I am examining the effect of first responders on injury rate, let's briefly talk about what happens in emergencies. We know that most injuries occur before first responders respond to 9-1-1 calls. If there is one patient, then any number of first responders should not make a difference because there is going to be one patient, no matter how many people respond to the emergency call. Take the following hypothetical scenarios for example:</p></div><br>
 <br>
@@ -133,7 +133,7 @@ Now that you understand why I am examining the effect of first responders on inj
 <br>
 
 <div class="wow fadeIn animated">
-<h5><div class="newspaper1">
+<h4><div class="newspaper1">
 <p style="text-align: justify;">
 Let’s assume that both patients suffer from the same injury. And then, let me ask you this question: Has the additional number of EMS personnel or truck reduced the chances of injury? Your answer may vary along the lines of No—Depends—Yes, or simply, I don’t know. What if above scenarios were not three but, instead, 400,000 incidents consisting of variation in the number of fatalities, injuries, medical technicians, firefighters, and police officers? Would you still have the same confidence in your answer? The essence of this study is my attempt at answering that same question in non-medical fire incidents, which, by the way, involved more than 400,000 incidents.</p></div>
 
@@ -158,7 +158,7 @@ You can embed the map by copying and pasting this code in your HTML script:
 <br>
 
 <div class="wow fadeIn animated">
-<h5><div class="newspaper2">
+<h4><div class="newspaper2">
 <p style="text-align: justify;">
 In non-medical fire calls, no one is expected to get hurt, so sending more first responders should not reduce injury because no matter how many EMS responders deploy to non-medical calls, no one is injured. So, if there is no one hurt, then there is no reason for an emergency technician to deploy. And, the data seems to agree with our reasoning. Of all the non-medical fire calls made in the City of San Francisco, precisely 99.9% resulted in neither injury nor fatality.
 <br><br>Strangely, between 2003 and 2015, there had been 44,414 incidents when EMS units have responded a fire call although no injury was reported (Figure 1a. Map 2). This should raise a red flag to public administrators because (1) only 1 out of every 161 ambulance response involved an injury, and (2) if you compute the expenses involved in non-medical ambulance responses, the total cost is staggering.
@@ -170,7 +170,7 @@ In non-medical fire calls, no one is expected to get hurt, so sending more first
 <br><br>
 
 <div class="wow fadeIn animated">
-<h5><div class="newspaper2">
+<h4><div class="newspaper2">
 <p style="text-align: justify;">
 Taking the pearls of wisdom to mind, I instructed my computer to calculate EMS personnel deployment with firefighter variable, and I was quick to find that the fire station leaders were right. The number of EMS deployment dropped from 44,413 to 1,073 when I computed firefighter variable in the equation (Figure 1b. Map 3). In other words, there had been only 1,073 cases when EMS personnel responded to non-medical fire incidents without firefighters. As it turns out, the question had an obvious answer to the experienced first responders, but it did not appear to me so clearly, even with a sophisticated computer coding program. 
 <br><br>There is no denying my lack the experience in emergency management, but does this warrant the spending of millions of dollars on the 99.9% of non-medical calls that do not lead to an injury? Before we get any further, I would like to share my personal opinion: I think the money is well worth spending it on preventative measures. For one, the dispatchers at the City of San Francisco have done a great job of categorizing medical and non-medical incidents. Their excellent performance is reflected in the low injury and fatality turnout (0.07%). The money spent on ambulance deployments is the fire department’s attempt to prevent those unforeseen circumstances occurred during that 0.07% of calls. Nevertheless, we should still go through the reasoning process and be open to new ideas that might allow us to serve the public with greater efficiency.

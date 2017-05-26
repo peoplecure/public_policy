@@ -1,3 +1,53 @@
+<head>
+<style>
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    width: 60%;
+}
+.abstract {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 500px;
+    height: 50%
+}
+.newspaper1 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+.newspaper2 {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+<link rel="stylesheet" href="css/animate.css">
+<script src="js/wow.min.js"> </script>
+<script> new WOW().init(); </script>
+</style>
+</head>
+
+
+
 <iframe width="100%" height="555" src="attach/SNAP_map.html"></iframe>
 <center>
 ```
@@ -6,9 +56,23 @@ You can embed the map by copying and pasting this code in your HTML script:
 ```
 
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br>
+<h3> Mapping SNAP for Arlington County, Virginia
+<br><br>
+<div class="wow fadeInUp animated" data-wow-delay="0.5s"></div>
+<div class="wow fadeIn animated"></div>
 
 
+
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+If you have ever visited the [Arlington County's website](https://departments.arlingtonva.us/dhs/dhs-performance-measurement-program/), you may have noticed that the county's Economic Independence Division has a noble goal: "Increase SNAP participation rate and amount of SNAP benefits issued to eligible Arlington County residents." Asides from altruistic reasons, it is economically sensible for local governments to promote SNAP participation for eligible residents.   <br><br>  Before we begin, I want you to know that am not advocating for a particular public policy. This blog is not about playing politics. Believe me, I have my opinions about world matters just like you. But, when it comes to public policy, I want to look at things impartially, free from personal feelings. My primary goal is to objectively measure programs and policies for the good of public. So, if you're against social policies like food stamps, please hold onto your horses.   <br><br>    First, SNAP, formally known as "food stamps," is a federally funded program. It means that if Arlington residents spend the *near-cash* — cash only good for purchasing grocery items — in their locality, then Arlington County has more economic activity in the region.</p></div>
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br>
 <iframe width="100%" height="400" src="attach/SNAP_map_timeline.html"></iframe>
 <center>
 ```
