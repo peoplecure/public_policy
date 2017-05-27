@@ -76,7 +76,7 @@ If you have ever visited the [Arlington County's website](https://departments.ar
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-Another reason governments might want to increase SNAP participation rate, albeit a debatable argument, is that of something called *marginal propensity to consume (MPC)*. In the context of our discussion, MPC is simply the proportion of income people spend on purchasing goods. So, for example, if you spend 75 cents per dollar of your income, then you have a high MPC. On the other hand, if you spend 30 cents per dollar, then you have a low MPC rate.   <br><br>    Some people have said to me that low-income earners have little money, so they buy inexpensive stuff or live a frugal lifestyle. However, [some empirical studies](http://web.stanford.edu/~pista/MPC.pdf) have shown that "households with low cash-on-hand exhibit a much higher MPC than affluent households." In other words, individuals with little money proportionately spend more than the wealthy. In the view of this, a majority of the economic stimulus is returned back into the economy if the government "injects" the food stamp money to the poor. This is a reasonable argument. If you don't believe me, just remember which giant mega store benefited 14 billions of dollars from food stamps in 2013.   <br><br>    Admittedly, now I am getting theoretical here, but some economic theories like *multiplier effect* postulates that a $1 food stamp can multiply to $2. </p></div>
+Another reason governments might want to increase SNAP participation rate, albeit a debatable argument, is that of something called *marginal propensity to consume (MPC)*. In the context of our discussion, MPC is simply the proportion of income people spend on purchasing goods. So, for example, if you spend 75 cents per dollar of your income, then you have a high MPC. On the other hand, if you spend 30 cents per dollar, then you have a low MPC rate.   <br><br>    Some people have said to me that low-income earners have little money, so they buy inexpensive stuff or live a frugal lifestyle. However, [some empirical studies](http://web.stanford.edu/~pista/MPC.pdf) have shown that "households with low cash-on-hand exhibit a much higher MPC than affluent households." In other words, individuals with little money proportionately spend more than the wealthy. In the view of this, a majority of the food stamp money is returned back into the economy if the government "injects" the food stamp to the poor, instead of giving that money to the wealthy. This is a reasonable argument. If you don't believe me, just remember which mega store benefited 14 billion dollars from food stamps in 2013 alone.</p></div>
 <br><br><br>
 
 <div style="width:600px">
@@ -85,8 +85,12 @@ Another reason governments might want to increase SNAP participation rate, albei
 <br><br><br>
 
 
+
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
+Admittedly, I am getting theoretical now, but some economic theories like the *multiplier effect* postulates that a $1 of food stamp benefit can multiply to $2 over time. No, this is not some rabbit hopping out of the magic hat, and I am not talking about inflation or printing more money. There is a rational argument behind this theory. </p></div><br><br><br>
+
+
 
 
 
