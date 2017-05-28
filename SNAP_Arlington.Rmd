@@ -80,7 +80,7 @@ Of course, many taxpayers voice against food stamps because it’s not *free mon
 
 <div style="abstract">
 <div class="wow fadeIn animated">
-![](attach/arlington_food_stamp_tweet.png)</div></div>
+![](attach/arlington_food_stamp_tweet.png)</div></div><br>
 ```{r, eval=FALSE}
 # I'm using a program called R to collect, organize, and plot the above chart. 
 # Here is the script for the plot, but you still have to perform Twitter data mining first.
@@ -91,13 +91,12 @@ ggtitle("Words Arlington Residents use to describe Food Stamps") +
 theme(plot.title = element_text(family = "Times", size=14, hjust=0.3)) + 
 labs(x="Word", y="Frequency") + scale_y_continuous(expand=c(0, 0)) + 
 geom_bar(stat="identity") + coord_flip()
-
 ```
 <br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion in SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households who held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%   <br><br>  So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work? </p></div><br><br><br>
+As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, scam, criminal, stole, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion in SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households who held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%   <br><br>  So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work? </p></div><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
