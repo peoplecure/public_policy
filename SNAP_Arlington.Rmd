@@ -100,7 +100,7 @@ Of course, many taxpayers voice against food stamps because it’s not *free mon
 <h4><div class="code1">
 <p style="text-align: left;">
 ```{r, eval=FALSE}
-# I'm using a program called R to collect, organize, and plot the chart below. Here is the script for the plot, but you still have to perform Twitter data mining first.
+# I'm using a program called R to collect, organize, and plot the chart below. Here is the script for the plot, but you still have to perform data mining on Twitter.
 
 plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
@@ -122,13 +122,13 @@ As you can see, the public's sentiment of food stamps is saturated with words li
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).     <br><br>    There were several parts that struck out in the report. First, the number of applications and beneficiaries have been decreasing over the past three years:</p></div><br>
+**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).     <br><br>    There were several parts that struck out in the report. First, the number of applications and beneficiaries have been declining over the past three years. A person must submit SNAP application before becoming a beneficiary, so I wanted to see if there was any relationship between the falling number of applications and individuals receiving SNAP benefits.</p></div><br>
 
 
 </center>
 <h4><div class="code1">
 <p style="text-align: left;">
-```{r, eval=FALSE}
+```{r, cache=TRUE, fig.show=FALSE}
 library(knitr)
 snap.name <- c('Applications', 'Individual.Recipients', 'Household.Recipients')
 SFY.2014 <- c(2918, 8371, 5037)
@@ -146,9 +146,21 @@ kable(snap.cs.table)
 Applications          | 2,918   | 2,783   | 2,642
 Individual Recipients | 8,371   | 7,982   | 7,530
 Household Recipients  | 5,037   | 4,697   | 4,455
-</p></div>
+</p></div><br><br><br>
 
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+</p></div><br><br><br>
 
+```{r}
+cor.test(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients')
+plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xlim=c(2600, 3000), ylim=c(7500, 8400),
+     pch = 20, cex = 1, col = "black",
+     main = "Relationship between Applicants and Individuals",
+     ylab = "Number of Individual Recipients",
+     xlab = "Number of SNAP Applicants",
+     abline(lm(snap.cs.table.t$'Individual.Recipients' ~ snap.cs.table.t$'Applications'), col="red"))
+```
 
 <br><br><br><br><br><br><br><br><br>
 <iframe width="100%" height="400" src="attach/SNAP_map_timeline.html"></iframe>
