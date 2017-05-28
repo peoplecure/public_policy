@@ -168,7 +168,7 @@ plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xl
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-This is a classic case of a perfect correlationship. It is always very exciting to see textbook examples happening in the real world.
+This is a classic case of a perfect correlationship. It is always exciting to see textbook examples happening in the real world.
 </p></div><br><br><br>
 
 <br><br><br><br><br><br><br><br><br>
