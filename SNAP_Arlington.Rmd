@@ -1,6 +1,6 @@
 <head>
 <style>
-hr { 
+.hr { 
     display: block;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -39,6 +39,13 @@ hr {
     min-width: 300px;
     max-width: 600px;
     height: 50%
+}
+.code1 { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 600px;
 }
 .code2 {
     -webkit-column-count: 1; /* Chrome, Safari, Opera */
@@ -80,7 +87,7 @@ You can embed the map by copying and pasting this code in your HTML script:
 <p style="text-align: justify;">
 Another reason local governments might want to increase SNAP participation rate, albeit a debatable argument, is that of something called *marginal propensity to consume (MPC)*. In the context of our discussion, MPC is simply the proportion of income that people spend on purchasing goods. So, for example, if you spend 75 cents per dollar of your income, then you have a high MPC. On the other hand, if you spend 30 cents per dollar, then you have a low MPC rate.   <br><br>    Since low-income earners have little money, buy inexpensive stuff or live a frugal lifestyle, it may be intuitive to think that low-income earners spend only a small portion of their income on purchasing goods. However, [some empirical studies](http://web.stanford.edu/~pista/MPC.pdf) have shown that "households with low cash-on-hand exhibit a much higher MPC than affluent households." In other words, people who have little money proportionately spend more than the wealthy.   <br><br>    Now, we know that low-income earners proportionately spend most of their income, and SNAP grants cannot be deposited into recipients' bank accounts as cash. So, theoretically speaking, nearly 100% of the food stamp money returns to the economy when the government *injects* the food stamp to the poor. This is a reasonable argument. If you don't believe me, just remember which mega store benefited 14 billion dollars from food stamps in 2013 alone.</p></div><br><br><br>
 
-<div style="abstract">
+<div style="width:600px">
 <div class="wow fadeIn animated">
 ![](attach/jappelli_pistaferri.png)<br>
 <h5>Source credit: Jappelli and Pistaferri, 2014</div></div><br><br><br>
@@ -89,14 +96,21 @@ Another reason local governments might want to increase SNAP participation rate,
 <p style="text-align: justify;">
 Of course, many taxpayers voice against food stamps because it’s not *free money* per se. The issue often arises from the fact that taxpayers fund programs like SNAP and concerns about welfare fraud exacerbate the stigma associated with food stamps. Take a look at the chart below. It's a list of words Arlington residents use to describe "Food Stamps" on Twitter.</p></div><br><br><br>
 
-<h4><div class="newspaper1">
+</center>
+<h4><div class="code1">
 <p style="text-align: left;">
 ```{r, eval=FALSE}
-# I'm using a program called R to collect, organize, and plot the above chart. Here is the script for the plot, but you still have to perform Twitter data mining first.
+# I'm using a program called R to collect, organize, and plot the chart below. Here is the script for the plot, but you still have to perform Twitter data mining first.
 
-plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + ggtitle("Words Arlington Residents use to describe Food Stamps") + theme(plot.title = element_text(family = "Times", size=14, hjust=0.3)) + labs(x="Word", y="Frequency") + scale_y_continuous(expand=c(0, 0)) + geom_bar(stat="identity") + coord_flip()
+plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  ggtitle("Words Arlington Residents use to describe Food Stamps") +
+  labs(x="Word", y="Frequency") + geom_bar(stat="identity") + 
+  scale_y_continuous(expand=c(0, 0)) + coord_flip() +
+  theme(plot.title = element_text(family = "Times", size=14, hjust=0.3))
+
 ```
-</p></div>
+</p></div><center>
 <div style="width:600px">
 <div class="wow fadeIn animated">
 ![](attach/arlington_food_stamp_tweet.png)</div></div>
@@ -108,8 +122,23 @@ As you can see, the public's sentiment of food stamps is saturated with words li
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).     <br><br>    After reading the report, there were several parts to the report that struck out. First, the number of applications and beneficiaries have been decreasing over the past three years:</p></div><br>
+**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).     <br><br>    There were several parts that struck out in the report. First, the number of applications and beneficiaries have been decreasing over the past three years:</p></div><br>
 
+
+</center>
+<h4><div class="code1">
+<p style="text-align: left;">
+```{r, eval=FALSE}
+library(knitr)
+snap.name <- c('Applications', 'Individual.Recipients', 'Household.Recipients')
+SFY.2014 <- c(2918, 8371, 5037)
+SFY.2015 <- c(2783, 7982, 4697)
+SFY.2016 <- c(2642, 7530, 4455)
+snap.cs.table <- data.frame(snap.name, SFY.2014, SFY.2015, SFY.2016)
+snap.cs.table.t <- setNames(data.frame(t(snap.cs.table[,-1])), snap.cs.table[,1])
+kable(snap.cs.table)
+```
+</p></div><center>
 <h4><div class="code2">
 <p style="text-align: left;">
 \ | 2014    | 2015    | 2016
