@@ -421,7 +421,6 @@ SFY.2016 &lt;- c(2642, 7530, 4455)
 snap.cs.table &lt;- data.frame(snap.name, SFY.2014, SFY.2015, SFY.2016)
 snap.cs.table.t &lt;- setNames(data.frame(t(snap.cs.table[,-1])), snap.cs.table[,1])
 kable(snap.cs.table)</code></pre>
-snap.name SFY.2014 SFY.2015 SFY.2016 ———————- ——— ——— ——— Applications 2918 2783 2642 Individual.Recipients 8371 7982 7530 Household.Recipients 5037 4697 4455
 </p>
 </div>
 <center>
@@ -467,8 +466,12 @@ snap.name SFY.2014 SFY.2015 SFY.2016 ———————- ——— ——— 
 </p>
 </div>
 <p><br><br><br></p>
-<pre class="r"><code>cor.test(snap.cs.table.t$&#39;Applications&#39;, snap.cs.table.t$&#39;Individual.Recipients&#39;)</code></pre>
-<pre><code>## 
+</center>
+<h4>
+<div class="code1">
+<p style="text-align: left;">
+<pre class="r"><code>cor.test(snap.cs.table.t$&#39;Applications&#39;, snap.cs.table.t$&#39;Individual.Recipients&#39;)
+## 
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  snap.cs.table.t$Applications and snap.cs.table.t$Individual.Recipients
@@ -476,14 +479,17 @@ snap.name SFY.2014 SFY.2015 SFY.2016 ———————- ——— ——— 
 ## alternative hypothesis: true correlation is not equal to 0
 ## sample estimates:
 ##       cor 
-## 0.9995296</code></pre>
-<pre class="r"><code>plot(snap.cs.table.t$&#39;Applications&#39;, snap.cs.table.t$&#39;Individual.Recipients&#39;, xlim=c(2600, 3000), ylim=c(7500, 8400),
+## 0.9995296
+plot(snap.cs.table.t$&#39;Applications&#39;, snap.cs.table.t$&#39;Individual.Recipients&#39;, xlim=c(2600, 3000), ylim=c(7500, 8400),
      pch = 20, cex = 1, col = &quot;black&quot;,
      main = &quot;Relationship between Applicants and Individuals&quot;,
      ylab = &quot;Number of Individual Recipients&quot;,
      xlab = &quot;Number of SNAP Applicants&quot;,
      abline(lm(snap.cs.table.t$&#39;Individual.Recipients&#39; ~ snap.cs.table.t$&#39;Applications&#39;), col=&quot;red&quot;))</code></pre>
-<p><img src="SNAP_Arlington_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<img src="SNAP_Arlington_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+</p>
+</div>
+<center>
 <br><br><br><br><br><br><br><br><br> <iframe width="100%" height="400" src="attach/SNAP_map_timeline.html"></iframe>
 <center>
 <pre><code>You can embed the map by copying and pasting this code in your HTML script:

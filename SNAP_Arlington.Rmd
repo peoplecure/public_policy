@@ -128,7 +128,7 @@ As you can see, the public's sentiment of food stamps is saturated with words li
 </center>
 <h4><div class="code1">
 <p style="text-align: left;">
-```{r, cache=TRUE, fig.show=FALSE}
+```{r, cache=TRUE, results='hide'}
 library(knitr)
 snap.name <- c('Applications', 'Individual.Recipients', 'Household.Recipients')
 SFY.2014 <- c(2918, 8371, 5037)
@@ -152,7 +152,10 @@ Household Recipients  | 5,037   | 4,697   | 4,455
 <p style="text-align: justify;">
 </p></div><br><br><br>
 
-```{r}
+</center>
+<h4><div class="code1">
+<p style="text-align: left;">
+```{r, collapse=TRUE}
 cor.test(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients')
 plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xlim=c(2600, 3000), ylim=c(7500, 8400),
      pch = 20, cex = 1, col = "black",
@@ -161,6 +164,7 @@ plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xl
      xlab = "Number of SNAP Applicants",
      abline(lm(snap.cs.table.t$'Individual.Recipients' ~ snap.cs.table.t$'Applications'), col="red"))
 ```
+</p></div><center>
 
 <br><br><br><br><br><br><br><br><br>
 <iframe width="100%" height="400" src="attach/SNAP_map_timeline.html"></iframe>
