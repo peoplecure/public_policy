@@ -309,6 +309,7 @@ hr {
     max-width: 600px;
     height: 50%
 }
+
 <link rel="stylesheet" href="css/animate.css">
 <script src="js/wow.min.js"> </script>
 <script> new WOW().init(); </script>
@@ -321,13 +322,7 @@ hr {
 &lt;iframe width=&quot;100%&quot; height=&quot;555&quot; src=&quot;http://americanpolicy.me/attach/SNAP_map.html&quot;&gt;&lt;/iframe&gt;</code></pre>
 <br><br><br>
 <h3>
-Mapping SNAP (Food Stamps) for Arlington County, Virginia <br><br>
-<div class="wow fadeInUp animated" data-wow-delay="0.5s">
-
-</div>
-<div class="wow fadeIn animated">
-
-</div>
+<p>Mapping SNAP (Food Stamps) for Arlington County, Virginia<br><br></p>
 <h4>
 <div class="newspaper1">
 <p style="text-align: justify;">
@@ -355,18 +350,40 @@ Another reason local governments might want to increase SNAP participation rate,
 Source credit: Jappelli and Pistaferri, 2014
 </div>
 </div>
-<p><br> <br><br><br></p>
+<p><br><br><br></p>
 <h4>
 <div class="newspaper1">
 <p style="text-align: justify;">
-Of course, many taxpayers voice against food stamps because it’s not <em>free money</em> per se. The issue often arises from the fact that taxpayers fund programs like SNAP and concerns about welfare fraud exacerbate the stigma associated with food stamps. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent <a href="http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap">$75 billion in SNAP</a>. <br><br> However, according to the Center on Budget and Policy Priorities, an “overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working.” In fact, a whopping 96% of households who held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the <a href="https://www.bls.gov/news.release/pdf/jolts.pdf">national labor turnover rate</a> that spans 1.2% to 7% <br><br> So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work?
+Of course, many taxpayers voice against food stamps because it’s not <em>free money</em> per se. The issue often arises from the fact that taxpayers fund programs like SNAP and concerns about welfare fraud exacerbate the stigma associated with food stamps. Take a look at the chart below. It’s a list of words Arlington residents use to describe “Food Stamps” on Twitter.
+</p>
+</div>
+<p><br><br></p>
+<div style="abstract">
+<div class="wow fadeIn animated">
+<img src="attach/arlington_food_stamp_tweet.png" />
+</div>
+</div>
+<pre class="r"><code># I&#39;m using a program called R to collect, organize, and plot the above chart. 
+# Here is the script for the plot, but you still have to perform Twitter data mining first.
+
+plot &lt;- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) + 
+theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+ggtitle(&quot;Words Arlington Residents use to describe Food Stamps&quot;) +  
+theme(plot.title = element_text(family = &quot;Times&quot;, size=14, hjust=0.3)) + 
+labs(x=&quot;Word&quot;, y=&quot;Frequency&quot;) + scale_y_continuous(expand=c(0, 0)) + 
+geom_bar(stat=&quot;identity&quot;) + coord_flip()</code></pre>
+<p><br><br><br></p>
+<h4>
+<div class="newspaper1">
+<p style="text-align: justify;">
+Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent <a href="http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap">$75 billion in SNAP</a>. However, according to the Center on Budget and Policy Priorities, an “overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working.” In fact, a whopping 96% of households who held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the <a href="https://www.bls.gov/news.release/pdf/jolts.pdf">national labor turnover rate</a> that spans 1.2% to 7% <br><br> So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work?
 </p>
 </div>
 <p><br><br><br></p>
 <h4>
 <div class="newspaper1">
 <p style="text-align: justify;">
-<strong>Analysis</strong>: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog post. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the <a href="https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf">SNAP performance plan report</a>. <br><br>
+<strong>Analysis</strong>: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the <a href="https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf">SNAP performance plan report</a>. <br><br>
 </p>
 </div>
 <p><br><br><br></p>

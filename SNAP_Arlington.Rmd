@@ -40,13 +40,12 @@ hr {
     max-width: 600px;
     height: 50%
 }
+
 <link rel="stylesheet" href="css/animate.css">
 <script src="js/wow.min.js"> </script>
 <script> new WOW().init(); </script>
 </style>
 </head>
-
-
 
 <iframe width="100%" height="555" src="attach/SNAP_map.html"></iframe>
 <center>
@@ -55,45 +54,54 @@ You can embed the map by copying and pasting this code in your HTML script:
 <iframe width="100%" height="555" src="http://americanpolicy.me/attach/SNAP_map.html"></iframe>
 ```
 
-
 <br><br><br>
-<h3> Mapping SNAP (Food Stamps) for Arlington County, Virginia
-<br><br>
-<div class="wow fadeInUp animated" data-wow-delay="0.5s"></div>
-<div class="wow fadeIn animated"></div>
-
-
+<h3> Mapping SNAP (Food Stamps) for Arlington County, Virginia<br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-**Introduction**: If you have ever visited the [Arlington County's website](https://departments.arlingtonva.us/dhs/dhs-performance-measurement-program/), you may have noticed that the county's Economic Independence Division has a winning goal: "Increase SNAP participation rate and amount of SNAP benefits issued to eligible Arlington County residents." Asides from altruistic reasons, it is economically sensible for local governments to promote SNAP participation for eligible residents.   <br><br>  Before we begin, I want you to know that I am not advocating for a particular public policy. This blog is not about fueling my political ardor. Believe me. I have my opinions about world matters just like you. But, when it comes to public policy, I want to look at things impartially, free from personal feelings and biases as much as possible. My primary goal is to objectively measure government programs and policies for the good of the public. So, if you're against social policies like food stamps, please hold onto your horses.    <br><br>    That said, why is SNAP economically sensible for local governments? Well, in short-terms, the answer is straightforward. SNAP, formally known as food stamps, is a federal program designed to help low-income earners with groceries. It means that the program is funded by the federal government. When residents spend that federal money in their neighborhood, their regional economic activity increases. And, with the additional economic movement, local governments generate more revenue from taxes.  <br><br>    It isn't just local governments that can benefit from food stamps. Food stamps are a major source of revenue for many businesses. Take Walmart for example. [In 2013, Walmart siphoned nearly 18 percent of all SNAP purchases, which equals to about 14 billion dollars](https://www.wsj.com/articles/grocers-brace-for-reduction-in-food-stamps-1383168686?tesla=y). Even for a company that generates about half a trillion dollars each year, the SNAP program is a lucrative market. So, why would any economist tasked to revitalize their local government not consider promoting SNAP?</p></div>  
-<br><br><br>
+**Introduction**: If you have ever visited the [Arlington County's website](https://departments.arlingtonva.us/dhs/dhs-performance-measurement-program/), you may have noticed that the county's Economic Independence Division has a winning goal: "Increase SNAP participation rate and amount of SNAP benefits issued to eligible Arlington County residents." Asides from altruistic reasons, it is economically sensible for local governments to promote SNAP participation for eligible residents.   <br><br>  Before we begin, I want you to know that I am not advocating for a particular public policy. This blog is not about fueling my political ardor. Believe me. I have my opinions about world matters just like you. But, when it comes to public policy, I want to look at things impartially, free from personal feelings and biases as much as possible. My primary goal is to objectively measure government programs and policies for the good of the public. So, if you're against social policies like food stamps, please hold onto your horses.    <br><br>    That said, why is SNAP economically sensible for local governments? Well, in short-terms, the answer is straightforward. SNAP, formally known as food stamps, is a federal program designed to help low-income earners with groceries. It means that the program is funded by the federal government. When residents spend that federal money in their neighborhood, their regional economic activity increases. And, with the additional economic movement, local governments generate more revenue from taxes.  <br><br>    It isn't just local governments that can benefit from food stamps. Food stamps are a major source of revenue for many businesses. Take Walmart for example. [In 2013, Walmart siphoned nearly 18 percent of all SNAP purchases, which equals to about 14 billion dollars](https://www.wsj.com/articles/grocers-brace-for-reduction-in-food-stamps-1383168686?tesla=y). Even for a company that generates about half a trillion dollars each year, the SNAP program is a lucrative market. So, why would any economist tasked to revitalize their local government not consider promoting SNAP?</p></div>  <br><br><br>
 
 <div style="abstract">
 <div class="wow fadeIn animated">
-![](attach/walmart1.png)</div></div>
-<br><br><br>
+![](attach/walmart1.png)</div></div><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-Another reason local governments might want to increase SNAP participation rate, albeit a debatable argument, is that of something called *marginal propensity to consume (MPC)*. In the context of our discussion, MPC is simply the proportion of income that people spend on purchasing goods. So, for example, if you spend 75 cents per dollar of your income, then you have a high MPC. On the other hand, if you spend 30 cents per dollar, then you have a low MPC rate.   <br><br>    Since low-income earners have little money, buy inexpensive stuff or live a frugal lifestyle, it may be intuitive to think that low-income earners spend only a small portion of their income on purchasing goods. However, [some empirical studies](http://web.stanford.edu/~pista/MPC.pdf) have shown that "households with low cash-on-hand exhibit a much higher MPC than affluent households." In other words, people who have little money proportionately spend more than the wealthy.   <br><br>    Now, we know that low-income earners proportionately spend most of their income, and SNAP grants cannot be deposited into recipients' bank accounts as cash. So, theoretically speaking, nearly 100% of the food stamp money returns to the economy when the government *injects* the food stamp to the poor. This is a reasonable argument. If you don't believe me, just remember which mega store benefited 14 billion dollars from food stamps in 2013 alone.</p></div>
-<br><br><br>
+Another reason local governments might want to increase SNAP participation rate, albeit a debatable argument, is that of something called *marginal propensity to consume (MPC)*. In the context of our discussion, MPC is simply the proportion of income that people spend on purchasing goods. So, for example, if you spend 75 cents per dollar of your income, then you have a high MPC. On the other hand, if you spend 30 cents per dollar, then you have a low MPC rate.   <br><br>    Since low-income earners have little money, buy inexpensive stuff or live a frugal lifestyle, it may be intuitive to think that low-income earners spend only a small portion of their income on purchasing goods. However, [some empirical studies](http://web.stanford.edu/~pista/MPC.pdf) have shown that "households with low cash-on-hand exhibit a much higher MPC than affluent households." In other words, people who have little money proportionately spend more than the wealthy.   <br><br>    Now, we know that low-income earners proportionately spend most of their income, and SNAP grants cannot be deposited into recipients' bank accounts as cash. So, theoretically speaking, nearly 100% of the food stamp money returns to the economy when the government *injects* the food stamp to the poor. This is a reasonable argument. If you don't believe me, just remember which mega store benefited 14 billion dollars from food stamps in 2013 alone.</p></div><br><br><br>
 
 <div style="abstract">
 <div class="wow fadeIn animated">
 ![](attach/jappelli_pistaferri.png)<br>
-<h5>Source credit: Jappelli and Pistaferri, 2014</div></div><br>
+<h5>Source credit: Jappelli and Pistaferri, 2014</div></div><br><br><br>
+
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+Of course, many taxpayers voice against food stamps because it’s not *free money* per se. The issue often arises from the fact that taxpayers fund programs like SNAP and concerns about welfare fraud exacerbate the stigma associated with food stamps. Take a look at the chart below. It's a list of words Arlington residents use to describe "Food Stamps" on Twitter.</p></div><br><br>
+
+<div style="abstract">
+<div class="wow fadeIn animated">
+![](attach/arlington_food_stamp_tweet.png)</div></div>
+```{r, eval=FALSE}
+# I'm using a program called R to collect, organize, and plot the above chart. 
+# Here is the script for the plot, but you still have to perform Twitter data mining first.
+
+plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) + 
+theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+ggtitle("Words Arlington Residents use to describe Food Stamps") +  
+theme(plot.title = element_text(family = "Times", size=14, hjust=0.3)) + 
+labs(x="Word", y="Frequency") + scale_y_continuous(expand=c(0, 0)) + 
+geom_bar(stat="identity") + coord_flip()
+
+```
 <br><br><br>
 
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion in SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households who held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%   <br><br>  So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work? </p></div><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-Of course, many taxpayers voice against food stamps because it’s not *free money* per se. The issue often arises from the fact that taxpayers fund programs like SNAP and concerns about welfare fraud exacerbate the stigma associated with food stamps. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion in SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap).   <br><br>  However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households who held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%   <br><br>  So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work? </p></div><br><br><br>
-
-
-<h4><div class="newspaper1">
-<p style="text-align: justify;">
-**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog post. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).     <br><br>    </p></div><br><br><br>
+**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).     <br><br>    </p></div><br><br><br>
 
 
 
