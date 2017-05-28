@@ -118,12 +118,11 @@ plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) +
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, scam, criminal, stole, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion on SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAPS the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%   <br><br>  So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work? </p></div><br><br><br>
+As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, criminal, scam, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion on SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAP the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7% </p></div><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).     <br><br>    Several parts that struck out in the report. First, the number of applications and beneficiaries have been declining over the past three years. A person must submit SNAP application before becoming a recipient, so I wanted to see if there was any relationship between the declining number of applications and individuals receiving SNAP benefits.</p></div><br>
-
+**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).</p></div><br><br><br>  
 
 </center>
 <h4><div class="code1">
@@ -148,23 +147,29 @@ Individual Recipients | 8,371   | 7,982   | 7,530
 Household Recipients  | 5,037   | 4,697   | 4,455
 </p></div><br><br><br>
 
+
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-</p></div><br><br><br>
+Several parts that struck out in the report. First, the number of applications and beneficiaries have been declining over the past three years. A person must submit SNAP application before becoming a recipient, so I wanted to see if there was any relationship between the declining number of applications and individuals receiving SNAP benefits.</p></div><br><br><br>
 
 </center>
 <h4><div class="code1">
 <p style="text-align: left;">
 ```{r, collapse=TRUE}
 cor.test(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients')
-plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xlim=c(2600, 3000), ylim=c(7500, 8400),
+plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xlim=c(2600, 2960), ylim=c(7500, 8400),
      pch = 20, cex = 1, col = "black",
      main = "Relationship between Applicants and Individuals",
      ylab = "Number of Individual Recipients",
      xlab = "Number of SNAP Applicants",
      abline(lm(snap.cs.table.t$'Individual.Recipients' ~ snap.cs.table.t$'Applications'), col="red"))
 ```
-</p></div><center>
+</p></div><center><br><br><br>
+
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+This is a classic case of a perfect correlationship. It is always very exciting to see textbook examples happening in the real world.
+</p></div><br><br><br>
 
 <br><br><br><br><br><br><br><br><br>
 <iframe width="100%" height="400" src="attach/SNAP_map_timeline.html"></iframe>
