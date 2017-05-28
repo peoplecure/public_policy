@@ -40,12 +40,23 @@ hr {
     max-width: 600px;
     height: 50%
 }
-
+.code2 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
 <link rel="stylesheet" href="css/animate.css">
 <script src="js/wow.min.js"> </script>
 <script> new WOW().init(); </script>
 </style>
 </head>
+
+
 
 <iframe width="100%" height="555" src="attach/SNAP_map.html"></iframe>
 <center>
@@ -53,8 +64,8 @@ hr {
 You can embed the map by copying and pasting this code in your HTML script:
 <iframe width="100%" height="555" src="http://americanpolicy.me/attach/SNAP_map.html"></iframe>
 ```
-
 <br><br><br>
+
 <h3> Mapping SNAP (Food Stamps) for Arlington County, Virginia<br><br>
 
 <h4><div class="newspaper1">
@@ -78,29 +89,35 @@ Another reason local governments might want to increase SNAP participation rate,
 <p style="text-align: justify;">
 Of course, many taxpayers voice against food stamps because it’s not *free money* per se. The issue often arises from the fact that taxpayers fund programs like SNAP and concerns about welfare fraud exacerbate the stigma associated with food stamps. Take a look at the chart below. It's a list of words Arlington residents use to describe "Food Stamps" on Twitter.</p></div><br><br><br>
 
-<div style="abstract">
-<div class="wow fadeIn animated">
-![](attach/arlington_food_stamp_tweet.png)</div></div><br>
+<h4><div class="newspaper1">
+<p style="text-align: left;">
 ```{r, eval=FALSE}
-# I'm using a program called R to collect, organize, and plot the above chart. 
-# Here is the script for the plot, but you still have to perform Twitter data mining first.
+# I'm using a program called R to collect, organize, and plot the above chart. Here is the script for the plot, but you still have to perform Twitter data mining first.
 
-plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) + 
-theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
-ggtitle("Words Arlington Residents use to describe Food Stamps") +  
-theme(plot.title = element_text(family = "Times", size=14, hjust=0.3)) + 
-labs(x="Word", y="Frequency") + scale_y_continuous(expand=c(0, 0)) + 
-geom_bar(stat="identity") + coord_flip()
+plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + ggtitle("Words Arlington Residents use to describe Food Stamps") + theme(plot.title = element_text(family = "Times", size=14, hjust=0.3)) + labs(x="Word", y="Frequency") + scale_y_continuous(expand=c(0, 0)) + geom_bar(stat="identity") + coord_flip()
 ```
+</p></div>
+<div style="width:600px">
+<div class="wow fadeIn animated">
+![](attach/arlington_food_stamp_tweet.png)</div></div>
 <br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, scam, criminal, stole, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion in SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%   <br><br>  So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work? </p></div><br><br><br>
+As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, scam, criminal, stole, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion on SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%   <br><br>  So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work? </p></div><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).     <br><br>    </p></div><br><br><br>
+**Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).     <br><br>    After reading the report, there were several parts to the report that struck out. First, the number of applications and beneficiaries have been decreasing over the past three years:</p></div><br>
+
+<h4><div class="code2">
+<p style="text-align: left;">
+\ | 2014    | 2015    | 2016
+------- | ------- | ------- | ------- 
+Applications          | 2,918   | 2,783   | 2,642
+Individual Recipients | 8,371   | 7,982   | 7,530
+Household Recipients  | 5,037   | 4,697   | 4,455
+</p></div>
 
 
 

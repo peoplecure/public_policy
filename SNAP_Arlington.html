@@ -309,7 +309,16 @@ hr {
     max-width: 600px;
     height: 50%
 }
-
+.code2 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
 <link rel="stylesheet" href="css/animate.css">
 <script src="js/wow.min.js"> </script>
 <script> new WOW().init(); </script>
@@ -320,7 +329,7 @@ hr {
 <center>
 <pre><code>You can embed the map by copying and pasting this code in your HTML script:
 &lt;iframe width=&quot;100%&quot; height=&quot;555&quot; src=&quot;http://americanpolicy.me/attach/SNAP_map.html&quot;&gt;&lt;/iframe&gt;</code></pre>
-<br><br><br>
+<p><br><br><br></p>
 <h3>
 <p>Mapping SNAP (Food Stamps) for Arlington County, Virginia<br><br></p>
 <h4>
@@ -358,36 +367,69 @@ Of course, many taxpayers voice against food stamps because it’s not <em>free 
 </p>
 </div>
 <p><br><br><br></p>
-<div style="abstract">
+<h4>
+<div class="newspaper1">
+<p style="text-align: left;">
+<pre class="r"><code># I&#39;m using a program called R to collect, organize, and plot the above chart. Here is the script for the plot, but you still have to perform Twitter data mining first.
+
+plot &lt;- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + ggtitle(&quot;Words Arlington Residents use to describe Food Stamps&quot;) + theme(plot.title = element_text(family = &quot;Times&quot;, size=14, hjust=0.3)) + labs(x=&quot;Word&quot;, y=&quot;Frequency&quot;) + scale_y_continuous(expand=c(0, 0)) + geom_bar(stat=&quot;identity&quot;) + coord_flip()</code></pre>
+</p>
+</div>
+<div style="width:600px">
 <div class="wow fadeIn animated">
 <img src="attach/arlington_food_stamp_tweet.png" />
 </div>
 </div>
+<p><br><br><br></p>
+<h4>
+<div class="newspaper1">
+<p style="text-align: justify;">
+As you can see, the public’s sentiment of food stamps is saturated with words like illegal, fraud, fears, scam, criminal, stole, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent <a href="http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap">$75 billion on SNAP</a>. However, according to the Center on Budget and Policy Priorities, an “overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working.” In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the <a href="https://www.bls.gov/news.release/pdf/jolts.pdf">national labor turnover rate</a> that spans 1.2% to 7% <br><br> So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work?
+</p>
+</div>
+<p><br><br><br></p>
+<h4>
+<div class="newspaper1">
+<p style="text-align: justify;">
+<strong>Analysis</strong>: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the <a href="https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf">SNAP performance plan report</a>. <br><br> After reading the report, there were several parts to the report that struck out. First, the number of applications and beneficiaries have been decreasing over the past three years:
+</p>
+</div>
 <p><br></p>
-<pre class="r"><code># I&#39;m using a program called R to collect, organize, and plot the above chart. 
-# Here is the script for the plot, but you still have to perform Twitter data mining first.
-
-plot &lt;- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) + 
-theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
-ggtitle(&quot;Words Arlington Residents use to describe Food Stamps&quot;) +  
-theme(plot.title = element_text(family = &quot;Times&quot;, size=14, hjust=0.3)) + 
-labs(x=&quot;Word&quot;, y=&quot;Frequency&quot;) + scale_y_continuous(expand=c(0, 0)) + 
-geom_bar(stat=&quot;identity&quot;) + coord_flip()</code></pre>
-<p><br><br><br></p>
 <h4>
-<div class="newspaper1">
-<p style="text-align: justify;">
-As you can see, the public’s sentiment of food stamps is saturated with words like illegal, fraud, fears, scam, criminal, stole, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent <a href="http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap">$75 billion in SNAP</a>. However, according to the Center on Budget and Policy Priorities, an “overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working.” In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continue working after receiving SNAPS the following year, which is a comparable figure to the <a href="https://www.bls.gov/news.release/pdf/jolts.pdf">national labor turnover rate</a> that spans 1.2% to 7% <br><br> So, here is my question to you. Do you think it would be societally irresponsible to ignore those hardworking families that simply cannot meet their ends meet, despite their willingness to work?
+<div class="code2">
+<p style="text-align: left;">
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>2014</th>
+<th>2015</th>
+<th>2016</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Applications</td>
+<td>2,918</td>
+<td>2,783</td>
+<td>2,642</td>
+</tr>
+<tr class="even">
+<td>Individual Recipients</td>
+<td>8,371</td>
+<td>7,982</td>
+<td>7,530</td>
+</tr>
+<tr class="odd">
+<td>Household Recipients</td>
+<td>5,037</td>
+<td>4,697</td>
+<td>4,455</td>
+</tr>
+</tbody>
+</table>
 </p>
 </div>
-<p><br><br><br></p>
-<h4>
-<div class="newspaper1">
-<p style="text-align: justify;">
-<strong>Analysis</strong>: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the <a href="https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf">SNAP performance plan report</a>. <br><br>
-</p>
-</div>
-<p><br><br><br></p>
 <br><br><br><br><br><br><br><br><br> <iframe width="100%" height="400" src="attach/SNAP_map_timeline.html"></iframe>
 <center>
 <pre><code>You can embed the map by copying and pasting this code in your HTML script:
