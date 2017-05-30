@@ -87,7 +87,7 @@ You can share the map by copying and pasting this code in your HTML script:
 <p style="text-align: justify;">
 Another reason local governments might want to increase SNAP participation rate, albeit a debatable argument, is that of something called *marginal propensity to consume (MPC)*. In the context of our discussion, MPC is simply the proportion of income that people spend on purchasing goods. So, for example, if you spend 75 cents per dollar of your income, then you have a high MPC. On the other hand, if you spend 30 cents per dollar, then you have a low MPC rate.   <br><br>    Since low-income earners have little money, buy inexpensive stuff or live a frugal lifestyle, it may be intuitive to think that low-income earners spend only a small portion of their income on purchasing goods. However, [some empirical studies](http://web.stanford.edu/~pista/MPC.pdf) have shown that "households with low cash-on-hand exhibit a much higher MPC than affluent households." In other words, people who have little money proportionately spend more than the wealthy.   <br><br>    Now, we know that low-income earners proportionately spend most of their income, and SNAP grants cannot be deposited into recipients' bank accounts as cash. So, theoretically speaking, nearly 100% of the food stamp money returns to the economy when the government *injects* the food stamp to the poor. This is a reasonable argument. If you don't believe me, just remember which mega store benefited 14 billion dollars from food stamps in 2013 alone.</p></div><br><br><br>
 
-<div style="width:600px">
+<div style="abstract">
 <div class="wow fadeIn animated">
 ![](attach/jappelli_pistaferri.png)<br>
 <h5>Source credit: Jappelli and Pistaferri, 2014</div></div><br><br><br>
@@ -111,7 +111,7 @@ plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) +
 
 ```
 </p></div><center>
-<div style="width:600px">
+<div style="abstract">
 <div class="wow fadeIn animated">
 ![](attach/arlington_food_stamp_tweet.png)</div></div>
 <br><br><br>
