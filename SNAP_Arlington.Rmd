@@ -157,7 +157,7 @@ Several parts struck out to me in the report. First, the number of applications 
 <p style="text-align: left;">
 ```{r, collapse=TRUE}
 cor.test(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients')
-plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xlim=c(2600, 2960), ylim=c(7500, 8400),
+plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xlim=c(2960, 2600), ylim=c(7500, 8400),
      pch = 20, cex = 1, col = "black",
      main = "Relationship between Applicants and Individuals",
      ylab = "Number of Individual Recipients",
