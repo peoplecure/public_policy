@@ -182,7 +182,7 @@ compare <- read.csv("~data/SNAP_progression_comparison.csv")
 
 comp <- highchart()%>% hc_xAxis(categories = compare$Year) %>% hc_add_series(name = "Arlington", data = compare$Arlington, color = "dodgerblue") %>% hc_add_series(name = "Virginia", data = compare$Virginia, color = "yellowgreen") %>% hc_add_series(name = "Nation", data = compare$Nation, color = "grey") 
 
-comp <- comp %>% hc_chart(type = "column", options3d = list(enabled = TRUE, beta = 10, alpha = 15)) %>% hc_title(text = "SNAP Participation Rate (Percent)")
+comp <- comp %>% hc_chart(type = "column", options3d = list(enabled = TRUE, beta = 10, alpha = 15)) %>% hc_title(text = "SNAP Participation Rate (Percent)") %>% hc_exporting(enabled = TRUE)
 
 comp
 ```
@@ -211,7 +211,7 @@ Recipients by Percent (Census method) | 3.6%   | 4.3%   | N.A.
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-As you can see, when we juxtapose the two reports together in the form of *number vs. percent*, we learn that the declining trend observed in the number of recipients is not quite true. In actuality, the opposite is correct — the rate of SNAP participation increased.   <br><br>    It may seem like I am being nit-picking something trivial for no speical reason, but this observation is worth pointing it out. If you take a look at the [Arlington County's SNAP Performance Report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf), the program purpose says "Increase SNAP participation **rate** and amount of SNAP benefits issued to eligible Arlington County residents." Well, I can see how the *amount* of SNAP benefits have decreased in the form of dollar quantity, but the SNAP benefit rate did not decrease.   <br><br>  In my opinion, both rate and amount should be disclosed when creating data tables. In social sciences, such practice is the norm because showing data by both percent and numbers may prevent unwantned confusions. More importantly, if we want to design *outcome-oriented programs*, we have to be honest with how we analyze and present data. We shouldn't manipulate *p*-values, presentations, or other metrics for whatever reason.   <br><br>    Alright, enough with my hysteria. I am now interested in knowing why the SNAP participation rate in Arlington County is significantly lower than the rest of the country. Let's take a look at the economic changes of Arlington County. </p></div><br><br><br>
+As you can see, when we juxtapose the two reports together in the form of *number vs. percent*, we learn that the declining trend observed in the number of recipients is not quite true. In actuality, the opposite is correct — the rate of SNAP participation increased.   <br><br>    It may seem like I am being nit-picking something trivial for no speical reason, but this observation is worth pointing it out. If you take a look at the [Arlington County's SNAP Performance Report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf), the program purpose says "Increase SNAP participation **rate** and amount of SNAP benefits issued to eligible Arlington County residents." Well, I can see how the *amount* of SNAP benefits have decreased in the form of dollar quantity, but the SNAP benefit rate did not decrease.   <br><br>  However, it is too early to make any conclusion just yet. SO, enough with my hysteria. I am now interested in knowing why the SNAP participation rate in Arlington County is significantly lower than the rest of the country. Let's take a look at the economic changes of Arlington County. </p></div><br><br><br>
 
 <iframe width="100%" height="450" src="attach/Poverty_map_timeline.html" frameBorder="0"></iframe>
 <center>
@@ -224,4 +224,22 @@ Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-Had there been an option, I would have created an animated map showing changes of economic condition in the Arlington County. Unlucky for nerds like me, the Census data only goes so far back as 2009, and even 2009 was not a complete set. I could have performed a multiple imputation, but that's not necessary because it is pretty obvious looking at the 2010-2015 changes that poverty population has increased over the span of five years. </p></div><br><br><br>
+Had there been an option, I would have created an animated map showing changes of economic condition in the Arlington County. Unlucky for nerds like me, the Census data only goes so far back to 2009, and even 2009 was not a complete set. I could have performed something like multiple imputation to substitue the missing values, but that's not necessary because it is pretty obvious looking at the 2010-2015 changes that poverty population has increased over the span of five years.    <br><br>    Although choropleth graphs (maps) transform abstract thoughts into a concrete geospatial inference, it is not enough to grasp a firm understanding of overall trends. Therefore, I will take a look at line plots.</p></div><br><br><br>
+
+</center>
+<h4><div class="code1">
+<p style="text-align: left;">
+```{r, eval=FALSE}
+line.plot.arlington <- highchart() %>% hc_title(text = "Interactive Tool: SNAP and Poverty") %>% hc_subtitle(text = "Click on the legend icons to customize the comparison selection") %>% hc_xAxis(categories = compare$Year) %>% hc_add_series(name = "SNAP Arlington", data = compare$Arlington, color = "dodgerblue") %>% hc_add_series(name = "Poverty Arlington", data = compare$p.arlington, color = "blue") %>% hc_add_series(name = "SNAP Virginia", data = compare$Virginia, color = "yellowgreen") %>% hc_add_series(name = "Poverty Virginia", data = compare$p.virginia, color = "green") %>% hc_add_series(name = "SNAP U.S.", data = compare$Nation, color = "grey") %>% hc_add_series(name = "Poverty U.S.", data = compare$p.nation, color = "black") %>% hc_xAxis(title = list(text = "Year"), opposite = FALSE, plotLines = list(list(label = list(text = "The Great Recession"), color = "#FF0000", width = 3, value = 2.5))) %>% hc_yAxis(title = list(text = "Participation Rate (Percent)")) %>% hc_exporting(enabled = TRUE)
+line.plot.arlington
+```
+</p></div><center>
+<iframe width="100%" height="550" src="attach/line_plot_snap_poverty.html" frameBorder="0"></iframe>
+<center>
+```
+You can share the chart by copying and pasting this code in your HTML script:
+<iframe width="100%" height="550" src="http://americanpolicy.me/attach/line_plot_snap_poverty.html"></iframe>
+```
+<h5><p style="text-align: center;">
+Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p><br><br><br>
+
