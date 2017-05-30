@@ -398,7 +398,7 @@ plot &lt;- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) +
 <h4>
 <div class="newspaper1">
 <p style="text-align: justify;">
-As you can see, the public’s sentiment of food stamps is saturated with words like illegal, fraud, fears, criminal, scam, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent <a href="http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap">$75 billion on SNAP</a>. However, according to the Center on Budget and Policy Priorities, an “overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working.” In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAP the following year, which is a comparable figure to the <a href="https://www.bls.gov/news.release/pdf/jolts.pdf">national labor turnover rate</a> that spans 1.2% to 7%
+As you can see, the public’s sentiment of food stamps is saturated with words like illegal, fraud, fears, criminal, scam, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent <a href="http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap">$75 billion on SNAP</a>. However, according to the Center on Budget and Policy Priorities, an “overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working.” In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAP the following year, which is a comparable figure to the <a href="https://www.bls.gov/news.release/pdf/jolts.pdf">national labor turnover rate</a> that spans 1.2% to 7% <br><br> On a sidenote, I had conducted the Tweeter public survey post-2016. But, our timespan of interest is 2014-2016. This means that any changes in the political atmosphere (i.e. The presidential election) can present a confounding condition.
 </p>
 </div>
 <p><br><br><br></p>
@@ -463,7 +463,7 @@ kable(snap.cs.table)</code></pre>
 <h4>
 <div class="newspaper1">
 <p style="text-align: justify;">
-Several parts that struck out in the report. First, the number of applications and beneficiaries have been declining over the past three years. A person must submit SNAP application before becoming a recipient, so I wanted to see if there was any relationship between the declining number of applications and individuals receiving SNAP benefits.
+Several parts struck out to me in the report. First, the number of applications and beneficiaries have been declining over the past three years. A person must submit SNAP application before becoming a recipient, so I wanted to see if there was any relationship between the declining number of applications and individuals receiving SNAP benefits.
 </p>
 </div>
 <p><br><br><br></p>
@@ -499,6 +499,25 @@ This is a classic case of a perfect correlationship. It is always exciting to se
 </p>
 </div>
 <p><br><br><br></p>
+</center>
+<h4>
+<div class="code1">
+<p style="text-align: left;">
+<pre class="r"><code>compare &lt;- read.csv(&quot;~data/SNAP_progression_comparison.csv&quot;)
+
+comp &lt;- highchart()%&gt;% hc_xAxis(categories = compare$Year) %&gt;% hc_add_series(name = &quot;Arlington&quot;, data = compare$Arlington, color = &quot;dodgerblue&quot;) %&gt;% hc_add_series(name = &quot;Virginia&quot;, data = compare$Virginia, color = &quot;yellowgreen&quot;) %&gt;% hc_add_series(name = &quot;Nation&quot;, data = compare$Nation, color = &quot;grey&quot;) 
+
+comp &lt;- comp %&gt;% hc_chart(type = &quot;column&quot;, options3d = list(enabled = TRUE, beta = 10, alpha = 15)) %&gt;% hc_title(text = &quot;SNAP Participation Rate (Percent)&quot;)
+
+comp</code></pre>
+</p>
+</div>
+<center>
+<iframe width="100%" height="400" src="attach/SNAP_progression_comparison.html">
+</iframe>
+<center>
+<pre><code>You can embed the map by copying and pasting this code in your HTML script:
+&lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;http://americanpolicy.me/attach/SNAP_map_timeline.html&quot;&gt;&lt;/iframe&gt;</code></pre>
 <br><br><br><br><br><br><br><br><br> <iframe width="100%" height="400" src="attach/SNAP_map_timeline.html"></iframe>
 <center>
 <pre><code>You can embed the map by copying and pasting this code in your HTML script:
