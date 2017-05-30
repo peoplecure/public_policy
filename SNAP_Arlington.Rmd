@@ -118,7 +118,7 @@ plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) +
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, criminal, scam, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion on SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAP the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%    <br><br>  On a sidenote, I had conducted the Tweeter public survey post-2016. But, our timespan of interest is 2014-2016. This means that any changes in the political atmosphere (i.e. The presidential election) can present a confounding condition.</p></div><br><br><br>
+As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, criminal, scam, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion on SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAP the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%    <br><br>  Please note: I conducted the Tweeter public survey post-2016. But, our timespan of interest is 2014-2016. This means that any changes in the political atmosphere (i.e. The presidential election) can present a confounding condition.</p></div><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
@@ -150,7 +150,7 @@ Household Recipients  | 5,037   | 4,697   | 4,455
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-Several parts struck out to me in the report. First, the number of applications and beneficiaries have been declining over the past three years. A person must submit SNAP application before becoming a recipient, so I wanted to see if there was any relationship between the declining number of applications and individuals receiving SNAP benefits.</p></div><br><br><br>
+Several parts struck out to me in the report. First, the number of applications and beneficiaries have been declining over the past three years. Since a person must submit SNAP application before becoming a recipient, I wanted to see if there was any relationship between the declining number of applications and individuals receiving SNAP benefits.</p></div><br><br><br>
 
 </center>
 <h4><div class="code1">
