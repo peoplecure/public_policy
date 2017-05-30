@@ -111,11 +111,13 @@ plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) +
 
 ```
 </p></div><center>
-<div style="abstract">
+<div style="code1">
 <div class="wow fadeIn animated">
-![](attach/arlington_food_stamp_tweet.png)</div></div>
-<br><br><br>
+![](attach/arlington_food_stamp_tweet.png)<br>
+<h5><p style="text-align: center;">
+Data Source: Twitter, 2017</p></div></div><br><br><br>
 
+<center>
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
 As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, criminal, scam, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion on SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAP the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%    <br><br>  Please note: I conducted the Tweeter public survey post-2016. But, our timespan of interest is 2014-2016. This means that any changes in the political atmosphere (i.e. The presidential election) can present a confounding condition.</p></div><br><br><br>
@@ -164,8 +166,10 @@ plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xl
      xlab = "Number of SNAP Applicants",
      abline(lm(snap.cs.table.t$'Individual.Recipients' ~ snap.cs.table.t$'Applications'), col="red"))
 ```
-</p></div><center><br><br><br>
+<h5><p style="text-align: right;">
+Data Source: Arlington County, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></div><br><br><br>
 
+<center>
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
 This is a perfect correlationship. It is always exciting to see textbook examples happening in the real world. Of course, a correlationship does not imply causation. A drop in the number of applications may not lead to a decrease in the number of SNAP recipients. It is reasonable to estimate an increase in the number of SNAP recipients even when there is a decline in the number of applications. Nonetheless, a perfect correlationship is a very interesting phenomenon. I am going to keep this finding in mind.    <br><br>    Next, I will examine how Arlington County performs in relation to the State of Virginia and the nation as a whole. It is always important to create a *baseline* in which a measurement is compared to because without a baseline, we cannot know whether a measured score is high or low. </p></div><br><br><br>
@@ -189,11 +193,23 @@ comp
 You can share the chart by copying and pasting this code in your HTML script:
 <iframe width="100%" height="550" src="http://americanpolicy.me/attach/SNAP_progression_comparison.html"></iframe>
 ```
-<br><br><br>
+<h5><p style="text-align: center;">
+Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-Cool, now we know that Arlington County's SNAP participation rate is significantly lower than the state or national average. We can also see that SNAP rates had increased across the board since the year 2007.    <br><br>    Why is 2007 important? In December 2007, United States suffered [the worst economic downturn since the Great Depression](http://www.cbpp.org/research/economy/chart-book-the-legacy-of-the-great-recession). The financial stress caused by [the recession forced millions of people to abandon their homes and businesses](http://www.nbcnews.com/id/36231884/ns/business- eye_on_the_economy/t/study-million-households-lost-recession/#.WO0oGlLlSAw), displacing countless families across the nation out into the streets. It was a heartfelt shock that touched many, and some of us still see the world through the broken window that was shattered during the housing market collapse. So yeah, I think the Great Recession had a lot to do with the increase in the food stamp participation. </p></div><br><br><br>
+Cool, now we know that Arlington County's SNAP participation rate is significantly lower than the state or national average. We can also see that SNAP rates had increased across the board since the year 2007.    <br><br>    Why is 2007 important? In December 2007, United States suffered [the worst economic downturn since the Great Depression](http://www.cbpp.org/research/economy/chart-book-the-legacy-of-the-great-recession). The financial stress caused by [the recession forced millions of people to abandon their homes and businesses](http://www.nbcnews.com/id/36231884/ns/business- eye_on_the_economy/t/study-million-households-lost-recession/#.WO0oGlLlSAw), displacing countless families across the nation out into the streets. It was a heartfelt shock that touched many, and some of us still see the world through the broken window that was shattered during the housing market collapse. So yeah, I think the Great Recession had a lot to do with the increase in the food stamp participation.    <br><br>    In addition, we found a discrepency in the Arlington County's Performance Plan report and the Census data. Take a look at the Arlington's data illustrating the SNAP trend of 2014-16 years, then compare that with the trend observed in the above chart. You will notice that according to Arlington County, the *number* of SNAP recipients have declined over the years. However, in the Census data, the *rate* of SNAP participation had increased. Unfortunately, 2016 census data is not available at this time (May, 2017). </p></div><br><br><br>
+
+<h3> Arlington vs. Census <br>
+<h4><div class="code2">
+<p style="text-align: left;">
+\ | 2014    | 2015    | 2016
+------- | ------- | ------- | ------- 
+Recipients by Number (Arlington method) | 5,037   | 4,697   | 4,455
+Recipients by Percent (Census method) | 3.6%   | 4.3%   | N.A.
+</p></div><br><br><br>
+
+
 
 <br><br><br><br><br><br><br><br><br>
 <iframe width="100%" height="400" src="attach/SNAP_map_timeline.html" frameBorder="0"></iframe>
