@@ -159,12 +159,7 @@ Several parts struck out to me in the report. First, the number of applications 
 <p style="text-align: left;">
 ```{r, collapse=TRUE}
 cor.test(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients')
-plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xlim=c(2960, 2600), ylim=c(7500, 8400),
-     pch = 20, cex = 1, col = "black",
-     main = "Relationship between Applicants and Individuals",
-     ylab = "Number of Individual Recipients",
-     xlab = "Number of SNAP Applicants",
-     abline(lm(snap.cs.table.t$'Individual.Recipients' ~ snap.cs.table.t$'Applications'), col="red"))
+plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xlim=c(2960, 2600), ylim=c(7500, 8400), pch = 20, cex = 1, col = "black", main = "Relationship between Applicants and Individuals", ylab = "Number of Individual Recipients", xlab = "Number of SNAP Applicants",     abline(lm(snap.cs.table.t$'Individual.Recipients' ~ snap.cs.table.t$'Applications'), col="red"))
 ```
 <h5><p style="text-align: right;">
 Data Source: Arlington County, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></div><br><br><br>
@@ -243,3 +238,6 @@ You can share the chart by copying and pasting this code in your HTML script:
 <h5><p style="text-align: center;">
 Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p><br><br><br>
 
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+The line plot represents the poverty rate, and barplot illustrates the SNAP participation rate. The blues, greens, and greys represent Arlington County, State of Virginia, and the United States, respectively. Notice that the difference between Arlington poverty and SNAP participation rate is wider than those observed in Virginia and the country. The year 2015 was an exception because the poverty level dramatically declined during that year, for unknown reasons.    <br><br>    For the administrators at the Economic Independence Division, this is a good news. Economically speaking, Arlington County is performing better than the rest of the country. Additionally, after analyzing the poverty and SNAP data this way, the program purpose found in [SNAP Performance Report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf) coherently and accurately aligns itself to why Arlington County should focus on increasing SNAP participation **rate**. </p></div><br><br><br>
