@@ -32,7 +32,7 @@ hr {
 Welcome to Jim's Policy Blog
 </p>
 
-<h5>
+<h4>
 <p style="text-align: center;">
 A blog made of visual informatics — because public policy should be fun for everyone.
 </span>
@@ -44,7 +44,7 @@ A blog made of visual informatics — because public policy should be fun for ev
 
 <center>
 <div class="wow fadeIn animated">
-<h5><div class="newspaper1">
+<h4><div class="newspaper1">
 <p style="text-align: justify;">
 Hello, welcome to my blog! This blog was inspired by a weird hobby of mine. It's something that I do out of curiosity and typically does not involve anyone other than myself. What is my hobby you ask? Well, on my spare time, I analyze public policies through open data and write papers about them. Unsurprisingly, many find it unique and sometimes . . . weird!
 <br><br>
