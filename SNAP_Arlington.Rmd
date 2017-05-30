@@ -113,14 +113,15 @@ plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) +
 </p></div><center>
 <div style="code1">
 <div class="wow fadeIn animated">
-![](attach/arlington_food_stamp_tweet.png)<br>
-<h5><p style="text-align: center;">
-Data Source: Twitter, 2017</p></div></div><br><br><br>
+![](attach/arlington_food_stamp_tweet.png)<br></div>
+<h5><div class="newspaper1">
+<p style="text-align: justify;">
+Please note: I conducted the Tweeter public survey post-2016. But, our timespan of interest is 2014-2016. This means that any changes in the political atmosphere (i.e. The presidential election) can present a confounding condition.</p></div><br>
 
 <center>
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, criminal, scam, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion on SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAP the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%    <br><br>  Please note: I conducted the Tweeter public survey post-2016. But, our timespan of interest is 2014-2016. This means that any changes in the political atmosphere (i.e. The presidential election) can present a confounding condition.</p></div><br><br><br>
+As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, criminal, scam, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion on SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAP the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%</p></div><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
@@ -240,4 +241,4 @@ Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-The line plot represents the poverty rate, and barplot illustrates the SNAP participation rate. The blues, greens, and greys represent Arlington County, State of Virginia, and the United States, respectively. Notice that the difference between Arlington poverty and SNAP participation rate is wider than those observed in Virginia and the country. The year 2015 was an exception because the poverty level dramatically declined during that year, for unknown reasons.    <br><br>    For the administrators at the Economic Independence Division, this is a good news. Economically speaking, Arlington County is performing better than the rest of the country. Additionally, after analyzing the poverty and SNAP data this way, the program purpose found in [SNAP Performance Report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf) coherently and accurately aligns itself to why Arlington County should focus on increasing SNAP participation **rate**. </p></div><br><br><br>
+The line plot represents the poverty rate, and barplot illustrates the SNAP participation rate. The blues, greens, and greys represent Arlington County, State of Virginia, and the United States, respectively. Notice that the differences between Arlington poverty and Arlington SNAP participation are wider than those observed in Virginia and the country. The year 2015 was an exception because the poverty level dramatically declined during that year, for unknown reasons.    <br><br>    For the administrators at the Economic Independence Division, this is a good news. Economically speaking, Arlington County is performing better than the rest of the country. Additionally, after analyzing the poverty and SNAP data using a plot graph, the program purpose found in the [SNAP Performance Report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf) coherently and accurately aligns itself to the need of increasing SNAP participation **rate**.   <br><br>  Finally, </p></div><br><br><br>
