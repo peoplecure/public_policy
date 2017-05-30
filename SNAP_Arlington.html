@@ -598,16 +598,16 @@ Had there been an option, I would have created an animated map showing changes o
 <h4>
 <div class="code1">
 <p style="text-align: left;">
-<pre class="r"><code>line.plot.arlington &lt;- highchart() %&gt;% hc_title(text = &quot;Interactive Tool: SNAP and Poverty&quot;) %&gt;% hc_subtitle(text = &quot;Click on the legend icons to customize the comparison selection&quot;) %&gt;% hc_xAxis(categories = compare$Year) %&gt;% hc_add_series(name = &quot;SNAP Arlington&quot;, data = compare$Arlington, color = &quot;dodgerblue&quot;) %&gt;% hc_add_series(name = &quot;Poverty Arlington&quot;, data = compare$p.arlington, color = &quot;blue&quot;) %&gt;% hc_add_series(name = &quot;SNAP Virginia&quot;, data = compare$Virginia, color = &quot;yellowgreen&quot;) %&gt;% hc_add_series(name = &quot;Poverty Virginia&quot;, data = compare$p.virginia, color = &quot;green&quot;) %&gt;% hc_add_series(name = &quot;SNAP U.S.&quot;, data = compare$Nation, color = &quot;grey&quot;) %&gt;% hc_add_series(name = &quot;Poverty U.S.&quot;, data = compare$p.nation, color = &quot;black&quot;) %&gt;% hc_xAxis(title = list(text = &quot;Year&quot;), opposite = FALSE, plotLines = list(list(label = list(text = &quot;The Great Recession&quot;), color = &quot;#FF0000&quot;, width = 3, value = 2.5))) %&gt;% hc_yAxis(title = list(text = &quot;Participation Rate (Percent)&quot;)) %&gt;% hc_exporting(enabled = TRUE)
+<pre class="r"><code>line.plot.arlington &lt;- highchart() %&gt;% hc_title(text = &quot;Interactive Tool: SNAP and Poverty&quot;) %&gt;% hc_subtitle(text = &quot;Click on the legend icons to customize the comparison selection&quot;) %&gt;% hc_xAxis(categories = compare$Year) %&gt;% hc_add_series(name = &quot;SNAP Arlington&quot;, data = compare$Arlington, color = &quot;dodgerblue&quot;, type = &quot;column&quot;) %&gt;% hc_add_series(name = &quot;SNAP Virginia&quot;, data = compare$Virginia, color = &quot;yellowgreen&quot;, type = &quot;column&quot;) %&gt;% hc_add_series(name = &quot;SNAP U.S.&quot;, data = compare$Nation, color = &quot;grey&quot;, type = &quot;column&quot;) %&gt;% hc_add_series(name = &quot;Poverty Arlington&quot;, data = compare$p.arlington, color = &quot;dodgerblue&quot;) %&gt;% hc_add_series(name = &quot;Poverty Virginia&quot;, data = compare$p.virginia, color = &quot;yellowgreen&quot;) %&gt;% hc_add_series(name = &quot;Poverty U.S.&quot;, data = compare$p.nation, color = &quot;grey&quot;) %&gt;% hc_xAxis(title = list(text = &quot;Year&quot;), opposite = FALSE, plotLines = list(list(label = list(text = &quot;The Great Recession&quot;), color = &quot;#FF0000&quot;, width = 3, value = 2.5))) %&gt;% hc_yAxis(title = list(text = &quot;Participation Rate (Percent)&quot;)) %&gt;% hc_exporting(enabled = TRUE)
 line.plot.arlington</code></pre>
 </p>
 </div>
 <center>
-<iframe width="100%" height="550" src="attach/line_plot_snap_poverty.html" frameBorder="0">
+<iframe width="100%" height="550" src="attach/snap_vs_poverty.html" frameBorder="0">
 </iframe>
 <center>
 <pre><code>You can share the chart by copying and pasting this code in your HTML script:
-&lt;iframe width=&quot;100%&quot; height=&quot;550&quot; src=&quot;http://americanpolicy.me/attach/line_plot_snap_poverty.html&quot;&gt;&lt;/iframe&gt;</code></pre>
+&lt;iframe width=&quot;100%&quot; height=&quot;550&quot; src=&quot;http://americanpolicy.me/attach/snap_vs_poverty.html&quot;&gt;&lt;/iframe&gt;</code></pre>
 <h5>
 <p style="text-align: center;">
 Data Source: Census, 2017          
