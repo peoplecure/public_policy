@@ -189,7 +189,11 @@ comp
 You can share the chart by copying and pasting this code in your HTML script:
 <iframe width="100%" height="550" src="http://americanpolicy.me/attach/SNAP_progression_comparison.html"></iframe>
 ```
+<br><br><br>
 
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+Cool, now we know that Arlington County's SNAP participation rate is significantly lower than the state or national average. We can also see that SNAP rates had increased across the board since the year 2007.    <br><br>    Why is 2007 important? In December 2007, United States suffered [the worst economic downturn since the Great Depression](http://www.cbpp.org/research/economy/chart-book-the-legacy-of-the-great-recession). The financial stress caused by [the recession forced millions of people to abandon their homes and businesses](http://www.nbcnews.com/id/36231884/ns/business- eye_on_the_economy/t/study-million-households-lost-recession/#.WO0oGlLlSAw), displacing countless families across the nation out into the streets. It was a heartfelt shock that touched many, and some of us still see the world through the broken window that was shattered during the housing market collapse. So yeah, I think the Great Recession had a lot to do with the increase in the food stamp participation. </p></div><br><br><br>
 
 <br><br><br><br><br><br><br><br><br>
 <iframe width="100%" height="400" src="attach/SNAP_map_timeline.html" frameBorder="0"></iframe>
