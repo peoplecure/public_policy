@@ -48,55 +48,30 @@ hr {
 
 
 
-<body>
-<br>
-<br>
-<br>
-<br>
+<body><br><br><br><br>
 
-<div class="fadeInUp animated"><hr></div>
-<br>
-<br>
-<div class="wow fadeInUp animated" data-wow-delay="0.1s">
+<hr><br><br>
+
 <center>
-<h3>Injury Prediction Model for Non-Medical Responses
-</div>
-<br>
-<br>
-<div class="wow fadeInUp animated" data-wow-delay="0.2s">
-<center>
+<h3>Injury Prediction Model for Non-Medical Responses<br><br>
+
 <h4><div class="abstract">
 <p style="text-align: justify;">
-A B S T R A C T : Using open data sourced by the City of San Francisco, we have constructed a regression model that predicts civilian injuries in non-medical fire incidents. The prediction model was computed by examining the number of first responders present at non-medical fire scenes. The result indicated that the likelihood of civilians requiring medical transportation at non-medical fire scenes is close to zero and higher number of first responders did not lower injury rate in non-medical responses. To test the effectiveness of our prediction model, we have used the 2003-2015 data (sample size = 389,180) to analyze every non-medical incident that occurred in 2016 (sample size = 30,991). The prediction model correctly estimated 99.94% of absent-injuries in non-medical emergency responses.
-</p></div>
-<br>
-<div class="wow fadeInUp animated" data-wow-delay="0.3s">
-<center>
+A B S T R A C T : Using open data sourced by the City of San Francisco, we have constructed a regression model that predicts civilian injuries in non-medical fire incidents. The prediction model was computed by examining the number of first responders present at non-medical fire scenes. The result indicated that the likelihood of civilians requiring medical transportation at non-medical fire scenes is close to zero and higher number of first responders did not lower injury rate in non-medical responses. To test the effectiveness of our prediction model, we have used the 2003-2015 data (sample size = 389,180) to analyze every non-medical incident that occurred in 2016 (sample size = 30,991). The prediction model correctly estimated 99.94% of absent-injuries in non-medical emergency responses.</p></div><br>
+
 <div class="newspaper1">
 <p style="text-align: justify;">
-**Keywords**: R, Simulation, Linear Regression, OLS, Ambulance, Fire, Healthcare, MPH, MPA, MPM, MPP.
-</p></div>
-<br>
-<br>
-<br>
+**Keywords**: R, Simulation, Linear Regression, OLS, Ambulance, Fire, Healthcare, MPH, MPA, MPM, MPP.</p></div><br><br><br>
 
-<div class="wow fadeInUp animated" data-wow-delay="0.5s"><hr></div>
-<br>
-<br>
+<hr><br><br>
+
 <body>
 <center>
 <div class="wow fadeIn animated">
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
 **Introduction**
-<br><br>When you hear me say, “higher number of first responders did not lower injury rate in non-medical responses,” a question may come to mind — why would you predict the probability of injury by looking at the number of first responders? This is a fair question to have. After all, injuries occur before ambulances arrive. I began examining the effect of first responders on injury rate because nearly 99% of non-medical ambulance deployments in the City of San Francisco do not result in fatality or injury. That said, I think it is fair to ask whether increasing the number of first responders can reduce the injury rate. If not, can the city spend those millions of dollars more efficiently?</p></div><br>
-
-<center>
-<div class="wow fadeIn animated">
-<h4><div class="newspaper1">
-<p style="text-align: justify;">
-Now that you understand why I am examining the effect of first responders on injury rate, let's briefly talk about what happens in emergencies. We know that most injuries occur before first responders respond to 9-1-1 calls. If there is one patient, then any number of first responders should not make a difference because there is going to be one patient, no matter how many people respond to the emergency call. Take the following hypothetical scenarios for example:</p></div><br>
-<br>
+  <br><br>When you hear me say, “higher number of first responders did not lower injury rate in non-medical responses,” a question may come to mind — why would you predict the probability of injury by looking at the number of first responders? This is a fair question to have. After all, injuries occur before ambulances arrive. I began examining the effect of first responders on injury rate because nearly 99% of non-medical ambulance deployments in the City of San Francisco do not result in fatality or injury. That said, I think it is fair to ask whether increasing the number of first responders can reduce the injury rate. If not, can the city spend those millions of dollars more efficiently?   <br><br>    Now that you understand why I am examining the effect of first responders on injury rate, let's briefly talk about what happens in emergencies. We know that most injuries occur before first responders respond to 9-1-1 calls. If there is one patient, then any number of first responders should not make a difference because there is going to be one patient, no matter how many people respond to the emergency call. Take the following hypothetical scenarios for example:</p></div><br><br>
 
 <p style="text-align: center;">
 **Scenario 1**: 1 patient, 1 Truck, 3 EMS personnel respond.
