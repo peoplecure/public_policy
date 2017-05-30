@@ -65,11 +65,11 @@
 
 
 
-<iframe width="100%" height="555" src="attach/SNAP_map.html" frameBorder="0" scrolling="no"></iframe>
+<iframe width="100%" height="460" src="attach/SNAP_map.html" frameBorder="0" scrolling="no"></iframe>
 <center>
 ```
 You can share the map by copying and pasting this code in your HTML script:
-<iframe width="100%" height="555" src="http://americanpolicy.me/attach/SNAP_map.html"></iframe>
+<iframe width="100%" height="460" src="http://americanpolicy.me/attach/SNAP_map.html"></iframe>
 ```
 <br><br><br>
 
@@ -230,11 +230,11 @@ line.plot.arlington <- highchart() %>% hc_title(text = "Interactive Tool: SNAP a
 line.plot.arlington
 ```
 </p></div><center>
-<iframe width="100%" height="550" src="attach/snap_vs_poverty.html" frameBorder="0"></iframe>
+<iframe width="100%" height="450" src="attach/snap_vs_poverty.html" frameBorder="0"></iframe>
 <center>
 ```
 You can share the chart by copying and pasting this code in your HTML script:
-<iframe width="100%" height="550" src="http://americanpolicy.me/attach/snap_vs_poverty.html"></iframe>
+<iframe width="100%" height="450" src="http://americanpolicy.me/attach/snap_vs_poverty.html"></iframe>
 ```
 <h5><p style="text-align: center;">
 Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p><br><br><br>
@@ -243,4 +243,5 @@ Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 <p style="text-align: justify;">
 The line plot represents the poverty rate, and barplot illustrates the SNAP participation rate. The blues, greens, and greys represent Arlington County, State of Virginia, and the United States, respectively. Notice that the differences between Arlington poverty and Arlington SNAP participation are wider than those observed in Virginia and the country. The year 2015 was an exception because the poverty level dramatically declined during that year, for unknown reasons.    <br><br>    For the administrators at the Economic Independence Division, this is a good news. Economically speaking, Arlington County is performing better than the rest of the country. Additionally, after analyzing the poverty and SNAP data using a plot graph, the program purpose found in the [SNAP Performance Report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf) coherently and accurately aligns itself to the need of increasing SNAP participation **rate**.   <br><br>  Finally, let's get to the interactive map shown as the header of this blog post.</p></div><br><br><br>
 
-<iframe width="100%" height="555" src="attach/SNAP_map.html" frameBorder="0" scrolling="no"></iframe><br><br><br>
+<iframe width="100%" height="460" src="attach/SNAP_map.html" frameBorder="0" scrolling="no"></iframe><br><br><br>
+
