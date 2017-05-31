@@ -317,8 +317,11 @@ OH MY GOD! MATH!!! Hold on, hold on. This is literally elementary school stuff. 
 <h5><div class="newspaper1">
 <p style="text-align: justify;">
 *Note: Although individuals between the ages of 16 and 59 are subject to working requirements, some people may fall under the exemption category. To name a few, some exemptions include: "Individuals determined to be mentally or physically unfit for employment, individuals receiving unemployment compensation," etc.*
-</p></div><br><br><br>
-
+</p></div>
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+Do you think my assumptions are reasonable given the limitations? In my opinion, identifying potential SNAP recipients through subtracting the poverty population by SNAP population is fair. If a particular geological location with 100 residents has 30% poverty rate, and if no one is receiving SNAP benefits in that region, then it means that 30 people are living below the poverty level without food stamps. If Arlington County officials wanted to send out pamphlets as a method of outreaching effort, then it would make a lot of sense to focus on poverty stricken areas where SNAP recipients do not exist. It would not be strategic to send pamphlets in areas where the poverty rate is zero or those regions where the incidence of SNAP and poverty are balanced.
+</p></div>
 
 
 
