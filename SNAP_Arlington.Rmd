@@ -67,16 +67,15 @@
 </script>
 </head>
 
-
-
 <iframe width="100%" height="460" src="attach/SNAP_map.html" frameBorder="0" scrolling="no"></iframe>
 <center>
 ```
 You can share the map by copying and pasting this code in your HTML script:
 <iframe width="100%" height="460" src="http://americanpolicy.me/attach/SNAP_map.html"></iframe>
 ```
-<br><br><br>
+</center><br><br><br>
 
+<center>
 <h3> Mapping SNAP (Food Stamps) for Arlington County, Virginia<br><br>
 
 <h4><div class="newspaper1">
@@ -99,8 +98,8 @@ Another reason local governments might want to increase SNAP participation rate,
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
 Of course, many taxpayers voice against food stamps because it’s not *free money* per se. The issue often arises from the fact that taxpayers fund programs like SNAP and concerns about welfare fraud exacerbate the stigma associated with food stamps. Take a look at the chart below. It's a list of words Arlington residents use to describe "Food Stamps" on Twitter.</p></div><br><br><br>
-
 </center>
+
 <h4><div class="code1">
 <p style="text-align: left;">
 ```{r, eval=FALSE}
@@ -122,7 +121,6 @@ plot <- ggplot(data=tweet, aes(x=reorder(term, freq), y=freq)) +
 <p style="text-align: justify;">
 Please note: I conducted the Tweeter public survey post-2016. But, our timespan of interest is 2014-2016. This means that any changes in the political atmosphere (i.e. The presidential election) can present a confounding condition.</p></div><br>
 
-<center>
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
 As you can see, the public's sentiment of food stamps is saturated with words like illegal, fraud, fears, criminal, scam, millions, etc. Indeed, SNAP is an expensive program that costs the United States government billions of dollars every year. Just in 2015, we spent [$75 billion on SNAP](http://www.cbpp.org/research/policy-basics-introduction-to-the-supplemental-nutrition-assistance-program-snap). However, according to the Center on Budget and Policy Priorities, an "overwhelming majority of non-disabled, working-age households that start receiving SNAP do not stop working." In fact, a whopping 96% of households that held jobs before receiving SNAP benefits continued working after receiving SNAP the following year, which is a comparable figure to the [national labor turnover rate](https://www.bls.gov/news.release/pdf/jolts.pdf) that spans 1.2% to 7%</p></div><br><br><br>
@@ -130,8 +128,8 @@ As you can see, the public's sentiment of food stamps is saturated with words li
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
 **Analysis**: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the [SNAP performance plan report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf).</p></div><br><br><br>  
-
 </center>
+
 <h4><div class="code1">
 <p style="text-align: left;">
 ```{r, cache=TRUE, results='hide'}
@@ -163,8 +161,16 @@ Several parts struck out to me in the report. First, the number of applications 
 <h4><div class="code1">
 <p style="text-align: left;">
 ```{r, collapse=TRUE}
-cor.test(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients')
-plot(snap.cs.table.t$'Applications', snap.cs.table.t$'Individual.Recipients', xlim=c(2960, 2600), ylim=c(7500, 8400), pch = 20, cex = 1, col = "black", main = "Relationship between Applicants and Individuals", ylab = "Number of Individual Recipients", xlab = "Number of SNAP Applicants",     abline(lm(snap.cs.table.t$'Individual.Recipients' ~ snap.cs.table.t$'Applications'), col="red"))
+cor.test(snap.cs.table.t$'Applications', 
+         snap.cs.table.t$'Individual.Recipients')
+plot(snap.cs.table.t$'Applications', 
+     snap.cs.table.t$'Individual.Recipients', 
+     xlim=c(2960, 2600), ylim=c(7500, 8400), pch = 20, 
+     cex = 1, col = "black", 
+     main = "Relationship between Applicants and Individuals", 
+     ylab = "Number of Individual Recipients", 
+     xlab = "Number of SNAP Applicants",     
+     abline(lm(snap.cs.table.t$'Individual.Recipients' ~ snap.cs.table.t$'Applications'), col="red"))
 ```
 <h5><p style="text-align: right;">
 Data Source: Arlington County, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></div><br><br><br>
@@ -180,15 +186,25 @@ This is a perfect correlationship. It is always exciting to see textbook example
 ```{r, eval=FALSE}
 compare <- read.csv("~data/SNAP_progression_comparison.csv")
 
-comp <- highchart()%>% hc_xAxis(categories = compare$Year) %>% hc_add_series(name = "Arlington", data = compare$Arlington, color = "dodgerblue") %>% hc_add_series(name = "Virginia", data = compare$Virginia, color = "yellowgreen") %>% hc_add_series(name = "Nation", data = compare$Nation, color = "grey") 
+comp <- highchart()%>% hc_xAxis(categories = compare$Year) %>% 
+  hc_add_series(name = "Arlington", data = compare$Arlington, 
+                color = "dodgerblue") %>% 
+  hc_add_series(name = "Virginia", data = compare$Virginia, 
+                color = "yellowgreen") %>%
+  hc_add_series(name = "Nation", data = compare$Nation, 
+                color = "grey") 
 
-comp <- comp %>% hc_chart(type = "column", options3d = list(enabled = TRUE, beta = 10, alpha = 15)) %>% hc_title(text = "SNAP Participation Rate (Percent)") %>% hc_exporting(enabled = TRUE)
+comp <- comp %>% 
+  hc_chart(type = "column", 
+           options3d = list(enabled = TRUE, 
+                            beta = 10, alpha = 15)) %>% 
+  hc_title(text = "SNAP Participation Rate (Percent)") %>% 
+  hc_exporting(enabled = TRUE)
 
 comp
 ```
 </p></div><center>
 <iframe width="100%" height="550" src="attach/SNAP_progression_comparison.html" frameBorder="0"></iframe>
-<center>
 ```
 You can share the chart by copying and pasting this code in your HTML script:
 <iframe width="100%" height="550" src="http://americanpolicy.me/attach/SNAP_progression_comparison.html"></iframe>
@@ -214,7 +230,6 @@ Recipients by Percent (Census method) | 3.6%   | 4.3%   | N.A.
 As you can see, when we juxtapose the two reports together in the form of *number vs. percent*, we learn that the declining trend observed in the number of recipients is not quite right. In actuality, the opposite is correct — the rate of SNAP participation increased.   <br><br>    It may seem like I am nit-picking something trivial for no special reason, but this observation is worth pointing it out. If you take a look at the [Arlington County's SNAP Performance Report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf), the program purpose says "Increase SNAP participation **rate** and amount of SNAP benefits issued to eligible Arlington County residents." Well, I can see how the *amount* of SNAP benefits have decreased in the form of dollar quantity, but the SNAP benefit rate did not fall   <br><br>  However, it is too early to make any conclusion just yet. SO, enough with my hysteria. I am now interested in knowing why the SNAP participation rate in Arlington County is significantly lower than the rest of the country. Let's take a look at the economic changes of Arlington County. </p></div><br><br><br>
 
 <iframe width="100%" height="450" src="attach/Poverty_map_timeline.html" frameBorder="0"></iframe>
-<center>
 ```
 You can share the map by copying and pasting this code in your HTML script:
 <iframe width="100%" height="450" src="http://americanpolicy.me/attach/Poverty_map_timeline.html"></iframe>
@@ -230,18 +245,46 @@ Had there been an option, I would have created an animated map showing changes o
 <h4><div class="code1">
 <p style="text-align: left;">
 ```{r, eval=FALSE}
-line.plot.arlington <- highchart() %>% hc_title(text = "Interactive Tool: SNAP and Poverty") %>% hc_subtitle(text = "Click on the legend icons to customize the comparison selection") %>% hc_xAxis(categories = compare$Year) %>% hc_add_series(name = "SNAP Arlington", data = compare$Arlington, color = "dodgerblue", type = "column") %>% hc_add_series(name = "SNAP Virginia", data = compare$Virginia, color = "yellowgreen", type = "column") %>% hc_add_series(name = "SNAP U.S.", data = compare$Nation, color = "grey", type = "column") %>% hc_add_series(name = "Poverty Arlington", data = compare$p.arlington, color = "dodgerblue") %>% hc_add_series(name = "Poverty Virginia", data = compare$p.virginia, color = "yellowgreen") %>% hc_add_series(name = "Poverty U.S.", data = compare$p.nation, color = "grey") %>% hc_xAxis(title = list(text = "Year"), opposite = FALSE, plotLines = list(list(label = list(text = "The Great Recession"), color = "#FF0000", width = 3, value = 2.5))) %>% hc_yAxis(title = list(text = "Participation Rate (Percent)")) %>% hc_exporting(enabled = TRUE)
+line.plot.arlington <- highchart() %>% 
+  hc_title(text = "Interactive Tool: SNAP and Poverty") %>% 
+  hc_subtitle(text = "Click on the legend icons to customize the comparison selection") %>% hc_xAxis(categories = compare$Year) %>% 
+  hc_add_series(name = "SNAP Arlington", 
+                data = compare$Arlington, 
+                color = "dodgerblue", type = "column") %>% 
+  hc_add_series(name = "SNAP Virginia", 
+                data = compare$Virginia, 
+                color = "yellowgreen", type = "column") %>% 
+  hc_add_series(name = "SNAP U.S.", 
+                data = compare$Nation, 
+                color = "grey", type = "column") %>% 
+  hc_add_series(name = "Poverty Arlington", 
+                data = compare$p.arlington, 
+                color = "dodgerblue") %>% 
+  hc_add_series(name = "Poverty Virginia", 
+                data = compare$p.virginia, 
+                color = "yellowgreen") %>% 
+  hc_add_series(name = "Poverty U.S.", 
+                data = compare$p.nation, 
+                color = "grey") %>% 
+  hc_xAxis(title = list(text = "Year"), opposite = FALSE, 
+           plotLines = list(list(
+             label = list(text = "The Great Recession"), 
+             color = "#FF0000", width = 3, value = 2.5))) %>% 
+  hc_yAxis(title = list(
+    text = "Participation Rate (Percent)")) %>% 
+  hc_exporting(enabled = TRUE)
 line.plot.arlington
 ```
 </p></div><center>
 <iframe width="100%" height="450" src="attach/snap_vs_poverty.html" frameBorder="0"></iframe>
-<center>
 ```
 You can share the chart by copying and pasting this code in your HTML script:
 <iframe width="100%" height="450" src="http://americanpolicy.me/attach/snap_vs_poverty.html"></iframe>
 ```
-<h5><p style="text-align: center;">
-Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p><br><br><br>
+<h5><div class="newspaper1">
+<p style="text-align: center;">
+Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</p></div><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">

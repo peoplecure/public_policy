@@ -340,7 +340,9 @@ $(document).ready(function () {
 <center>
 <pre><code>You can share the map by copying and pasting this code in your HTML script:
 &lt;iframe width=&quot;100%&quot; height=&quot;460&quot; src=&quot;http://americanpolicy.me/attach/SNAP_map.html&quot;&gt;&lt;/iframe&gt;</code></pre>
+</center>
 <p><br><br><br></p>
+<center>
 <h3>
 <p>Mapping SNAP (Food Stamps) for Arlington County, Virginia<br><br></p>
 <h4>
@@ -377,7 +379,7 @@ Source credit: Jappelli and Pistaferri, 2014
 Of course, many taxpayers voice against food stamps because it’s not <em>free money</em> per se. The issue often arises from the fact that taxpayers fund programs like SNAP and concerns about welfare fraud exacerbate the stigma associated with food stamps. Take a look at the chart below. It’s a list of words Arlington residents use to describe “Food Stamps” on Twitter.
 </p>
 </div>
-<p><br><br><br></p>
+<br><br><br>
 </center>
 <h4>
 <div class="code1">
@@ -404,7 +406,6 @@ Please note: I conducted the Tweeter public survey post-2016. But, our timespan 
 </p>
 </div>
 <p><br></p>
-<center>
 <h4>
 <div class="newspaper1">
 <p style="text-align: justify;">
@@ -418,7 +419,8 @@ As you can see, the public’s sentiment of food stamps is saturated with words 
 <strong>Analysis</strong>: A recent job interview I had with the Arlington County’s Department of Human Services inspired me to write this blog. The position’s role entailed analyzing public data in the Quality and Administration Division (Yup, would it not be an ideal job for me?). So, I studied their program management tool by analyzing the <a href="https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf">SNAP performance plan report</a>.
 </p>
 </div>
-<p><br><br><br></p>
+<br><br><br><br />
+
 </center>
 <h4>
 <div class="code1">
@@ -481,7 +483,8 @@ Several parts struck out to me in the report. First, the number of applications 
 <h4>
 <div class="code1">
 <p style="text-align: left;">
-<pre class="r"><code>cor.test(snap.cs.table.t$&#39;Applications&#39;, snap.cs.table.t$&#39;Individual.Recipients&#39;)
+<pre class="r"><code>cor.test(snap.cs.table.t$&#39;Applications&#39;, 
+         snap.cs.table.t$&#39;Individual.Recipients&#39;)
 ## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -491,7 +494,14 @@ Several parts struck out to me in the report. First, the number of applications 
 ## sample estimates:
 ##       cor 
 ## 0.9995296
-plot(snap.cs.table.t$&#39;Applications&#39;, snap.cs.table.t$&#39;Individual.Recipients&#39;, xlim=c(2960, 2600), ylim=c(7500, 8400), pch = 20, cex = 1, col = &quot;black&quot;, main = &quot;Relationship between Applicants and Individuals&quot;, ylab = &quot;Number of Individual Recipients&quot;, xlab = &quot;Number of SNAP Applicants&quot;,     abline(lm(snap.cs.table.t$&#39;Individual.Recipients&#39; ~ snap.cs.table.t$&#39;Applications&#39;), col=&quot;red&quot;))</code></pre>
+plot(snap.cs.table.t$&#39;Applications&#39;, 
+     snap.cs.table.t$&#39;Individual.Recipients&#39;, 
+     xlim=c(2960, 2600), ylim=c(7500, 8400), pch = 20, 
+     cex = 1, col = &quot;black&quot;, 
+     main = &quot;Relationship between Applicants and Individuals&quot;, 
+     ylab = &quot;Number of Individual Recipients&quot;, 
+     xlab = &quot;Number of SNAP Applicants&quot;,     
+     abline(lm(snap.cs.table.t$&#39;Individual.Recipients&#39; ~ snap.cs.table.t$&#39;Applications&#39;), col=&quot;red&quot;))</code></pre>
 <img src="SNAP_Arlington_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 <h5>
 <p style="text-align: right;">
@@ -513,9 +523,20 @@ This is a perfect correlationship. It is always exciting to see textbook example
 <p style="text-align: left;">
 <pre class="r"><code>compare &lt;- read.csv(&quot;~data/SNAP_progression_comparison.csv&quot;)
 
-comp &lt;- highchart()%&gt;% hc_xAxis(categories = compare$Year) %&gt;% hc_add_series(name = &quot;Arlington&quot;, data = compare$Arlington, color = &quot;dodgerblue&quot;) %&gt;% hc_add_series(name = &quot;Virginia&quot;, data = compare$Virginia, color = &quot;yellowgreen&quot;) %&gt;% hc_add_series(name = &quot;Nation&quot;, data = compare$Nation, color = &quot;grey&quot;) 
+comp &lt;- highchart()%&gt;% hc_xAxis(categories = compare$Year) %&gt;% 
+  hc_add_series(name = &quot;Arlington&quot;, data = compare$Arlington, 
+                color = &quot;dodgerblue&quot;) %&gt;% 
+  hc_add_series(name = &quot;Virginia&quot;, data = compare$Virginia, 
+                color = &quot;yellowgreen&quot;) %&gt;%
+  hc_add_series(name = &quot;Nation&quot;, data = compare$Nation, 
+                color = &quot;grey&quot;) 
 
-comp &lt;- comp %&gt;% hc_chart(type = &quot;column&quot;, options3d = list(enabled = TRUE, beta = 10, alpha = 15)) %&gt;% hc_title(text = &quot;SNAP Participation Rate (Percent)&quot;) %&gt;% hc_exporting(enabled = TRUE)
+comp &lt;- comp %&gt;% 
+  hc_chart(type = &quot;column&quot;, 
+           options3d = list(enabled = TRUE, 
+                            beta = 10, alpha = 15)) %&gt;% 
+  hc_title(text = &quot;SNAP Participation Rate (Percent)&quot;) %&gt;% 
+  hc_exporting(enabled = TRUE)
 
 comp</code></pre>
 </p>
@@ -523,7 +544,6 @@ comp</code></pre>
 <center>
 <iframe width="100%" height="550" src="attach/SNAP_progression_comparison.html" frameBorder="0">
 </iframe>
-<center>
 <pre><code>You can share the chart by copying and pasting this code in your HTML script:
 &lt;iframe width=&quot;100%&quot; height=&quot;550&quot; src=&quot;http://americanpolicy.me/attach/SNAP_progression_comparison.html&quot;&gt;&lt;/iframe&gt;</code></pre>
 <h5>
@@ -579,7 +599,6 @@ As you can see, when we juxtapose the two reports together in the form of <em>nu
 <p><br><br><br></p>
 <iframe width="100%" height="450" src="attach/Poverty_map_timeline.html" frameBorder="0">
 </iframe>
-<center>
 <pre><code>You can share the map by copying and pasting this code in your HTML script:
 &lt;iframe width=&quot;100%&quot; height=&quot;450&quot; src=&quot;http://americanpolicy.me/attach/Poverty_map_timeline.html&quot;&gt;&lt;/iframe&gt;</code></pre>
 <h5>
@@ -598,20 +617,48 @@ Had there been an option, I would have created an animated map showing changes o
 <h4>
 <div class="code1">
 <p style="text-align: left;">
-<pre class="r"><code>line.plot.arlington &lt;- highchart() %&gt;% hc_title(text = &quot;Interactive Tool: SNAP and Poverty&quot;) %&gt;% hc_subtitle(text = &quot;Click on the legend icons to customize the comparison selection&quot;) %&gt;% hc_xAxis(categories = compare$Year) %&gt;% hc_add_series(name = &quot;SNAP Arlington&quot;, data = compare$Arlington, color = &quot;dodgerblue&quot;, type = &quot;column&quot;) %&gt;% hc_add_series(name = &quot;SNAP Virginia&quot;, data = compare$Virginia, color = &quot;yellowgreen&quot;, type = &quot;column&quot;) %&gt;% hc_add_series(name = &quot;SNAP U.S.&quot;, data = compare$Nation, color = &quot;grey&quot;, type = &quot;column&quot;) %&gt;% hc_add_series(name = &quot;Poverty Arlington&quot;, data = compare$p.arlington, color = &quot;dodgerblue&quot;) %&gt;% hc_add_series(name = &quot;Poverty Virginia&quot;, data = compare$p.virginia, color = &quot;yellowgreen&quot;) %&gt;% hc_add_series(name = &quot;Poverty U.S.&quot;, data = compare$p.nation, color = &quot;grey&quot;) %&gt;% hc_xAxis(title = list(text = &quot;Year&quot;), opposite = FALSE, plotLines = list(list(label = list(text = &quot;The Great Recession&quot;), color = &quot;#FF0000&quot;, width = 3, value = 2.5))) %&gt;% hc_yAxis(title = list(text = &quot;Participation Rate (Percent)&quot;)) %&gt;% hc_exporting(enabled = TRUE)
+<pre class="r"><code>line.plot.arlington &lt;- highchart() %&gt;% 
+  hc_title(text = &quot;Interactive Tool: SNAP and Poverty&quot;) %&gt;% 
+  hc_subtitle(text = &quot;Click on the legend icons to customize the comparison selection&quot;) %&gt;% hc_xAxis(categories = compare$Year) %&gt;% 
+  hc_add_series(name = &quot;SNAP Arlington&quot;, 
+                data = compare$Arlington, 
+                color = &quot;dodgerblue&quot;, type = &quot;column&quot;) %&gt;% 
+  hc_add_series(name = &quot;SNAP Virginia&quot;, 
+                data = compare$Virginia, 
+                color = &quot;yellowgreen&quot;, type = &quot;column&quot;) %&gt;% 
+  hc_add_series(name = &quot;SNAP U.S.&quot;, 
+                data = compare$Nation, 
+                color = &quot;grey&quot;, type = &quot;column&quot;) %&gt;% 
+  hc_add_series(name = &quot;Poverty Arlington&quot;, 
+                data = compare$p.arlington, 
+                color = &quot;dodgerblue&quot;) %&gt;% 
+  hc_add_series(name = &quot;Poverty Virginia&quot;, 
+                data = compare$p.virginia, 
+                color = &quot;yellowgreen&quot;) %&gt;% 
+  hc_add_series(name = &quot;Poverty U.S.&quot;, 
+                data = compare$p.nation, 
+                color = &quot;grey&quot;) %&gt;% 
+  hc_xAxis(title = list(text = &quot;Year&quot;), opposite = FALSE, 
+           plotLines = list(list(
+             label = list(text = &quot;The Great Recession&quot;), 
+             color = &quot;#FF0000&quot;, width = 3, value = 2.5))) %&gt;% 
+  hc_yAxis(title = list(
+    text = &quot;Participation Rate (Percent)&quot;)) %&gt;% 
+  hc_exporting(enabled = TRUE)
 line.plot.arlington</code></pre>
 </p>
 </div>
 <center>
 <iframe width="100%" height="450" src="attach/snap_vs_poverty.html" frameBorder="0">
 </iframe>
-<center>
 <pre><code>You can share the chart by copying and pasting this code in your HTML script:
 &lt;iframe width=&quot;100%&quot; height=&quot;450&quot; src=&quot;http://americanpolicy.me/attach/snap_vs_poverty.html&quot;&gt;&lt;/iframe&gt;</code></pre>
 <h5>
+<div class="newspaper1">
 <p style="text-align: center;">
 Data Source: Census, 2017          
 </p>
+</div>
 <p><br><br><br></p>
 <h4>
 <div class="newspaper1">
