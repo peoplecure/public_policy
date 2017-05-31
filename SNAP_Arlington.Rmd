@@ -299,8 +299,8 @@ The line plots represent the poverty rate, and barplots illustrate the SNAP part
 <h5>$$Premise~~1:~~Poverty~~Rate~~by~~Household = \frac{Poverty~~Households}{Total~~Population} * 100$$
 <h5>$$Premise~~2:~~SNAP~~Participation~~Rate~~by~~Household = \frac{SNAP~~Households}{Total~~Population} * 100$$ <br><br>
 <h5>$$Therefore,$$ <br><br>
-<h5>$$\frac{Poverty~~Households}{Total~~Population} - \frac{SNAP~~Households}{Total~~Population} =$$
-<h5>$$Households~~living~~in~~Poverty~~but~~not~~receiving~~SNAP~~benefits$$<br><br><br>
+<h5>$$\left( \frac{Poverty~~Households}{Total~~Population} - \frac{SNAP~~Households}{Total~~Population} \right) * 100  =$$
+<h5>$$Percent~~of~~Households~~living~~in~~Poverty~~but~~not~~receiving~~SNAP~~benefits$$<br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
