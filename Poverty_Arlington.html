@@ -268,6 +268,68 @@ $(document).ready(function () {
 
 
 <head>
+<style>
+.hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    width: 60%;
+}
+.abstract {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 500px;
+    height: 50%
+}
+.newspaper1 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+.newspaper2 {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+.code1 { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 600px;
+}
+.code2 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+<link rel="stylesheet" href="css/animate.css">
+<script src="js/wow.min.js"> </script>
+<script> new WOW().init(); </script>
+</style>
 <script type="text/javascript">
     window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
       heap.load("2042091030");
@@ -278,6 +340,576 @@ $(document).ready(function () {
 <center>
 <pre><code>You can embed the map by copying and pasting this code in your HTML script:
 &lt;iframe width=&quot;100%&quot; height=&quot;550&quot; src=&quot;http://americanpolicy.me/attach/Poverty_map_timeline.html&quot;&gt;&lt;/iframe&gt;</code></pre>
+<br><br><br>
+<h4>
+Please feel free to use my script to create your own map. <br>
+<h5>
+Mr. Ross, if you’re reading this, I would like to openly thank you for giving the Census workshop.<br><br>
+</center>
+<div class="code1">
+<p style="text-align: justify;">
+<pre class="r"><code># Open Packages
+setwd(&quot;filepath&quot;)
+getwd()
+library(rgdal)    # for readOGR and others
+library(sp)       # for spatial objects
+library(leaflet)  # for interactive maps (NOT leafletR here)
+library(dplyr)    # for working with data frames
+library(ggplot2)  # for plotting
+library(maptools) # for creating map boundaries
+if (!require(gpclib)) install.packages(&quot;gpclib&quot;, type=&quot;source&quot;)
+tract &lt;- readOGR(dsn=&quot;filepath/cb_2016_51_tract_500k&quot;, layer = &quot;cb_2016_51_tract_500k&quot;)
+tract@data$GEOID &lt;- as.character(tract@data$GEOID) # convert the GEOID to a character
+gpclibPermit()
+
+# Poverty Level by HouseHold (percent) 2009 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2009 &lt;- read.csv(&quot;filepath/ACS_09_5YR_S1702_Poverty_Household.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2009 &lt;- select(poverty.hol.percent.2009, GEO.id2, GEO.display.label, HC03_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.hol.percent.2009 &lt;- mutate(poverty.hol.percent.2009, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+
+# convert polygons to data.frame
+php.ggtract.2009 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+php.ggtract.2009 &lt;- left_join(php.ggtract.2009, poverty.hol.percent.2009, by = c(&quot;id&quot;)) # join tabular data
+php.ggtract.2009 &lt;- php.ggtract.2009[grep(&quot;Arlington County&quot;, php.ggtract.2009$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2009 &lt;- distinct(php.ggtract.2009, id, percent)# tract identification
+php.tractname.2009 &lt;- php.tracts.2009$id
+php.polygons.2009 &lt;-lapply(php.tractname.2009, function(x) polyFunc(x, dat=php.ggtract.2009)) 
+php.sp.polygon.2009&lt;-SpatialPolygons(php.polygons.2009)
+php.df.polygon.2009&lt;-SpatialPolygonsDataFrame(php.sp.polygon.2009, 
+                                              data=data.frame(row.names=php.tractname.2009, php.tracts.2009))
+php.df.polygon.2009 &lt;- php.df.polygon.2009[order(php.df.polygon.2009$percent),]
+
+php.popup.2009 &lt;- paste0(&quot;GEOID: &quot;, php.df.polygon.2009$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Households &lt;br&gt; Living below Poverty: &quot;, round(php.df.polygon.2009$percent,2)) # Popup 
+php.pal.2009 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2009 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2009, 
+              fillColor = ~php.pal.2009(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2009) %&gt;%
+  addLegend(pal = php.pal.2009, 
+            values = php.df.polygon.2009$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Households &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2009)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+php.poverty.map.2009
+
+
+
+
+# Poverty Level by HouseHold (percent) 2010 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2010 &lt;- read.csv(&quot;filepath/ACS_10_5YR_S1702_Poverty_Household.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2010 &lt;- select(poverty.hol.percent.2010, GEO.id2, GEO.display.label, HC02_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2010 &lt;- mutate(poverty.hol.percent.2010, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+php.ggtract.2010 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+php.ggtract.2010 &lt;- left_join(php.ggtract.2010, poverty.hol.percent.2010, by = c(&quot;id&quot;)) # join tabular data
+php.ggtract.2010 &lt;- php.ggtract.2010[grep(&quot;Arlington County&quot;, php.ggtract.2010$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2010 &lt;- distinct(php.ggtract.2010, id, percent)# tract identification
+php.tractname.2010 &lt;- php.tracts.2010$id
+php.polygons.2010 &lt;-lapply(php.tractname.2010, function(x) polyFunc(x, dat=php.ggtract.2010)) 
+php.sp.polygon.2010&lt;-SpatialPolygons(php.polygons.2010)
+php.df.polygon.2010&lt;-SpatialPolygonsDataFrame(php.sp.polygon.2010, 
+                                              data=data.frame(row.names=php.tractname.2010, php.tracts.2010))
+php.df.polygon.2010 &lt;- php.df.polygon.2010[order(php.df.polygon.2010$percent),]
+
+php.popup.2010 &lt;- paste0(&quot;GEOID: &quot;, php.df.polygon.2010$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Households &lt;br&gt; Living below Poverty: &quot;, round(php.df.polygon.2010$percent,2)) # Popup 
+php.pal.2010 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2010 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2010, 
+              fillColor = ~php.pal.2010(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2010) %&gt;%
+  addLegend(pal = php.pal.2010, 
+            values = php.df.polygon.2010$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Households &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2010)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+php.poverty.map.2010
+
+
+
+
+# Poverty Level by HouseHold (percent) 2011 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2011 &lt;- read.csv(&quot;filepath/ACS_11_5YR_S1702_Poverty_Household.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2011 &lt;- select(poverty.hol.percent.2011, GEO.id2, GEO.display.label, HC02_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2011 &lt;- mutate(poverty.hol.percent.2011, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+php.ggtract.2011 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+php.ggtract.2011 &lt;- left_join(php.ggtract.2011, poverty.hol.percent.2011, by = c(&quot;id&quot;)) # join tabular data
+php.ggtract.2011 &lt;- php.ggtract.2011[grep(&quot;Arlington County&quot;, php.ggtract.2011$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2011 &lt;- distinct(php.ggtract.2011, id, percent)# tract identification
+php.tractname.2011 &lt;- php.tracts.2011$id
+php.polygons.2011 &lt;-lapply(php.tractname.2011, function(x) polyFunc(x, dat=php.ggtract.2011)) 
+php.sp.polygon.2011&lt;-SpatialPolygons(php.polygons.2011)
+php.df.polygon.2011&lt;-SpatialPolygonsDataFrame(php.sp.polygon.2011, 
+                                              data=data.frame(row.names=php.tractname.2011, php.tracts.2011))
+php.df.polygon.2011 &lt;- php.df.polygon.2011[order(php.df.polygon.2011$percent),]
+
+php.popup.2011 &lt;- paste0(&quot;GEOID: &quot;, php.df.polygon.2011$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Households &lt;br&gt; Living below Poverty: &quot;, round(php.df.polygon.2011$percent,2)) # Popup 
+php.pal.2011 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2011 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2011, 
+              fillColor = ~php.pal.2011(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2011) %&gt;%
+  addLegend(pal = php.pal.2011, 
+            values = php.df.polygon.2011$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Households &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2011)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+php.poverty.map.2011
+
+
+
+
+# Poverty Level by HouseHold (percent) 2012 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2012 &lt;- read.csv(&quot;filepath/ACS_12_5YR_S1702_Poverty_Household.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2012 &lt;- select(poverty.hol.percent.2012, GEO.id2, GEO.display.label, HC02_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2012 &lt;- mutate(poverty.hol.percent.2012, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+php.ggtract.2012 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+php.ggtract.2012 &lt;- left_join(php.ggtract.2012, poverty.hol.percent.2012, by = c(&quot;id&quot;)) # join tabular data
+php.ggtract.2012 &lt;- php.ggtract.2012[grep(&quot;Arlington County&quot;, php.ggtract.2012$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2012 &lt;- distinct(php.ggtract.2012, id, percent)# tract identification
+php.tractname.2012 &lt;- php.tracts.2012$id
+php.polygons.2012 &lt;-lapply(php.tractname.2012, function(x) polyFunc(x, dat=php.ggtract.2012)) 
+php.sp.polygon.2012&lt;-SpatialPolygons(php.polygons.2012)
+php.df.polygon.2012&lt;-SpatialPolygonsDataFrame(php.sp.polygon.2012, 
+                                              data=data.frame(row.names=php.tractname.2012, php.tracts.2012))
+php.df.polygon.2012 &lt;- php.df.polygon.2012[order(php.df.polygon.2012$percent),]
+
+php.popup.2012 &lt;- paste0(&quot;GEOID: &quot;, php.df.polygon.2012$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Households &lt;br&gt; Living below Poverty: &quot;, round(php.df.polygon.2012$percent,2)) # Popup 
+php.pal.2012 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2012 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2012, 
+              fillColor = ~php.pal.2012(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2012) %&gt;%
+  addLegend(pal = php.pal.2012, 
+            values = php.df.polygon.2012$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Households &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2012)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+php.poverty.map.2012
+
+
+
+
+# Poverty Level by HouseHold (percent) 2013 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2013 &lt;- read.csv(&quot;filepath/ACS_13_5YR_S1702_Poverty_Household.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2013 &lt;- select(poverty.hol.percent.2013, GEO.id2, GEO.display.label, HC02_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2013 &lt;- mutate(poverty.hol.percent.2013, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+php.ggtract.2013 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+php.ggtract.2013 &lt;- left_join(php.ggtract.2013, poverty.hol.percent.2013, by = c(&quot;id&quot;)) # join tabular data
+php.ggtract.2013 &lt;- php.ggtract.2013[grep(&quot;Arlington County&quot;, php.ggtract.2013$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2013 &lt;- distinct(php.ggtract.2013, id, percent)# tract identification
+php.tractname.2013 &lt;- php.tracts.2013$id
+php.polygons.2013 &lt;-lapply(php.tractname.2013, function(x) polyFunc(x, dat=php.ggtract.2013)) 
+php.sp.polygon.2013&lt;-SpatialPolygons(php.polygons.2013)
+php.df.polygon.2013&lt;-SpatialPolygonsDataFrame(php.sp.polygon.2013, 
+                                              data=data.frame(row.names=php.tractname.2013, php.tracts.2013))
+php.df.polygon.2013 &lt;- php.df.polygon.2013[order(php.df.polygon.2013$percent),]
+
+php.popup.2013 &lt;- paste0(&quot;GEOID: &quot;, php.df.polygon.2013$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Households &lt;br&gt; Living below Poverty: &quot;, round(php.df.polygon.2013$percent,2)) # Popup 
+php.pal.2013 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2013 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2013, 
+              fillColor = ~php.pal.2013(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2013) %&gt;%
+  addLegend(pal = php.pal.2013, 
+            values = php.df.polygon.2013$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Households &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2013)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+php.poverty.map.2013
+
+
+
+
+# Poverty Level by HouseHold (percent) 2014 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2014 &lt;- read.csv(&quot;filepath/ACS_14_5YR_S1702_Poverty_Household.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2014 &lt;- select(poverty.hol.percent.2014, GEO.id2, GEO.display.label, HC02_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2014 &lt;- mutate(poverty.hol.percent.2014, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+php.ggtract.2014 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+php.ggtract.2014 &lt;- left_join(php.ggtract.2014, poverty.hol.percent.2014, by = c(&quot;id&quot;)) # join tabular data
+php.ggtract.2014 &lt;- php.ggtract.2014[grep(&quot;Arlington County&quot;, php.ggtract.2014$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2014 &lt;- distinct(php.ggtract.2014, id, percent)# tract identification
+php.tractname.2014 &lt;- php.tracts.2014$id
+php.polygons.2014 &lt;-lapply(php.tractname.2014, function(x) polyFunc(x, dat=php.ggtract.2014)) 
+php.sp.polygon.2014&lt;-SpatialPolygons(php.polygons.2014)
+php.df.polygon.2014&lt;-SpatialPolygonsDataFrame(php.sp.polygon.2014, 
+                                              data=data.frame(row.names=php.tractname.2014, php.tracts.2014))
+php.df.polygon.2014 &lt;- php.df.polygon.2014[order(php.df.polygon.2014$percent),]
+
+php.popup.2014 &lt;- paste0(&quot;GEOID: &quot;, php.df.polygon.2014$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Households &lt;br&gt; Living below Poverty: &quot;, round(php.df.polygon.2014$percent,2)) # Popup 
+php.pal.2014 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2014 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2014, 
+              fillColor = ~php.pal.2014(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2014) %&gt;%
+  addLegend(pal = php.pal.2014, 
+            values = php.df.polygon.2014$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Households &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2014)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+php.poverty.map.2014
+
+
+
+
+# Poverty Level by HouseHold (percent) 2015 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2015 &lt;- read.csv(&quot;filepath/ACS_15_5YR_S1702_Poverty_Household.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2015 &lt;- select(poverty.hol.percent.2015, GEO.id2, GEO.display.label, HC02_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2015 &lt;- mutate(poverty.hol.percent.2015, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+php.ggtract.2015 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+php.ggtract.2015 &lt;- left_join(php.ggtract.2015, poverty.hol.percent.2015, by = c(&quot;id&quot;)) # join tabular data
+php.ggtract.2015 &lt;- php.ggtract.2015[grep(&quot;Arlington County&quot;, php.ggtract.2015$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2015 &lt;- distinct(php.ggtract.2015, id, percent)# tract identification
+php.tractname.2015 &lt;- php.tracts.2015$id
+php.polygons.2015 &lt;-lapply(php.tractname.2015, function(x) polyFunc(x, dat=php.ggtract.2015)) 
+php.sp.polygon.2015&lt;-SpatialPolygons(php.polygons.2015)
+php.df.polygon.2015&lt;-SpatialPolygonsDataFrame(php.sp.polygon.2015, 
+                                              data=data.frame(row.names=php.tractname.2015, php.tracts.2015))
+php.df.polygon.2015 &lt;- php.df.polygon.2015[order(php.df.polygon.2015$percent),]
+
+php.popup.2015 &lt;- paste0(&quot;GEOID: &quot;, php.df.polygon.2015$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Households &lt;br&gt; Living below Poverty: &quot;, round(php.df.polygon.2015$percent,2)) # Popup 
+php.pal.2015 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2015 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2015, 
+              fillColor = ~php.pal.2015(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2015) %&gt;%
+  addLegend(pal = php.pal.2015, 
+            values = php.df.polygon.2015$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Households &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2015)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+php.poverty.map.2015
+
+
+
+
+# Poverty Level by Household (percent) Prediction ----
+php.ggtract.predict &lt;- fortify(tract, region = &quot;GEOID&quot;)
+php.ggtract.predict &lt;- left_join(php.ggtract.2015, poverty.hol.percent.2015, by = c(&quot;id&quot;)) # join tabular data
+php.ggtract.predict &lt;- php.ggtract.2015[grep(&quot;Arlington County&quot;, php.ggtract.2015$geography),] # Arlington and its nearby counties
+
+php.tracts.predict &lt;- data.frame(read.csv(&quot;filepath/ACS_Predict.csv&quot;))
+php.tracts.predict[2] &lt;- NULL
+php.tracts.predict &lt;- within(php.tracts.predict, percent[percent &lt; 0] &lt;- 0)
+
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.predict &lt;- distinct(php.tracts.predict, id, percent)# tract identification
+php.tractname.predict &lt;- php.tracts.predict$id
+php.polygons.predict &lt;-lapply(php.tractname.predict, function(x) polyFunc(x, dat=php.ggtract.predict)) 
+php.sp.polygon.predict&lt;-SpatialPolygons(php.polygons.predict)
+php.df.polygon.predict&lt;-SpatialPolygonsDataFrame(php.sp.polygon.predict, 
+                                                 data=data.frame(row.names=php.tractname.predict, php.tracts.predict))
+php.df.polygon.predict &lt;- php.df.polygon.predict[order(php.df.polygon.predict$percent),]
+
+php.popup.predict &lt;- paste0(&quot;GEOID: &quot;, php.df.polygon.predict$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Households &lt;br&gt; Living below Poverty: &quot;, round(php.df.polygon.predict$percent,2))
+php.pal.predict &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = c(0, 36)
+)
+
+# Mapping with Leaf
+php.poverty.map.predict &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.predict, 
+              fillColor = ~php.pal.predict(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.predict) %&gt;%
+  addLegend(pal = php.pal.2015, 
+            values = php.tracts.predict$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Households &lt;br&gt; Not Using SNAP &lt;br&gt; (Census, 2015)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+php.poverty.map.predict
+
+# Combined Map by Household (percent) 2015 ----
+content &lt;- paste(sep = &quot;&lt;br/&gt;&quot;,
+                 &quot;&lt;table&gt;
+                 &lt;tbody&gt;
+                 &lt;tr&gt;
+                 &lt;td&gt;&lt;img src=&#39;https://d1rn8z435cu2eh.cloudfront.net/img/acg_logo_icon_200_200.png&#39;, width=&#39;50px&#39;&gt;&amp;nbsp;&amp;nbsp;&lt;/img&gt;&lt;/td&gt;
+                 &lt;td&gt;&lt;b&gt;&lt;a href=&#39;https://departments.arlingtonva.us/dhs&#39;&gt;Arlington DHS&lt;/a&gt;&lt;/b&gt;&lt;br&gt;2100 Washington Blvd.&lt;br&gt; Arlington, VA 22204&lt;/td&gt;
+                 &lt;/tr&gt;
+                 &lt;/tbody&gt;
+                 &lt;/table&gt;&quot;)
+
+php.combine.map.2015 &lt;- 
+  leaflet() %&gt;%
+  addMarkers(-77.083191, 38.873489, popup = content) %&gt;%
+  # PHP 2009 
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2009, 
+              fillColor = ~php.pal.2009(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2009,
+              group = &quot;Poverty-Level Households 2009&quot;,
+              highlight = highlightOptions(
+                weight = 3,
+                color = &quot;#666&quot;,
+                dashArray = &quot;&quot;,
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %&gt;%
+  # PHP 2010
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2010, 
+              fillColor = ~php.pal.2010(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2010,
+              group = &quot;Poverty-Level Households 2010&quot;,
+              highlight = highlightOptions(
+                weight = 3,
+                color = &quot;#666&quot;,
+                dashArray = &quot;&quot;,
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %&gt;%
+  # PHP 2011
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2011, 
+              fillColor = ~php.pal.2011(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2011,
+              group = &quot;Poverty-Level Households 2011&quot;,
+              highlight = highlightOptions(
+                weight = 3,
+                color = &quot;#666&quot;,
+                dashArray = &quot;&quot;,
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %&gt;%
+  # PHP 2012
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2012, 
+              fillColor = ~php.pal.2012(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2012,
+              group = &quot;Poverty-Level Households 2012&quot;,
+              highlight = highlightOptions(
+                weight = 3,
+                color = &quot;#666&quot;,
+                dashArray = &quot;&quot;,
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %&gt;%
+  # PHP 2013
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2013, 
+              fillColor = ~php.pal.2013(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2013,
+              group = &quot;Poverty-Level Households 2013&quot;,
+              highlight = highlightOptions(
+                weight = 3,
+                color = &quot;#666&quot;,
+                dashArray = &quot;&quot;,
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %&gt;%
+  # PHP 2014
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2014, 
+              fillColor = ~php.pal.2014(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2014,
+              group = &quot;Poverty-Level Households 2014&quot;,
+              highlight = highlightOptions(
+                weight = 3,
+                color = &quot;#666&quot;,
+                dashArray = &quot;&quot;,
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %&gt;%
+  # PHP 2015
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.2015, 
+              fillColor = ~php.pal.2015(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2015,
+              group = &quot;Poverty-Level Households 2015&quot;,
+              highlight = highlightOptions(
+                weight = 3,
+                color = &quot;#666&quot;,
+                dashArray = &quot;&quot;,
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %&gt;%
+  # PHP Predict
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = php.df.polygon.predict, 
+              fillColor = ~php.pal.predict(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.predict,
+              group = &quot;Slope Estimate 2016&quot;,
+              highlight = highlightOptions(
+                weight = 3,
+                color = &quot;#666&quot;,
+                dashArray = &quot;&quot;,
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %&gt;%
+  # Legend
+  addLegend(pal = php.pal.2009, 
+            values = php.df.polygon.2009$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Households &lt;br&gt; Living below Poverty &lt;br&gt; (Census)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;)) %&gt;%
+  # Layer control
+  addLayersControl(
+    baseGroups = c(&quot;Poverty-Level Households 2009&quot;, &quot;Poverty-Level Households 2010&quot;, &quot;Poverty-Level Households 2011&quot;,
+                   &quot;Poverty-Level Households 2012&quot;, &quot;Poverty-Level Households 2013&quot;, &quot;Poverty-Level Households 2014&quot;,
+                   &quot;Poverty-Level Households 2015&quot;, &quot;Slope Estimate 2016&quot;),
+    position = &quot;topright&quot;,
+    options = layersControlOptions(collapsed = FALSE)
+  )
+php.combine.map.2015</code></pre>
+</p>
+</div>
 
 <!DOCTYPE html>
 <html>

@@ -1,12 +1,157 @@
 <head>
+<style>
+.hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    width: 60%;
+}
+.abstract {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 500px;
+    height: 50%
+}
+.newspaper1 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+.newspaper2 {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+.code1 { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 600px;
+}
+.code2 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+<link rel="stylesheet" href="css/animate.css">
+<script src="js/wow.min.js"> </script>
+<script> new WOW().init(); </script>
+</style>
 <script type="text/javascript">
     window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
       heap.load("2042091030");
 </script>
 </head>
+
 <iframe width="100%" height="550" src="attach/DC_Education_Attainment.html" frameBorder="0"></iframe>
 <center>
 ```
 You can embed the map by copying and pasting this code in your HTML script:
 <iframe width="100%" height="550" src="http://americanpolicy.me/attach/SNAP_map.html"></iframe>
 ```
+<br><br><br>
+<h4> Please feel free to use my script to create your own map. <br> 
+<h5> Mr. Ross, if you're reading this, I would like to openly thank you for giving the Census workshop.<br><br>
+</center>
+
+<div class="code1">
+<p style="text-align: justify;">
+```{r, eval = FALSE}
+# Open Packages
+setwd("filepath")
+getwd()
+library(rgdal)    # for readOGR and others
+library(sp)       # for spatial objects
+library(leaflet)  # for interactive maps
+library(dplyr)    # for working with data frames
+library(ggplot2)  # for plotting
+library(maptools) # for creating map boundaries
+if (!require(gpclib)) install.packages("gpclib", type="source")
+tract <- readOGR(dsn="filepath/cb_2016_11_tract_500k", layer = "cb_2016_11_tract_500k")
+tract@data$GEOID <- as.character(tract@data$GEOID)
+gpclibPermit()
+
+# Education Attainment (percent) 2015 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+education.percent.2015 <- read.csv("filepath/ACS_15_5YR_S1501.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+
+education.percent.2015 <- select(education.percent.2015, GEO.id2, GEO.display.label, HC02_EST_VC18) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC18)
+education.percent.2015 <- mutate(education.percent.2015, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent)) # Assign name for the read data
+
+edu.ggtract.2015 <- fortify(tract, region = "GEOID")
+edu.ggtract.2015 <- left_join(edu.ggtract.2015, education.percent.2015, by = c("id")) # join tabular data
+edu.ggtract.2015 <- edu.ggtract.2015[grep("District of Columbia", edu.ggtract.2015$geography),] # grab data by D.C.
+
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+edu.tracts.2015 <- distinct(edu.ggtract.2015, id, percent)
+edu.tractname.2015 <- edu.tracts.2015$id
+edu.polygons.2015 <-lapply(edu.tractname.2015, function(x) polyFunc(x, dat=edu.ggtract.2015)) 
+edu.sp.polygon.2015<-SpatialPolygons(edu.polygons.2015)
+edu.df.polygon.2015<-SpatialPolygonsDataFrame(edu.sp.polygon.2015, 
+                                              data=data.frame(row.names=edu.tractname.2015, edu.tracts.2015))
+edu.df.polygon.2015 <- edu.df.polygon.2015[order(edu.df.polygon.2015$percent),]
+
+edu.popup.2015 <- paste0("GEOID: ", edu.df.polygon.2015$id, "<br>", "Percent of Residents <br> Bachelor's Degree or <br> Above: ", round(edu.df.polygon.2015$percent,2)) # Popup 
+edu.pal.2015 <- colorNumeric(
+  palette = "Greens",
+  domain = c(0, 100)
+)
+# Mapping with Leaf
+CHP.content <- paste(sep = "<br/>",
+                 "<table>
+                 <tbody>
+                 <tr>
+                 <td><img src='https://www.efile.com/efile-images/state-flags/dc-flag.png', width='50px'>&nbsp;&nbsp;</img></td>
+                 <td><b><a href='https://departments.arlingtonva.us/dhs'>Fort Chaplin Park</a></b><br>4100 East Capitol St NE<br> Washington, DC 20019</td>
+                 </tr>
+                 </tbody>
+                 </table>")
+
+edu.attainment.map.2015 <- leaflet() %>%
+  addMarkers(-76.942376, 38.890171, popup = CHP.content) %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = edu.df.polygon.2015, 
+              fillColor = ~edu.pal.2015(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = edu.popup.2015) %>%
+  addLegend(pal = edu.pal.2015, 
+            values = edu.df.polygon.2015$percent, 
+            position = "bottomright", 
+            title = "Percent of Residents <br> Bachelor's Degree or <br> Above (Census 2015)",
+            labFormat = labelFormat(suffix = "%"))
+edu.attainment.map.2015
+```
+</p></div>

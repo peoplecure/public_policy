@@ -1,4 +1,66 @@
 <head>
+<style>
+.hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    width: 60%;
+}
+.abstract {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 500px;
+    height: 50%
+}
+.newspaper1 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+.newspaper2 {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+.code1 { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 600px;
+}
+.code2 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+<link rel="stylesheet" href="css/animate.css">
+<script src="js/wow.min.js"> </script>
+<script> new WOW().init(); </script>
+</style>
 <script type="text/javascript">
     window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
       heap.load("2042091030");
@@ -11,3 +73,575 @@
 You can embed the map by copying and pasting this code in your HTML script:
 <iframe width="100%" height="550" src="http://americanpolicy.me/attach/Poverty_map_timeline.html"></iframe>
 ```
+<br><br><br>
+<h4> Please feel free to use my script to create your own map. <br> 
+<h5> Mr. Ross, if you're reading this, I would like to openly thank you for giving the Census workshop.<br><br>
+</center>
+
+<div class="code1">
+<p style="text-align: justify;">
+```{r, eval = FALSE}
+# Open Packages
+setwd("filepath")
+getwd()
+library(rgdal)    # for readOGR and others
+library(sp)       # for spatial objects
+library(leaflet)  # for interactive maps (NOT leafletR here)
+library(dplyr)    # for working with data frames
+library(ggplot2)  # for plotting
+library(maptools) # for creating map boundaries
+if (!require(gpclib)) install.packages("gpclib", type="source")
+tract <- readOGR(dsn="filepath/cb_2016_51_tract_500k", layer = "cb_2016_51_tract_500k")
+tract@data$GEOID <- as.character(tract@data$GEOID) # convert the GEOID to a character
+gpclibPermit()
+
+# Poverty Level by HouseHold (percent) 2009 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2009 <- read.csv("filepath/ACS_09_5YR_S1702_Poverty_Household.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2009 <- select(poverty.hol.percent.2009, GEO.id2, GEO.display.label, HC03_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.hol.percent.2009 <- mutate(poverty.hol.percent.2009, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+
+# convert polygons to data.frame
+php.ggtract.2009 <- fortify(tract, region = "GEOID")
+php.ggtract.2009 <- left_join(php.ggtract.2009, poverty.hol.percent.2009, by = c("id")) # join tabular data
+php.ggtract.2009 <- php.ggtract.2009[grep("Arlington County", php.ggtract.2009$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2009 <- distinct(php.ggtract.2009, id, percent)# tract identification
+php.tractname.2009 <- php.tracts.2009$id
+php.polygons.2009 <-lapply(php.tractname.2009, function(x) polyFunc(x, dat=php.ggtract.2009)) 
+php.sp.polygon.2009<-SpatialPolygons(php.polygons.2009)
+php.df.polygon.2009<-SpatialPolygonsDataFrame(php.sp.polygon.2009, 
+                                              data=data.frame(row.names=php.tractname.2009, php.tracts.2009))
+php.df.polygon.2009 <- php.df.polygon.2009[order(php.df.polygon.2009$percent),]
+
+php.popup.2009 <- paste0("GEOID: ", php.df.polygon.2009$id, "<br>", "Percent of Households <br> Living below Poverty: ", round(php.df.polygon.2009$percent,2)) # Popup 
+php.pal.2009 <- colorNumeric(
+  palette = "Reds",
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2009 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2009, 
+              fillColor = ~php.pal.2009(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2009) %>%
+  addLegend(pal = php.pal.2009, 
+            values = php.df.polygon.2009$percent, 
+            position = "bottomright", 
+            title = "Percent of Households <br> Living below Poverty <br> (Census, 2009)",
+            labFormat = labelFormat(suffix = "%"))
+php.poverty.map.2009
+
+
+
+
+# Poverty Level by HouseHold (percent) 2010 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2010 <- read.csv("filepath/ACS_10_5YR_S1702_Poverty_Household.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2010 <- select(poverty.hol.percent.2010, GEO.id2, GEO.display.label, HC02_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2010 <- mutate(poverty.hol.percent.2010, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+php.ggtract.2010 <- fortify(tract, region = "GEOID")
+php.ggtract.2010 <- left_join(php.ggtract.2010, poverty.hol.percent.2010, by = c("id")) # join tabular data
+php.ggtract.2010 <- php.ggtract.2010[grep("Arlington County", php.ggtract.2010$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2010 <- distinct(php.ggtract.2010, id, percent)# tract identification
+php.tractname.2010 <- php.tracts.2010$id
+php.polygons.2010 <-lapply(php.tractname.2010, function(x) polyFunc(x, dat=php.ggtract.2010)) 
+php.sp.polygon.2010<-SpatialPolygons(php.polygons.2010)
+php.df.polygon.2010<-SpatialPolygonsDataFrame(php.sp.polygon.2010, 
+                                              data=data.frame(row.names=php.tractname.2010, php.tracts.2010))
+php.df.polygon.2010 <- php.df.polygon.2010[order(php.df.polygon.2010$percent),]
+
+php.popup.2010 <- paste0("GEOID: ", php.df.polygon.2010$id, "<br>", "Percent of Households <br> Living below Poverty: ", round(php.df.polygon.2010$percent,2)) # Popup 
+php.pal.2010 <- colorNumeric(
+  palette = "Reds",
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2010 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2010, 
+              fillColor = ~php.pal.2010(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2010) %>%
+  addLegend(pal = php.pal.2010, 
+            values = php.df.polygon.2010$percent, 
+            position = "bottomright", 
+            title = "Percent of Households <br> Living below Poverty <br> (Census, 2010)",
+            labFormat = labelFormat(suffix = "%"))
+php.poverty.map.2010
+
+
+
+
+# Poverty Level by HouseHold (percent) 2011 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2011 <- read.csv("filepath/ACS_11_5YR_S1702_Poverty_Household.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2011 <- select(poverty.hol.percent.2011, GEO.id2, GEO.display.label, HC02_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2011 <- mutate(poverty.hol.percent.2011, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+php.ggtract.2011 <- fortify(tract, region = "GEOID")
+php.ggtract.2011 <- left_join(php.ggtract.2011, poverty.hol.percent.2011, by = c("id")) # join tabular data
+php.ggtract.2011 <- php.ggtract.2011[grep("Arlington County", php.ggtract.2011$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2011 <- distinct(php.ggtract.2011, id, percent)# tract identification
+php.tractname.2011 <- php.tracts.2011$id
+php.polygons.2011 <-lapply(php.tractname.2011, function(x) polyFunc(x, dat=php.ggtract.2011)) 
+php.sp.polygon.2011<-SpatialPolygons(php.polygons.2011)
+php.df.polygon.2011<-SpatialPolygonsDataFrame(php.sp.polygon.2011, 
+                                              data=data.frame(row.names=php.tractname.2011, php.tracts.2011))
+php.df.polygon.2011 <- php.df.polygon.2011[order(php.df.polygon.2011$percent),]
+
+php.popup.2011 <- paste0("GEOID: ", php.df.polygon.2011$id, "<br>", "Percent of Households <br> Living below Poverty: ", round(php.df.polygon.2011$percent,2)) # Popup 
+php.pal.2011 <- colorNumeric(
+  palette = "Reds",
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2011 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2011, 
+              fillColor = ~php.pal.2011(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2011) %>%
+  addLegend(pal = php.pal.2011, 
+            values = php.df.polygon.2011$percent, 
+            position = "bottomright", 
+            title = "Percent of Households <br> Living below Poverty <br> (Census, 2011)",
+            labFormat = labelFormat(suffix = "%"))
+php.poverty.map.2011
+
+
+
+
+# Poverty Level by HouseHold (percent) 2012 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2012 <- read.csv("filepath/ACS_12_5YR_S1702_Poverty_Household.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2012 <- select(poverty.hol.percent.2012, GEO.id2, GEO.display.label, HC02_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2012 <- mutate(poverty.hol.percent.2012, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+php.ggtract.2012 <- fortify(tract, region = "GEOID")
+php.ggtract.2012 <- left_join(php.ggtract.2012, poverty.hol.percent.2012, by = c("id")) # join tabular data
+php.ggtract.2012 <- php.ggtract.2012[grep("Arlington County", php.ggtract.2012$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2012 <- distinct(php.ggtract.2012, id, percent)# tract identification
+php.tractname.2012 <- php.tracts.2012$id
+php.polygons.2012 <-lapply(php.tractname.2012, function(x) polyFunc(x, dat=php.ggtract.2012)) 
+php.sp.polygon.2012<-SpatialPolygons(php.polygons.2012)
+php.df.polygon.2012<-SpatialPolygonsDataFrame(php.sp.polygon.2012, 
+                                              data=data.frame(row.names=php.tractname.2012, php.tracts.2012))
+php.df.polygon.2012 <- php.df.polygon.2012[order(php.df.polygon.2012$percent),]
+
+php.popup.2012 <- paste0("GEOID: ", php.df.polygon.2012$id, "<br>", "Percent of Households <br> Living below Poverty: ", round(php.df.polygon.2012$percent,2)) # Popup 
+php.pal.2012 <- colorNumeric(
+  palette = "Reds",
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2012 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2012, 
+              fillColor = ~php.pal.2012(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2012) %>%
+  addLegend(pal = php.pal.2012, 
+            values = php.df.polygon.2012$percent, 
+            position = "bottomright", 
+            title = "Percent of Households <br> Living below Poverty <br> (Census, 2012)",
+            labFormat = labelFormat(suffix = "%"))
+php.poverty.map.2012
+
+
+
+
+# Poverty Level by HouseHold (percent) 2013 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2013 <- read.csv("filepath/ACS_13_5YR_S1702_Poverty_Household.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2013 <- select(poverty.hol.percent.2013, GEO.id2, GEO.display.label, HC02_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2013 <- mutate(poverty.hol.percent.2013, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+php.ggtract.2013 <- fortify(tract, region = "GEOID")
+php.ggtract.2013 <- left_join(php.ggtract.2013, poverty.hol.percent.2013, by = c("id")) # join tabular data
+php.ggtract.2013 <- php.ggtract.2013[grep("Arlington County", php.ggtract.2013$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2013 <- distinct(php.ggtract.2013, id, percent)# tract identification
+php.tractname.2013 <- php.tracts.2013$id
+php.polygons.2013 <-lapply(php.tractname.2013, function(x) polyFunc(x, dat=php.ggtract.2013)) 
+php.sp.polygon.2013<-SpatialPolygons(php.polygons.2013)
+php.df.polygon.2013<-SpatialPolygonsDataFrame(php.sp.polygon.2013, 
+                                              data=data.frame(row.names=php.tractname.2013, php.tracts.2013))
+php.df.polygon.2013 <- php.df.polygon.2013[order(php.df.polygon.2013$percent),]
+
+php.popup.2013 <- paste0("GEOID: ", php.df.polygon.2013$id, "<br>", "Percent of Households <br> Living below Poverty: ", round(php.df.polygon.2013$percent,2)) # Popup 
+php.pal.2013 <- colorNumeric(
+  palette = "Reds",
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2013 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2013, 
+              fillColor = ~php.pal.2013(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2013) %>%
+  addLegend(pal = php.pal.2013, 
+            values = php.df.polygon.2013$percent, 
+            position = "bottomright", 
+            title = "Percent of Households <br> Living below Poverty <br> (Census, 2013)",
+            labFormat = labelFormat(suffix = "%"))
+php.poverty.map.2013
+
+
+
+
+# Poverty Level by HouseHold (percent) 2014 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2014 <- read.csv("filepath/ACS_14_5YR_S1702_Poverty_Household.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2014 <- select(poverty.hol.percent.2014, GEO.id2, GEO.display.label, HC02_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2014 <- mutate(poverty.hol.percent.2014, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+php.ggtract.2014 <- fortify(tract, region = "GEOID")
+php.ggtract.2014 <- left_join(php.ggtract.2014, poverty.hol.percent.2014, by = c("id")) # join tabular data
+php.ggtract.2014 <- php.ggtract.2014[grep("Arlington County", php.ggtract.2014$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2014 <- distinct(php.ggtract.2014, id, percent)# tract identification
+php.tractname.2014 <- php.tracts.2014$id
+php.polygons.2014 <-lapply(php.tractname.2014, function(x) polyFunc(x, dat=php.ggtract.2014)) 
+php.sp.polygon.2014<-SpatialPolygons(php.polygons.2014)
+php.df.polygon.2014<-SpatialPolygonsDataFrame(php.sp.polygon.2014, 
+                                              data=data.frame(row.names=php.tractname.2014, php.tracts.2014))
+php.df.polygon.2014 <- php.df.polygon.2014[order(php.df.polygon.2014$percent),]
+
+php.popup.2014 <- paste0("GEOID: ", php.df.polygon.2014$id, "<br>", "Percent of Households <br> Living below Poverty: ", round(php.df.polygon.2014$percent,2)) # Popup 
+php.pal.2014 <- colorNumeric(
+  palette = "Reds",
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2014 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2014, 
+              fillColor = ~php.pal.2014(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2014) %>%
+  addLegend(pal = php.pal.2014, 
+            values = php.df.polygon.2014$percent, 
+            position = "bottomright", 
+            title = "Percent of Households <br> Living below Poverty <br> (Census, 2014)",
+            labFormat = labelFormat(suffix = "%"))
+php.poverty.map.2014
+
+
+
+
+# Poverty Level by HouseHold (percent) 2015 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.hol.percent.2015 <- read.csv("filepath/ACS_15_5YR_S1702_Poverty_Household.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.hol.percent.2015 <- select(poverty.hol.percent.2015, GEO.id2, GEO.display.label, HC02_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC02_EST_VC01)
+poverty.hol.percent.2015 <- mutate(poverty.hol.percent.2015, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+php.ggtract.2015 <- fortify(tract, region = "GEOID")
+php.ggtract.2015 <- left_join(php.ggtract.2015, poverty.hol.percent.2015, by = c("id")) # join tabular data
+php.ggtract.2015 <- php.ggtract.2015[grep("Arlington County", php.ggtract.2015$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.2015 <- distinct(php.ggtract.2015, id, percent)# tract identification
+php.tractname.2015 <- php.tracts.2015$id
+php.polygons.2015 <-lapply(php.tractname.2015, function(x) polyFunc(x, dat=php.ggtract.2015)) 
+php.sp.polygon.2015<-SpatialPolygons(php.polygons.2015)
+php.df.polygon.2015<-SpatialPolygonsDataFrame(php.sp.polygon.2015, 
+                                              data=data.frame(row.names=php.tractname.2015, php.tracts.2015))
+php.df.polygon.2015 <- php.df.polygon.2015[order(php.df.polygon.2015$percent),]
+
+php.popup.2015 <- paste0("GEOID: ", php.df.polygon.2015$id, "<br>", "Percent of Households <br> Living below Poverty: ", round(php.df.polygon.2015$percent,2)) # Popup 
+php.pal.2015 <- colorNumeric(
+  palette = "Reds",
+  domain = c(0, 36)
+)
+# Mapping with Leaf
+php.poverty.map.2015 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2015, 
+              fillColor = ~php.pal.2015(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2015) %>%
+  addLegend(pal = php.pal.2015, 
+            values = php.df.polygon.2015$percent, 
+            position = "bottomright", 
+            title = "Percent of Households <br> Living below Poverty <br> (Census, 2015)",
+            labFormat = labelFormat(suffix = "%"))
+php.poverty.map.2015
+
+
+
+
+# Poverty Level by Household (percent) Prediction ----
+php.ggtract.predict <- fortify(tract, region = "GEOID")
+php.ggtract.predict <- left_join(php.ggtract.2015, poverty.hol.percent.2015, by = c("id")) # join tabular data
+php.ggtract.predict <- php.ggtract.2015[grep("Arlington County", php.ggtract.2015$geography),] # Arlington and its nearby counties
+
+php.tracts.predict <- data.frame(read.csv("filepath/ACS_Predict.csv"))
+php.tracts.predict[2] <- NULL
+php.tracts.predict <- within(php.tracts.predict, percent[percent < 0] <- 0)
+
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+php.tracts.predict <- distinct(php.tracts.predict, id, percent)# tract identification
+php.tractname.predict <- php.tracts.predict$id
+php.polygons.predict <-lapply(php.tractname.predict, function(x) polyFunc(x, dat=php.ggtract.predict)) 
+php.sp.polygon.predict<-SpatialPolygons(php.polygons.predict)
+php.df.polygon.predict<-SpatialPolygonsDataFrame(php.sp.polygon.predict, 
+                                                 data=data.frame(row.names=php.tractname.predict, php.tracts.predict))
+php.df.polygon.predict <- php.df.polygon.predict[order(php.df.polygon.predict$percent),]
+
+php.popup.predict <- paste0("GEOID: ", php.df.polygon.predict$id, "<br>", "Percent of Households <br> Living below Poverty: ", round(php.df.polygon.predict$percent,2))
+php.pal.predict <- colorNumeric(
+  palette = "Reds",
+  domain = c(0, 36)
+)
+
+# Mapping with Leaf
+php.poverty.map.predict <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.predict, 
+              fillColor = ~php.pal.predict(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.predict) %>%
+  addLegend(pal = php.pal.2015, 
+            values = php.tracts.predict$percent, 
+            position = "bottomright", 
+            title = "Percent of Households <br> Not Using SNAP <br> (Census, 2015)",
+            labFormat = labelFormat(suffix = "%"))
+php.poverty.map.predict
+
+# Combined Map by Household (percent) 2015 ----
+content <- paste(sep = "<br/>",
+                 "<table>
+                 <tbody>
+                 <tr>
+                 <td><img src='https://d1rn8z435cu2eh.cloudfront.net/img/acg_logo_icon_200_200.png', width='50px'>&nbsp;&nbsp;</img></td>
+                 <td><b><a href='https://departments.arlingtonva.us/dhs'>Arlington DHS</a></b><br>2100 Washington Blvd.<br> Arlington, VA 22204</td>
+                 </tr>
+                 </tbody>
+                 </table>")
+
+php.combine.map.2015 <- 
+  leaflet() %>%
+  addMarkers(-77.083191, 38.873489, popup = content) %>%
+  # PHP 2009 
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2009, 
+              fillColor = ~php.pal.2009(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2009,
+              group = "Poverty-Level Households 2009",
+              highlight = highlightOptions(
+                weight = 3,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %>%
+  # PHP 2010
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2010, 
+              fillColor = ~php.pal.2010(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2010,
+              group = "Poverty-Level Households 2010",
+              highlight = highlightOptions(
+                weight = 3,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %>%
+  # PHP 2011
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2011, 
+              fillColor = ~php.pal.2011(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2011,
+              group = "Poverty-Level Households 2011",
+              highlight = highlightOptions(
+                weight = 3,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %>%
+  # PHP 2012
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2012, 
+              fillColor = ~php.pal.2012(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2012,
+              group = "Poverty-Level Households 2012",
+              highlight = highlightOptions(
+                weight = 3,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %>%
+  # PHP 2013
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2013, 
+              fillColor = ~php.pal.2013(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2013,
+              group = "Poverty-Level Households 2013",
+              highlight = highlightOptions(
+                weight = 3,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %>%
+  # PHP 2014
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2014, 
+              fillColor = ~php.pal.2014(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2014,
+              group = "Poverty-Level Households 2014",
+              highlight = highlightOptions(
+                weight = 3,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %>%
+  # PHP 2015
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.2015, 
+              fillColor = ~php.pal.2015(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.2015,
+              group = "Poverty-Level Households 2015",
+              highlight = highlightOptions(
+                weight = 3,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %>%
+  # PHP Predict
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = php.df.polygon.predict, 
+              fillColor = ~php.pal.predict(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = php.popup.predict,
+              group = "Slope Estimate 2016",
+              highlight = highlightOptions(
+                weight = 3,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE)) %>%
+  # Legend
+  addLegend(pal = php.pal.2009, 
+            values = php.df.polygon.2009$percent, 
+            position = "bottomright", 
+            title = "Percent of Households <br> Living below Poverty <br> (Census)",
+            labFormat = labelFormat(suffix = "%")) %>%
+  # Layer control
+  addLayersControl(
+    baseGroups = c("Poverty-Level Households 2009", "Poverty-Level Households 2010", "Poverty-Level Households 2011",
+                   "Poverty-Level Households 2012", "Poverty-Level Households 2013", "Poverty-Level Households 2014",
+                   "Poverty-Level Households 2015", "Slope Estimate 2016"),
+    position = "topright",
+    options = layersControlOptions(collapsed = FALSE)
+  )
+php.combine.map.2015
+
+
+```
+</p></div>
