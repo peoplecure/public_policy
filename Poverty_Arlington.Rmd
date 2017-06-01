@@ -484,7 +484,7 @@ php.poverty.map.predict <- leaflet() %>%
             labFormat = labelFormat(suffix = "%"))
 php.poverty.map.predict
 
-# Combined Map by Household (percent) 2015 ----
+# Combined Map by Household (percent) 2014 ----
 content <- paste(sep = "<br/>",
                  "<table>
                  <tbody>
@@ -594,38 +594,6 @@ php.combine.map.2015 <-
                 dashArray = "",
                 fillOpacity = 0.7,
                 bringToFront = TRUE)) %>%
-  # PHP 2015
-  addProviderTiles("CartoDB.Positron") %>%
-  addPolygons(data = php.df.polygon.2015, 
-              fillColor = ~php.pal.2015(percent), 
-              color = "#b2aeae", # must use hex colors
-              fillOpacity = 0.7, 
-              weight = 0.3, 
-              smoothFactor = 0.2,
-              popup = php.popup.2015,
-              group = "Poverty-Level Households 2015",
-              highlight = highlightOptions(
-                weight = 3,
-                color = "#666",
-                dashArray = "",
-                fillOpacity = 0.7,
-                bringToFront = TRUE)) %>%
-  # PHP Predict
-  addProviderTiles("CartoDB.Positron") %>%
-  addPolygons(data = php.df.polygon.predict, 
-              fillColor = ~php.pal.predict(percent), 
-              color = "#b2aeae", # must use hex colors
-              fillOpacity = 0.7, 
-              weight = 0.3, 
-              smoothFactor = 0.2,
-              popup = php.popup.predict,
-              group = "Slope Estimate 2016",
-              highlight = highlightOptions(
-                weight = 3,
-                color = "#666",
-                dashArray = "",
-                fillOpacity = 0.7,
-                bringToFront = TRUE)) %>%
   # Legend
   addLegend(pal = php.pal.2009, 
             values = php.df.polygon.2009$percent, 
@@ -635,12 +603,206 @@ php.combine.map.2015 <-
   # Layer control
   addLayersControl(
     baseGroups = c("Poverty-Level Households 2009", "Poverty-Level Households 2010", "Poverty-Level Households 2011",
-                   "Poverty-Level Households 2012", "Poverty-Level Households 2013", "Poverty-Level Households 2014",
-                   "Poverty-Level Households 2015", "Slope Estimate 2016"),
+                   "Poverty-Level Households 2012", "Poverty-Level Households 2013", "Poverty-Level Households 2014"),
     position = "topright",
     options = layersControlOptions(collapsed = FALSE)
   )
 php.combine.map.2015
+
+
+# Poverty Level by Individual (percent) 2012 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.ind.percent.2012 <- read.csv("filepath/ACS_12_5YR_S1701_Poverty_Individual.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.ind.percent.2012 <- select(poverty.ind.percent.2012, GEO.id2, GEO.display.label, HC03_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.ind.percent.2012 <- mutate(poverty.ind.percent.2012, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+pip.ggtract.2012 <- fortify(tract, region = "GEOID")
+pip.ggtract.2012 <- left_join(pip.ggtract.2012, poverty.ind.percent.2012, by = c("id")) # join tabular data
+pip.ggtract.2012 <- pip.ggtract.2012[grep("Arlington County", pip.ggtract.2012$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+pip.tracts.2012 <- distinct(pip.ggtract.2012, id, percent)# tract identification
+pip.tractname.2012 <- pip.tracts.2012$id
+pip.polygons.2012 <-lapply(pip.tractname.2012, function(x) polyFunc(x, dat=pip.ggtract.2012)) 
+pip.sp.polygon.2012<-SpatialPolygons(pip.polygons.2012)
+pip.df.polygon.2012<-SpatialPolygonsDataFrame(pip.sp.polygon.2012, 
+                                              data=data.frame(row.names=pip.tractname.2012, pip.tracts.2012))
+pip.df.polygon.2012 <- pip.df.polygon.2012[order(pip.df.polygon.2012$percent),]
+
+pip.popup.2012 <- paste0("GEOID: ", pip.df.polygon.2012$id, "<br>", "Percent of Individuals <br> Living below Poverty: ", round(pip.df.polygon.2012$percent,2)) # Popup 
+pip.pal.2012 <- colorNumeric(
+  palette = "Reds",
+  domain = pip.df.polygon.2012$percent
+)
+# Mapping with Leaf
+ind.poverty.map.2012 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = pip.df.polygon.2012, 
+              fillColor = ~pip.pal.2012(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = pip.popup.2012) %>%
+  addLegend(pal = pip.pal.2012, 
+            values = pip.df.polygon.2012$percent, 
+            position = "bottomright", 
+            title = "Percent of Individuals <br> Living below Poverty <br> (Census, 2012)",
+            labFormat = labelFormat(suffix = "%"))
+ind.poverty.map.2012
+
+
+
+# Poverty Level by Individual (percent) 2013 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.ind.percent.2013 <- read.csv("filepath/ACS_13_5YR_S1701_Poverty_Individual.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.ind.percent.2013 <- select(poverty.ind.percent.2013, GEO.id2, GEO.display.label, HC03_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.ind.percent.2013 <- mutate(poverty.ind.percent.2013, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+pip.ggtract.2013 <- fortify(tract, region = "GEOID")
+pip.ggtract.2013 <- left_join(pip.ggtract.2013, poverty.ind.percent.2013, by = c("id")) # join tabular data
+pip.ggtract.2013 <- pip.ggtract.2013[grep("Arlington County", pip.ggtract.2013$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+pip.tracts.2013 <- distinct(pip.ggtract.2013, id, percent)# tract identification
+pip.tractname.2013 <- pip.tracts.2013$id
+pip.polygons.2013 <-lapply(pip.tractname.2013, function(x) polyFunc(x, dat=pip.ggtract.2013)) 
+pip.sp.polygon.2013<-SpatialPolygons(pip.polygons.2013)
+pip.df.polygon.2013<-SpatialPolygonsDataFrame(pip.sp.polygon.2013, 
+                                              data=data.frame(row.names=pip.tractname.2013, pip.tracts.2013))
+pip.df.polygon.2013 <- pip.df.polygon.2013[order(pip.df.polygon.2013$percent),]
+
+pip.popup.2013 <- paste0("GEOID: ", pip.df.polygon.2013$id, "<br>", "Percent of Individuals <br> Living below Poverty: ", round(pip.df.polygon.2013$percent,2)) # Popup 
+pip.pal.2013 <- colorNumeric(
+  palette = "Reds",
+  domain = pip.df.polygon.2013$percent
+)
+# Mapping with Leaf
+ind.poverty.map.2013 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = pip.df.polygon.2013, 
+              fillColor = ~pip.pal.2013(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = pip.popup.2013) %>%
+  addLegend(pal = pip.pal.2013, 
+            values = pip.df.polygon.2013$percent, 
+            position = "bottomright", 
+            title = "Percent of Individuals <br> Living below Poverty <br> (Census, 2013)",
+            labFormat = labelFormat(suffix = "%"))
+ind.poverty.map.2013
+
+
+
+# Poverty Level by Individual (percent) 2014 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.ind.percent.2014 <- read.csv("filepath/ACS_14_5YR_S1701_Poverty_Individual.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.ind.percent.2014 <- select(poverty.ind.percent.2014, GEO.id2, GEO.display.label, HC03_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.ind.percent.2014 <- mutate(poverty.ind.percent.2014, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+pip.ggtract.2014 <- fortify(tract, region = "GEOID")
+pip.ggtract.2014 <- left_join(pip.ggtract.2014, poverty.ind.percent.2014, by = c("id")) # join tabular data
+pip.ggtract.2014 <- pip.ggtract.2014[grep("Arlington County", pip.ggtract.2014$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+pip.tracts.2014 <- distinct(pip.ggtract.2014, id, percent)# tract identification
+pip.tractname.2014 <- pip.tracts.2014$id
+pip.polygons.2014 <-lapply(pip.tractname.2014, function(x) polyFunc(x, dat=pip.ggtract.2014)) 
+pip.sp.polygon.2014<-SpatialPolygons(pip.polygons.2014)
+pip.df.polygon.2014<-SpatialPolygonsDataFrame(pip.sp.polygon.2014, 
+                                              data=data.frame(row.names=pip.tractname.2014, pip.tracts.2014))
+pip.df.polygon.2014 <- pip.df.polygon.2014[order(pip.df.polygon.2014$percent),]
+
+pip.popup.2014 <- paste0("GEOID: ", pip.df.polygon.2014$id, "<br>", "Percent of Individuals <br> Living below Poverty: ", round(pip.df.polygon.2014$percent,2)) # Popup 
+pip.pal.2014 <- colorNumeric(
+  palette = "Reds",
+  domain = pip.df.polygon.2014$percent
+)
+# Mapping with Leaf
+ind.poverty.map.2014 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = pip.df.polygon.2014, 
+              fillColor = ~pip.pal.2014(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = pip.popup.2014) %>%
+  addLegend(pal = pip.pal.2014, 
+            values = pip.df.polygon.2014$percent, 
+            position = "bottomright", 
+            title = "Percent of Individuals <br> Living below Poverty <br> (Census, 2014)",
+            labFormat = labelFormat(suffix = "%"))
+ind.poverty.map.2014
+
+
+
+
+# Poverty Level by Individual (percent) 2015 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.ind.percent.2015 <- read.csv("filepath/ACS_15_5YR_S1701_Poverty_Individual.csv", stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.ind.percent.2015 <- select(poverty.ind.percent.2015, GEO.id2, GEO.display.label, HC03_EST_VC01) %>% 
+  slice(-1) %>% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.ind.percent.2015 <- mutate(poverty.ind.percent.2015, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+pip.ggtract.2015 <- fortify(tract, region = "GEOID")
+pip.ggtract.2015 <- left_join(pip.ggtract.2015, poverty.ind.percent.2015, by = c("id")) # join tabular data
+pip.ggtract.2015 <- pip.ggtract.2015[grep("Arlington County", pip.ggtract.2015$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc <- function(groupname, dat){poly<-filter(dat, id==groupname) %>% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+pip.tracts.2015 <- distinct(pip.ggtract.2015, id, percent)# tract identification
+pip.tractname.2015 <- pip.tracts.2015$id
+pip.polygons.2015 <-lapply(pip.tractname.2015, function(x) polyFunc(x, dat=pip.ggtract.2015)) 
+pip.sp.polygon.2015<-SpatialPolygons(pip.polygons.2015)
+pip.df.polygon.2015<-SpatialPolygonsDataFrame(pip.sp.polygon.2015, 
+                                              data=data.frame(row.names=pip.tractname.2015, pip.tracts.2015))
+pip.df.polygon.2015 <- pip.df.polygon.2015[order(pip.df.polygon.2015$percent),]
+
+pip.popup.2015 <- paste0("GEOID: ", pip.df.polygon.2015$id, "<br>", "Percent of Individuals <br> Living below Poverty: ", round(pip.df.polygon.2015$percent,2)) # Popup 
+pip.pal.2015 <- colorNumeric(
+  palette = "Reds",
+  domain = pip.df.polygon.2015$percent
+)
+# Mapping with Leaf
+ind.poverty.map.2015 <- leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(data = pip.df.polygon.2015, 
+              fillColor = ~pip.pal.2015(percent), 
+              color = "#b2aeae", # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = pip.popup.2015) %>%
+  addLegend(pal = pip.pal.2015, 
+            values = pip.df.polygon.2015$percent, 
+            position = "bottomright", 
+            title = "Percent of Individuals <br> Living below Poverty <br> (Census, 2015)",
+            labFormat = labelFormat(suffix = "%"))
+ind.poverty.map.2015
+
 
 
 ```

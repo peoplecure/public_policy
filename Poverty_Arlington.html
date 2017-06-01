@@ -751,7 +751,7 @@ php.poverty.map.predict &lt;- leaflet() %&gt;%
             labFormat = labelFormat(suffix = &quot;%&quot;))
 php.poverty.map.predict
 
-# Combined Map by Household (percent) 2015 ----
+# Combined Map by Household (percent) 2014 ----
 content &lt;- paste(sep = &quot;&lt;br/&gt;&quot;,
                  &quot;&lt;table&gt;
                  &lt;tbody&gt;
@@ -861,38 +861,6 @@ php.combine.map.2015 &lt;-
                 dashArray = &quot;&quot;,
                 fillOpacity = 0.7,
                 bringToFront = TRUE)) %&gt;%
-  # PHP 2015
-  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
-  addPolygons(data = php.df.polygon.2015, 
-              fillColor = ~php.pal.2015(percent), 
-              color = &quot;#b2aeae&quot;, # must use hex colors
-              fillOpacity = 0.7, 
-              weight = 0.3, 
-              smoothFactor = 0.2,
-              popup = php.popup.2015,
-              group = &quot;Poverty-Level Households 2015&quot;,
-              highlight = highlightOptions(
-                weight = 3,
-                color = &quot;#666&quot;,
-                dashArray = &quot;&quot;,
-                fillOpacity = 0.7,
-                bringToFront = TRUE)) %&gt;%
-  # PHP Predict
-  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
-  addPolygons(data = php.df.polygon.predict, 
-              fillColor = ~php.pal.predict(percent), 
-              color = &quot;#b2aeae&quot;, # must use hex colors
-              fillOpacity = 0.7, 
-              weight = 0.3, 
-              smoothFactor = 0.2,
-              popup = php.popup.predict,
-              group = &quot;Slope Estimate 2016&quot;,
-              highlight = highlightOptions(
-                weight = 3,
-                color = &quot;#666&quot;,
-                dashArray = &quot;&quot;,
-                fillOpacity = 0.7,
-                bringToFront = TRUE)) %&gt;%
   # Legend
   addLegend(pal = php.pal.2009, 
             values = php.df.polygon.2009$percent, 
@@ -902,12 +870,205 @@ php.combine.map.2015 &lt;-
   # Layer control
   addLayersControl(
     baseGroups = c(&quot;Poverty-Level Households 2009&quot;, &quot;Poverty-Level Households 2010&quot;, &quot;Poverty-Level Households 2011&quot;,
-                   &quot;Poverty-Level Households 2012&quot;, &quot;Poverty-Level Households 2013&quot;, &quot;Poverty-Level Households 2014&quot;,
-                   &quot;Poverty-Level Households 2015&quot;, &quot;Slope Estimate 2016&quot;),
+                   &quot;Poverty-Level Households 2012&quot;, &quot;Poverty-Level Households 2013&quot;, &quot;Poverty-Level Households 2014&quot;),
     position = &quot;topright&quot;,
     options = layersControlOptions(collapsed = FALSE)
   )
-php.combine.map.2015</code></pre>
+php.combine.map.2015
+
+
+# Poverty Level by Individual (percent) 2012 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.ind.percent.2012 &lt;- read.csv(&quot;filepath/ACS_12_5YR_S1701_Poverty_Individual.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.ind.percent.2012 &lt;- select(poverty.ind.percent.2012, GEO.id2, GEO.display.label, HC03_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.ind.percent.2012 &lt;- mutate(poverty.ind.percent.2012, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+pip.ggtract.2012 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+pip.ggtract.2012 &lt;- left_join(pip.ggtract.2012, poverty.ind.percent.2012, by = c(&quot;id&quot;)) # join tabular data
+pip.ggtract.2012 &lt;- pip.ggtract.2012[grep(&quot;Arlington County&quot;, pip.ggtract.2012$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+pip.tracts.2012 &lt;- distinct(pip.ggtract.2012, id, percent)# tract identification
+pip.tractname.2012 &lt;- pip.tracts.2012$id
+pip.polygons.2012 &lt;-lapply(pip.tractname.2012, function(x) polyFunc(x, dat=pip.ggtract.2012)) 
+pip.sp.polygon.2012&lt;-SpatialPolygons(pip.polygons.2012)
+pip.df.polygon.2012&lt;-SpatialPolygonsDataFrame(pip.sp.polygon.2012, 
+                                              data=data.frame(row.names=pip.tractname.2012, pip.tracts.2012))
+pip.df.polygon.2012 &lt;- pip.df.polygon.2012[order(pip.df.polygon.2012$percent),]
+
+pip.popup.2012 &lt;- paste0(&quot;GEOID: &quot;, pip.df.polygon.2012$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Individuals &lt;br&gt; Living below Poverty: &quot;, round(pip.df.polygon.2012$percent,2)) # Popup 
+pip.pal.2012 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = pip.df.polygon.2012$percent
+)
+# Mapping with Leaf
+ind.poverty.map.2012 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = pip.df.polygon.2012, 
+              fillColor = ~pip.pal.2012(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = pip.popup.2012) %&gt;%
+  addLegend(pal = pip.pal.2012, 
+            values = pip.df.polygon.2012$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Individuals &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2012)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+ind.poverty.map.2012
+
+
+
+# Poverty Level by Individual (percent) 2013 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.ind.percent.2013 &lt;- read.csv(&quot;filepath/ACS_13_5YR_S1701_Poverty_Individual.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.ind.percent.2013 &lt;- select(poverty.ind.percent.2013, GEO.id2, GEO.display.label, HC03_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.ind.percent.2013 &lt;- mutate(poverty.ind.percent.2013, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+pip.ggtract.2013 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+pip.ggtract.2013 &lt;- left_join(pip.ggtract.2013, poverty.ind.percent.2013, by = c(&quot;id&quot;)) # join tabular data
+pip.ggtract.2013 &lt;- pip.ggtract.2013[grep(&quot;Arlington County&quot;, pip.ggtract.2013$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+pip.tracts.2013 &lt;- distinct(pip.ggtract.2013, id, percent)# tract identification
+pip.tractname.2013 &lt;- pip.tracts.2013$id
+pip.polygons.2013 &lt;-lapply(pip.tractname.2013, function(x) polyFunc(x, dat=pip.ggtract.2013)) 
+pip.sp.polygon.2013&lt;-SpatialPolygons(pip.polygons.2013)
+pip.df.polygon.2013&lt;-SpatialPolygonsDataFrame(pip.sp.polygon.2013, 
+                                              data=data.frame(row.names=pip.tractname.2013, pip.tracts.2013))
+pip.df.polygon.2013 &lt;- pip.df.polygon.2013[order(pip.df.polygon.2013$percent),]
+
+pip.popup.2013 &lt;- paste0(&quot;GEOID: &quot;, pip.df.polygon.2013$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Individuals &lt;br&gt; Living below Poverty: &quot;, round(pip.df.polygon.2013$percent,2)) # Popup 
+pip.pal.2013 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = pip.df.polygon.2013$percent
+)
+# Mapping with Leaf
+ind.poverty.map.2013 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = pip.df.polygon.2013, 
+              fillColor = ~pip.pal.2013(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = pip.popup.2013) %&gt;%
+  addLegend(pal = pip.pal.2013, 
+            values = pip.df.polygon.2013$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Individuals &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2013)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+ind.poverty.map.2013
+
+
+
+# Poverty Level by Individual (percent) 2014 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.ind.percent.2014 &lt;- read.csv(&quot;filepath/ACS_14_5YR_S1701_Poverty_Individual.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.ind.percent.2014 &lt;- select(poverty.ind.percent.2014, GEO.id2, GEO.display.label, HC03_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.ind.percent.2014 &lt;- mutate(poverty.ind.percent.2014, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+pip.ggtract.2014 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+pip.ggtract.2014 &lt;- left_join(pip.ggtract.2014, poverty.ind.percent.2014, by = c(&quot;id&quot;)) # join tabular data
+pip.ggtract.2014 &lt;- pip.ggtract.2014[grep(&quot;Arlington County&quot;, pip.ggtract.2014$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+pip.tracts.2014 &lt;- distinct(pip.ggtract.2014, id, percent)# tract identification
+pip.tractname.2014 &lt;- pip.tracts.2014$id
+pip.polygons.2014 &lt;-lapply(pip.tractname.2014, function(x) polyFunc(x, dat=pip.ggtract.2014)) 
+pip.sp.polygon.2014&lt;-SpatialPolygons(pip.polygons.2014)
+pip.df.polygon.2014&lt;-SpatialPolygonsDataFrame(pip.sp.polygon.2014, 
+                                              data=data.frame(row.names=pip.tractname.2014, pip.tracts.2014))
+pip.df.polygon.2014 &lt;- pip.df.polygon.2014[order(pip.df.polygon.2014$percent),]
+
+pip.popup.2014 &lt;- paste0(&quot;GEOID: &quot;, pip.df.polygon.2014$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Individuals &lt;br&gt; Living below Poverty: &quot;, round(pip.df.polygon.2014$percent,2)) # Popup 
+pip.pal.2014 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = pip.df.polygon.2014$percent
+)
+# Mapping with Leaf
+ind.poverty.map.2014 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = pip.df.polygon.2014, 
+              fillColor = ~pip.pal.2014(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = pip.popup.2014) %&gt;%
+  addLegend(pal = pip.pal.2014, 
+            values = pip.df.polygon.2014$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Individuals &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2014)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+ind.poverty.map.2014
+
+
+
+
+# Poverty Level by Individual (percent) 2015 ----
+# Boundary OGR data source with driver: ESRI Shapefile 
+poverty.ind.percent.2015 &lt;- read.csv(&quot;filepath/ACS_15_5YR_S1701_Poverty_Individual.csv&quot;, stringsAsFactors = FALSE) # Reading data and creating a readable table
+poverty.ind.percent.2015 &lt;- select(poverty.ind.percent.2015, GEO.id2, GEO.display.label, HC03_EST_VC01) %&gt;% 
+  slice(-1) %&gt;% # census has this extra descriptive record
+  rename(id=GEO.id2, geography=GEO.display.label, percent=HC03_EST_VC01)
+poverty.ind.percent.2015 &lt;- mutate(poverty.ind.percent.2015, id = as.character(id),
+                                   geography = as.character(geography),
+                                   percent = as.numeric(percent))# Assign name for the read data
+# convert polygons to data.frame
+
+pip.ggtract.2015 &lt;- fortify(tract, region = &quot;GEOID&quot;)
+pip.ggtract.2015 &lt;- left_join(pip.ggtract.2015, poverty.ind.percent.2015, by = c(&quot;id&quot;)) # join tabular data
+pip.ggtract.2015 &lt;- pip.ggtract.2015[grep(&quot;Arlington County&quot;, pip.ggtract.2015$geography),] # Arlington and its nearby counties
+# Leaflet my love
+polyFunc &lt;- function(groupname, dat){poly&lt;-filter(dat, id==groupname) %&gt;% select(long, lat) 
+return(Polygons(list(Polygon(poly)), groupname))}
+pip.tracts.2015 &lt;- distinct(pip.ggtract.2015, id, percent)# tract identification
+pip.tractname.2015 &lt;- pip.tracts.2015$id
+pip.polygons.2015 &lt;-lapply(pip.tractname.2015, function(x) polyFunc(x, dat=pip.ggtract.2015)) 
+pip.sp.polygon.2015&lt;-SpatialPolygons(pip.polygons.2015)
+pip.df.polygon.2015&lt;-SpatialPolygonsDataFrame(pip.sp.polygon.2015, 
+                                              data=data.frame(row.names=pip.tractname.2015, pip.tracts.2015))
+pip.df.polygon.2015 &lt;- pip.df.polygon.2015[order(pip.df.polygon.2015$percent),]
+
+pip.popup.2015 &lt;- paste0(&quot;GEOID: &quot;, pip.df.polygon.2015$id, &quot;&lt;br&gt;&quot;, &quot;Percent of Individuals &lt;br&gt; Living below Poverty: &quot;, round(pip.df.polygon.2015$percent,2)) # Popup 
+pip.pal.2015 &lt;- colorNumeric(
+  palette = &quot;Reds&quot;,
+  domain = pip.df.polygon.2015$percent
+)
+# Mapping with Leaf
+ind.poverty.map.2015 &lt;- leaflet() %&gt;%
+  addProviderTiles(&quot;CartoDB.Positron&quot;) %&gt;%
+  addPolygons(data = pip.df.polygon.2015, 
+              fillColor = ~pip.pal.2015(percent), 
+              color = &quot;#b2aeae&quot;, # must use hex colors
+              fillOpacity = 0.7, 
+              weight = 0.3, 
+              smoothFactor = 0.2,
+              popup = pip.popup.2015) %&gt;%
+  addLegend(pal = pip.pal.2015, 
+            values = pip.df.polygon.2015$percent, 
+            position = &quot;bottomright&quot;, 
+            title = &quot;Percent of Individuals &lt;br&gt; Living below Poverty &lt;br&gt; (Census, 2015)&quot;,
+            labFormat = labelFormat(suffix = &quot;%&quot;))
+ind.poverty.map.2015</code></pre>
 </p>
 </div>
 
