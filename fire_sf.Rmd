@@ -65,7 +65,7 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 
 <div class="newspaper1">
 <p style="text-align: justify;">
-**Keywords**: R, Simulation, Linear Regression, OLS, Ambulance, Fire, Healthcare, MPH, MPA, MPM, MPP.</p></div><br><br><br>
+*Keywords: R, Simulation, Linear Regression, OLS, Ambulance, Fire, Healthcare, MPH, MPA, MPM, MPP.*    <br><br>    **Special thanks** to Captain Stakes for giving me the opportunity to present this report. My ultimate goal is creating a model that predicts fire occurrences before they happen. It is a big ambition that sounds outright impossible, but who knows? Research breakthroughs are not confined inside labs, and I wish that a revolutionary finding will arise at the Bethesda Chevy-Chase Rescue Squad. </p></div><br><br><br>
 
 <hr><br><br>
 
