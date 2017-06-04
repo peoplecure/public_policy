@@ -269,7 +269,7 @@ $(document).ready(function () {
 
 <head>
 <style>
-hr { 
+.hr hr { 
     display: block;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -277,7 +277,7 @@ hr {
     margin-right: auto;
     border-style: inset;
     border-width: 1px;
-    width: 60%;
+    max-width: 800px
 }
 .abstract {
     -webkit-column-count: 1; /* Chrome, Safari, Opera */
@@ -309,6 +309,23 @@ hr {
     max-width: 600px;
     height: 50%
 }
+.code1 { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 600px;
+}
+.code2 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
 <link rel="stylesheet" href="css/animate.css">
 <script src="js/wow.min.js"> </script>
 <script> new WOW().init(); </script>
@@ -319,10 +336,12 @@ hr {
 </script>
 </head>
 <body>
-<p><br><br><br><br></p>
-<hr>
-<p><br><br></p>
+<br><br><br><br>
 <center>
+<div class="hr">
+<hr />
+</div>
+<br><br>
 <h3>
 <p>Injury Prediction Model for Non-Medical Responses<br><br></p>
 <h4>
@@ -338,19 +357,40 @@ A B S T R A C T : Using open data sourced by the City of San Francisco, we have 
 </p>
 </div>
 <p><br><br><br></p>
-<hr>
-<p><br><br></p>
+<div class="hr">
+<hr />
+</div>
+<p><br><br><br></p>
 <body>
-<center>
 <div class="wow fadeIn animated">
 <h4>
 <div class="newspaper1">
 <p style="text-align: justify;">
-<strong>Introduction</strong> <br><br>When you hear me say, “higher number of first responders did not lower injury rate in non-medical responses,” a question may come to mind — why would you predict the probability of injury by looking at the number of first responders? This is a fair question to have. After all, injuries occur before ambulances arrive. I began examining the effect of first responders on injury rate because nearly 99% of non-medical ambulance deployments in the City of San Francisco do not result in fatality or injury. That said, I think it is fair to ask whether increasing the number of first responders can reduce the injury rate. If not, can the city spend those millions of dollars more efficiently? <br><br> Now that you understand why I am examining the effect of first responders on injury rate, let’s briefly talk about what happens in emergencies. We know that most injuries occur before first responders respond to 9-1-1 calls. If there is one patient, then any number of first responders should not make a difference because there is going to be one patient, no matter how many people respond to the emergency call. Take the following hypothetical scenarios for example:
+<strong>Introduction</strong>: When you hear me say, “higher number of first responders did not lower injury rate in non-medical responses,” a question may come to mind — why would you predict the probability of injury by looking at the number of first responders? This is a reasonable question. After all, injuries occur before ambulances arrive. I began examining the effect of first responders on injury rate because over 99.5% of non-medical ambulance deployments in the City of San Francisco do not result in fatality or injury. I think it is fair to ask whether increasing the number of first responders can reduce the injury rate. If not, can the city spend those millions of dollars more efficiently?
+</p>
+<div>
+
+</div>
+<br><br><br>
+</center>
+<h4>
+<div class="code1">
+<p style="text-align: left;">
+<pre class="r"><code>library(highcharter)
+hciconarray(c(&quot;No Injury&quot;, &quot;Injury&quot;), c(1000, 4), icons = &quot;truck&quot;, backgroundCOlor = &quot;f2f2f2&quot;, size = &quot;2&quot;) </code></pre>
 </p>
 </div>
+<center>
+<p><br> <iframe width="100%" height="600" src="attach/fire_sf/ambulance_injury_ratio.html" frameBorder="0"></iframe> <br><br><br></p>
+<div class="wow fadeIn animated">
+<h4>
+<div class="newspaper1">
+<p style="text-align: justify;">
+Now that you understand why I am examining the effect of first responders on injury rate, let’s briefly talk about what happens in emergencies. We know that most injuries occur before first responders respond to 9-1-1 calls. If there is one patient, then any number of first responders should not make a difference because there is going to be one patient, no matter how many people respond to the emergency call. Take the following hypothetical scenarios for example:
+</p>
+</div>
+</div>
 <p><br><br></p>
-<p style="text-align: center;">
 <strong>Scenario 1</strong>: 1 patient, 1 Truck, 3 EMS personnel respond. <br> <br>
 <div style="width:200px">
 <div class="wow lightSpeedIn animated" data-wow-delay="1s">
@@ -380,10 +420,7 @@ Let’s assume that both patients suffer from the same injury. And then, let me 
 </iframe>
 <pre><code>You can embed the map by copying and pasting this code in your HTML script:
 &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;http://americanpolicy.me/attach/Untitled.html&quot;&gt;&lt;/iframe&gt;</code></pre>
-<br>
-<center>
-Above map shows every ambulance response made to non-medical emergencies (2003-2015).
-</center>
+<p><br> Above map shows every ambulance response made to non-medical emergencies (2003-2015).</p>
 <p><br> <br> <br> <br> <br></p>
 <div class="wow fadeIn animated">
 <h4>
