@@ -67,11 +67,11 @@
 </script>
 </head>
 
-<iframe width="100%" height="460" src="attach/SNAP_map.html" frameBorder="0" scrolling="no"></iframe>
+<iframe width="100%" height="460" src="attach/SNAP_Arlington/SNAP_map.html" frameBorder="0" scrolling="no"></iframe>
 <center>
 ```
 You can share the map by copying and pasting this code in your HTML script:
-<iframe width="100%" height="460" src="http://americanpolicy.me/attach/SNAP_map.html"></iframe>
+<iframe width="100%" height="460" src="http://americanpolicy.me/attach/SNAP_Arlington/SNAP_map.html"></iframe>
 ```
 </center><br><br><br>
 
@@ -204,10 +204,10 @@ comp <- comp %>%
 comp
 ```
 </p></div><center>
-<iframe width="100%" height="550" src="attach/SNAP_progression_comparison.html" frameBorder="0"></iframe>
+<iframe width="100%" height="550" src="attach/SNAP_Arlington/SNAP_progression_comparison.html" frameBorder="0"></iframe>
 ```
 You can share the chart by copying and pasting this code in your HTML script:
-<iframe width="100%" height="550" src="http://americanpolicy.me/attach/SNAP_progression_comparison.html"></iframe>
+<iframe width="100%" height="550" src="http://americanpolicy.me/attach/SNAP_Arlington/SNAP_progression_comparison.html"></iframe>
 ```
 <h5><p style="text-align: center;">
 Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p><br><br><br>
@@ -229,10 +229,10 @@ Recipients by Percent (Census method) | 3.6%   | 4.3%   | N.A.
 <p style="text-align: justify;">
 As you can see, when we juxtapose the two reports together in the form of *number vs. percent*, we learn that the declining trend observed in the number of recipients is not quite right. In actuality, the opposite is correct — the rate of SNAP participation increased.   <br><br>    It may seem like I am nit-picking something trivial for no special reason, but this observation is worth pointing it out. If you take a look at the [Arlington County's SNAP Performance Report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf), the program purpose says "Increase SNAP participation **rate** and amount of SNAP benefits issued to eligible Arlington County residents." Well, I can see how the *amount* of SNAP benefits have decreased in the form of dollar quantity, but the SNAP benefit rate did not fall.   <br><br>  However, it is too early to make any conclusion just yet. So, enough with my hysteria. I am now interested in knowing why the SNAP participation rate in Arlington County is significantly lower than the rest of the country. Let's take a look at the economic changes of Arlington County. </p></div><br><br><br>
 
-<iframe width="100%" height="450" src="attach/Poverty_map_timeline.html" frameBorder="0"></iframe>
+<iframe width="100%" height="450" src="attach/SNAP_Arlington/Poverty_map_timeline.html" frameBorder="0"></iframe>
 ```
 You can share the map by copying and pasting this code in your HTML script:
-<iframe width="100%" height="450" src="http://americanpolicy.me/attach/Poverty_map_timeline.html"></iframe>
+<iframe width="100%" height="450" src="http://americanpolicy.me/attach/SNAP_Arlington/Poverty_map_timeline.html"></iframe>
 ```
 <h5><p style="text-align: center;">
 Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p><br><br><br>
@@ -276,10 +276,10 @@ line.plot.arlington <- highchart() %>%
 line.plot.arlington
 ```
 </p></div><center>
-<iframe width="100%" height="450" src="attach/snap_vs_poverty.html" frameBorder="0"></iframe>
+<iframe width="100%" height="450" src="attach/SNAP_Arlington/snap_vs_poverty.html" frameBorder="0"></iframe>
 ```
 You can share the chart by copying and pasting this code in your HTML script:
-<iframe width="100%" height="450" src="http://americanpolicy.me/attach/snap_vs_poverty.html"></iframe>
+<iframe width="100%" height="450" src="http://americanpolicy.me/attach/SNAP_Arlington/snap_vs_poverty.html"></iframe>
 ```
 <h5><div class="newspaper1">
 <p style="text-align: center;">
@@ -290,7 +290,7 @@ Data Source: Census, 2017  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 <p style="text-align: justify;">
 The line plots represent the poverty rate, and barplots illustrate the SNAP participation rate. The blues, greens, and grays represent Arlington County, State of Virginia, and the United States, respectively. Notice that the differences between Arlington poverty and Arlington SNAP participation are wider than those observed in Virginia and the country. The year 2015 was an exception because the Arlington County's poverty level dramatically declined during that year.    <br><br>    For the administrators at the Economic Independence Division, this is good news. Economically speaking, Arlington County is performing better than the rest of the country. Additionally, after analyzing the poverty and SNAP data using a plot graph, the program purpose found in the [SNAP Performance Report](https://arlingtonva.s3.dualstack.us-east-1.amazonaws.com/wp-content/uploads/sites/6/2017/01/EID-SNAP-FY-2016-PMP.pdf) coherently and accurately aligns itself to the need of increasing SNAP participation rate.   <br><br>  Finally, let's get to the interactive map shown as the header of this blog post.</p></div><br><br><br>
 
-<iframe width="100%" height="460" src="attach/SNAP_map.html" frameBorder="0" scrolling="no"></iframe><br><br><br>
+<iframe width="100%" height="460" src="attach/SNAP_Arlington/SNAP_map.html" frameBorder="0" scrolling="no"></iframe><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
