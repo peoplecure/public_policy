@@ -344,6 +344,33 @@ $(document).ready(function () {
 <p><br><br></p>
 <div class="code1">
 <p style="text-align: justify;">
+<pre class="r"><code># This map was created using the plotly demo
+library(plotly)
+line &lt;- list(color = toRGB(&quot;grey&quot;), width = 0.4)
+
+geo &lt;- list(
+  showframe = FALSE,
+  showcoastlines = FALSE,
+  projection = list(type = &#39;Mercator&#39;),
+  landcolor = toRGB(&quot;white&quot;),
+  bgcolor = &quot;#ffffff&quot;
+)
+
+map &lt;- plot_geo(dat1, color = &quot;#CCD2D4&quot;) %&gt;%
+  add_trace(
+    z = ~ul_safety_index, 
+    color = ~ul_safety_index, 
+    colors = c(&quot;#F5A064&quot;, &quot;#B70030&quot;, &quot;#610039&quot;),
+    text = ~country, 
+    locations = ~CODE, 
+    marker = list(line = line)
+  ) %&gt;%
+  colorbar(title = &#39;Safety Score&#39;, ticksuffix = &#39;%&#39;) %&gt;%
+  layout(
+    title = &#39;Global Safety Index&lt;br&gt;Source:&lt;a href=&quot;http://www.ulsafetyindex.org/app/#view/map&quot;&gt;Underwriters Laboratories&lt;/a&gt;&#39;,
+    geo = geo
+  )
+map</code></pre>
 </p>
 </div>
 
