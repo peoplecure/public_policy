@@ -67,7 +67,7 @@
 </script>
 </head>
 
-<iframe width="100%" height="800px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="no"></iframe>
+<iframe width="100%" height="750px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="no"></iframe>
 <br><br>
 
 <div class="code1">
