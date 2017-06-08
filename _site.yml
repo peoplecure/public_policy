@@ -13,6 +13,8 @@ navbar:
       menu:
         - text: "Fire - San Francisco"
           href: fire_sf.html
+        - text: "UL Global Safety Index"
+          href: ul_global_safety_index.html
     - text: "Social Services"
       menu:
         - text: "SNAP (Food Stamps)"
