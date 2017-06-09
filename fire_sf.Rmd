@@ -178,8 +178,12 @@ In non-medical fire calls, no one is expected to get hurt, so sending more first
 <br><br>Frankly speaking, I do not know exactly how much would be spent in ambulatory services. In fact, according to the 2007 Ambulance Provider’s Cost report written by the Government Accountability Office, an investigative body of the Congress, “costs of ground ambulance services were highly variable across providers … reflecting differences in certain provider and community characteristics. Costs per transport among these providers varied from $99 per transport to $1,218.” 
 <br><br>Although ambulatory services are subsidized by a wide degree margin, we find the estimation reasonable because there is no established price tag on how much ambulance services should cost in the United States (Hatley, 2007). Since geographical characteristics, weather environment, and fuel prices vary by region, ambulatory budget should vary across every rescue station, and it would be silly to set a one-size fits all price tag at a national level. 
 <br><br>That said, let’s think about this for a second. Why had those EMS personnel responded to the non-medical fires incidents? I am not suggesting that there can never be a situation where EMS personnel should respond to a non-medical emergency. There probably were valid reasons as to why the EMS personnel responded to thousands of fire incidents that involved no injury. Borrowing the words of Deputy-Chief Reskin, a firefighting veteran with 28 years of experience, “every rescue station has a different protocol and costs involved in emergency response, and every station has their own unique procedures that accommodates to the characteristics of their communities.” This is true, no two station can be the same. A rescue station that specializes in helicopter extraction will have different protocols and expenses compared to those that do not possess a helicopter. Additionally, a protocol may involve preventative measures as well. According to Captain Stakes, the Friday night crew officer, “protocols may mandate ambulance trucks to deploy with firetrucks even when no injury is reported on a call. It is a safety procedure that prevents possible injury.”
-</p></div>
-<br><br>
+</p></div><br><br>
+
+<h3><div class="newspaper1">
+<p style="text-align: justify;">
+The purpose of this study is not about denigrating the hardworking first responders serving the City of San Francisco. As a matter of fact, I thank them for sharing their valuable data through the open source outlet. I want to show my appreciation by looking for possible areas of improvement so that we can make better use of public funding.
+</p></div><br><br>
 
 <div class="wow fadeIn animated">
 <h4><div class="newspaper2">
