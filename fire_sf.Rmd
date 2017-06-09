@@ -199,7 +199,13 @@ Taking the pearls of wisdom to mind, I instructed my computer to calculate EMS p
 <br><br>Still, I ask, “could there be a better way of using the money?” Maybe. But, I can’t say that it is not going to hurt trying since the risk is potential injury, and the cost of reducing that is 99.9945%
 <br><br>As a new volunteer member at the Rescue 1 station, I can comfortably say that there are more things I do not know about emergency rescue than what I do know. 
 <br><br>So, the purpose of this study is not about denigrating the hardworking first responders serving the City of San Francisco. As a matter of fact, I thank them for sharing their valuable data through the open source outlet. I want to show my appreciation by looking for possible areas of improvement so that we can make better use of public funding.
-</p></div>
+</p></div><br><br>
+
+<h3><div class="newspaper1">
+<p style="text-align: justify;">
+Now that I have explained my intentions for this study, let's get to the analysis:
+</p></div><br><br>
+
 </body>
 <br>
 <br>
