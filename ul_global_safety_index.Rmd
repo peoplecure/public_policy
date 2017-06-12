@@ -74,31 +74,23 @@
 <p style="text-align: left;">
 ```{r, eval = FALSE}
 # This map was created using the plotly demo
-library(plotly)
-line <- list(color = toRGB("grey"), width = 0.4)
+library(googleVis)
+library(pwt8)
 
-geo <- list(
-  showframe = FALSE,
-  showcoastlines = FALSE,
-  projection = list(type = 'Mercator'),
-  landcolor = toRGB("white"),
-  bgcolor = "#ffffff"
-)
+ul_colors = list(colors="['#F5A064', '#B70030', '#610039']")
+Geo.map <- gvisGeoChart(ul_dataset, 
+                        locationvar = "country", 
+                        colorvar = "ul_safety_index", 
+                        options = list(width = "100%", height = 600,
+                                     colors = ul_colors))
 
-map <- plot_geo(dat1, color = "#CCD2D4") %>%
-  add_trace(
-    z = ~ul_safety_index, 
-    color = ~ul_safety_index, 
-    colors = c("#F5A064", "#B70030", "#610039"),
-    text = ~country, 
-    locations = ~CODE, 
-    marker = list(line = line)
-  ) %>%
-  colorbar(title = 'Safety Score', ticksuffix = '%') %>%
-  layout(
-    title = 'Global Safety Index<br>Source:<a href="http://www.ulsafetyindex.org/app/#view/map">Underwriters Laboratories</a>',
-    geo = geo
-  )
-map
+ul_table <- gvisTable(ul_dataset,
+                      options=list(width = 350, height = 600))
+
+ul_index_map <- gvisMerge(Geo.map, ul_table, horizontal=TRUE,
+                          tableOptions = 20) 
+plot(ul_index_map)
+ul_index_map$html$chart
+cat(ul_index_map$html$chart, file="tmp.html")
 ```
 </p></div>
