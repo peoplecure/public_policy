@@ -1,12 +1,12 @@
 <!-- GeoChart generated in R 3.3.1 by googleVis 0.6.2 package -->
-<!-- Mon Jun 12 13:30:56 2017 -->
+<!-- Mon Jun 12 13:32:41 2017 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID5ba9716b7986 () {
+function gvisDataGeoChartID5ba9211757ce () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -359,11 +359,11 @@ var datajson =
 49.30028498
 ],
 [
-"Korea, South",
+"South Korea",
 89.22584495
 ],
 [
-"Korea, North",
+"North Korea",
 28.58724332
 ],
 [
@@ -743,7 +743,7 @@ return(data);
 
 
 // jsData 
-function gvisDataTableID5ba946f78696 () {
+function gvisDataTableID5ba9385a65b () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -1096,11 +1096,11 @@ var datajson =
 49.30028498
 ],
 [
-"Korea, South",
+"South Korea",
 89.22584495
 ],
 [
-"Korea, North",
+"North Korea",
 28.58724332
 ],
 [
@@ -1479,15 +1479,15 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID5ba9716b7986() {
-var data = gvisDataGeoChartID5ba9716b7986();
+function drawChartGeoChartID5ba9211757ce() {
+var data = gvisDataGeoChartID5ba9211757ce();
 var options = {};
 options["height"] = 600;
 options["colors"] = ['#F5A064', '#B70030', '#610039'];
 
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID5ba9716b7986')
+    document.getElementById('GeoChartID5ba9211757ce')
     );
     chart.draw(data,options);
     
@@ -1497,15 +1497,15 @@ options["colors"] = ['#F5A064', '#B70030', '#610039'];
 
 
 // jsDrawChart
-function drawChartTableID5ba946f78696() {
-var data = gvisDataTableID5ba946f78696();
+function drawChartTableID5ba9385a65b() {
+var data = gvisDataTableID5ba9385a65b();
 var options = {};
 options["allowHtml"] = true;
-options["height"] = 150;
+options["height"] = 600;
 
 
     var chart = new google.visualization.Table(
-    document.getElementById('TableID5ba946f78696')
+    document.getElementById('TableID5ba9385a65b')
     );
     chart.draw(data,options);
     
@@ -1529,9 +1529,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID5ba9716b7986);
+callbacks.push(drawChartGeoChartID5ba9211757ce);
 })();
-function displayChartGeoChartID5ba9716b7986() {
+function displayChartGeoChartID5ba9211757ce() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1568,9 +1568,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartTableID5ba946f78696);
+callbacks.push(drawChartTableID5ba9385a65b);
 })();
-function displayChartTableID5ba946f78696() {
+function displayChartTableID5ba9385a65b() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1594,11 +1594,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID5ba9716b7986"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID5ba9211757ce"></script>
 
 
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID5ba946f78696"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID5ba9385a65b"></script>
  
 <table border="0">
 <tr>
@@ -1606,19 +1606,17 @@ callbacks.shift()();
 
 <!-- divChart -->
   
-<div id="GeoChartID5ba9716b7986" 
+<div id="GeoChartID5ba9211757ce" 
   style="width: 100%; height: 600;">
 </div>
 
 </td>
-</tr>
-<tr>
 <td>
 
 <!-- divChart -->
   
-<div id="TableID5ba946f78696" 
-  style="width: 100%; height: 150;">
+<div id="TableID5ba9385a65b" 
+  style="width: 100%; height: 600;">
 </div>
 
 </td>
