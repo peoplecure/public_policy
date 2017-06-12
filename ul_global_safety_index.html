@@ -342,10 +342,11 @@ $(document).ready(function () {
 </script>
 </head>
 <center>
+<br><br><br>
 <h3>
 UL Safety Index <br>
 <h5>
-Some countries may be missing due to technical error <br><br> <iframe width="100%" height="600px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="no"></iframe>
+Some countries may be missing due to technical difficulties <br><br> <iframe width="100%" height="600px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="no"></iframe>
 </center>
 <p><br><br></p>
 <div class="code1">
@@ -361,14 +362,15 @@ Geo.map &lt;- gvisGeoChart(ul_dataset,
                         options = list(width = &quot;100%&quot;, height = 600,
                                      colors = ul_colors))
 
-ul_table &lt;- gvisTable(ul_dataset,
-                      options=list(width = 350, height = 600))
 
-ul_index_map &lt;- gvisMerge(Geo.map, ul_table, horizontal=TRUE,
-                          tableOptions = 20) 
-plot(ul_index_map)
+ul_table &lt;- gvisTable(ul_dataset,
+                      options=list(width = &quot;100%&quot;, height = 600))
+
+ul_index_map &lt;- gvisMerge(ul_table, Geo.map, horizontal = TRUE) 
+
 ul_index_map$html$chart
-cat(ul_index_map$html$chart, file=&quot;tmp.html&quot;)</code></pre>
+setwd(&quot;/Users/Jimbook/Google Drive/Documents/Code for DC/public_policy/attach/UL&quot;)
+cat(ul_index_map$html$chart, file=&quot;ul_safety_index_map.html&quot;)</code></pre>
 </p>
 </div>
 
