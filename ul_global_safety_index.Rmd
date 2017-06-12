@@ -68,6 +68,8 @@
 </head>
 
 <center>
+<h3> UL Safety Index <br>
+<h5> Some countries may be missing due to technical difficulties <br><br>
 <iframe width="100%" height="600px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="no"></iframe></center>
 <br><br>
 
