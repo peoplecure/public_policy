@@ -15,8 +15,8 @@ navbar:
           href: fire_sf.html
         - text: "EMS in the U.S."
           href: EMS_in_US.html
-        - text: "UL Global Safety Index"
-          href: ul_global_safety_index.html
+        - text: "Global Safety Index"
+          href: global_safety_index.html
     - text: "Social Services"
       menu:
         - text: "SNAP (Food Stamps)"
@@ -33,7 +33,7 @@ navbar:
         - text: "Intro to Economics"
           href: world_sample.html
         - text: "Arlington Poverty Timeline"
-          href: Poverty_Arlington.html
+          href: poverty_Arlington.html
     - text: "Author"
       href: about.html
 

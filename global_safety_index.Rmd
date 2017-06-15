@@ -67,14 +67,16 @@
 </script>
 </head>
 
+
+
 <center><br><br><br>
 <h3> UL Safety Index <br>
 <h5> Some countries may be missing due to technical difficulties <br><br>
-<iframe width="100%" height="600px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="no"></iframe></center>
+<iframe width="60%" height="600px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="no"></iframe></center>
 <br><br>
 
-<div class="code1">
-<p style="text-align: left;">
+<div class = "code1">
+<p style = "text-align: left;">
 ```{r, eval = FALSE}
 # This map was created using the plotly demo
 library(googleVis)
@@ -98,4 +100,10 @@ setwd("/Users/Jimbook/Google Drive/Documents/Code for DC/public_policy/attach/UL
 cat(ul_index_map$html$chart, file="ul_safety_index_map.html")
 
 ```
-</p></div>
+</p></div><br><br>
+
+<center>
+<div class = "newspaper1">
+<p style = "text-align: justify;">
+<h4> Today, I will be analyzing the global safety index created by the scientists at the Underwriters Laboratories ([click here](http://www.ulsafetyindex.org/app/#view/map) for the data). The Underwriters Laboratories Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources, each driver measured by sixteen indicators. <br><br><br> </p></div>
+
