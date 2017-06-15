@@ -74,7 +74,7 @@
 <h5> Data & Algorhithm Source: Underwriters Laboratories <br><br><br>
 <h4> <div class="newspaper1">
 <p style="text-align: justify;">
-Today, I will be analyzing the Global Safety Index created by the scientists at the Underwriters Laboratories ([download data](http://www.ulsafetyindex.org/app/#view/map)). The idea of assigning a score for safety is truly fascinating. In the world of public health and emergency services, there had been no attempt at measuring public safety using scientific measures. <br><br> Before I begin, I would like to apologize to anyone who is affiliated with South Sudan, Kyrgyzstan, Western Sahara, Frenh Guiana, Democratic Republic of the Congo, Republic of the Congo, Cote I'viotre, Myanmar, and Korea. For some odd reason, these countries may be missing on the global map. Looking at how [other folks](http://www.fabioveronesi.net/Blog/Map.html) have presented the same problem, this technical difficulty may be inherent in the googleVis package that I am using. Nevertheless, I apologize for the missing values in your countries. </p></div><br><br><br>
+Today, I will be analyzing the Global Safety Index created by the scientists at the Underwriters Laboratories ([download data](http://www.ulsafetyindex.org/app/#view/map)). The idea of assigning a score for safety is truly fascinating. In the world of public health and emergency services, there had been no attempt at measuring public safety using scientific measures. Perhaps you can find internet blogs or popular media sites ranking countries by their safety level, but the UL Safety Index is unique in that it quantifies a broad range of metrics related to — well, safety. <br><br> Before I begin, I would like to apologize to anyone who is affiliated with South Sudan, Kyrgyzstan, Western Sahara, Frenh Guiana, Democratic Republic of the Congo, Republic of the Congo, Cote I'viotre, Myanmar, and Korea. For some odd reason, these countries may be missing on the global map. Looking at how [other folks](http://www.fabioveronesi.net/Blog/Map.html) have presented the same problem, this technical difficulty may be inherent in the googleVis package that I am using. Nevertheless, I apologize for the missing values in your countries. </p></div><br><br><br>
 <iframe width="80%" height="580px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="yes"></iframe><br></center>
 
 <div class = "code1">
@@ -106,7 +106,7 @@ cat(ul_index_map$html$chart, file="ul_safety_index_map.html")
 <center>
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-The Underwriters Laboratories Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources, each driver measured by sixteen indicators.</p></div>
+According to the UL Safety Index methodology reading handout, the definition of "safety [is] the freedom from harm, injury or loss, [which] is one of the most basic human needs, second only to physical survival in [Maslow’s Hierarchy of Needs](https://www.psychologytoday.com/blog/hide-and-seek/201205/our-hierarchy-needs)." Indeed, establishing safety is crucial to having anything in life. I mean, it would be at least a bit difficult to plan out a trip to Hawaii when you're on the verge of death from uncontrolled hemorrhage. <br><br> The Underwriters Laboratories Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources, each driver measured by sixteen indicators.</p></div>
 
 
 <h4> <div class="newspaper1">
