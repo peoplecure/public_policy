@@ -13,8 +13,6 @@ navbar:
       menu:
         - text: "Fire - San Francisco"
           href: fire_sf.html
-        - text: "EMS in the U.S."
-          href: EMS_in_US.html
         - text: "Global Safety Index"
           href: global_safety_index.html
     - text: "Social Services"
