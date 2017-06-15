@@ -1,6 +1,6 @@
 <head>
 <style>
-.hr { 
+.hr hr { 
     display: block;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -8,7 +8,7 @@
     margin-right: auto;
     border-style: inset;
     border-width: 1px;
-    width: 60%;
+    max-width: 800px
 }
 .abstract {
     -webkit-column-count: 1; /* Chrome, Safari, Opera */
@@ -72,38 +72,36 @@
 <center><br><br><br>
 <h3> UL Safety Index <br>
 <h5> Some countries may be missing due to technical difficulties <br><br>
-<iframe width="60%" height="600px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="no"></iframe></center>
-<br><br>
+<iframe width="80%" height="580px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="yes"></iframe><br></center>
 
 <div class = "code1">
 <p style = "text-align: left;">
 ```{r, eval = FALSE}
-# This map was created using the plotly demo
+# This map was created using the googleVis package
 library(googleVis)
 library(pwt8)
 
 ul_colors = list(colors="['#F5A064', '#B70030', '#610039']")
 Geo.map <- gvisGeoChart(ul_dataset, 
-                        locationvar = "country", 
-                        colorvar = "ul_safety_index", 
-                        options = list(width = "100%", height = 600,
+                        locationvar = "Country", 
+                        colorvar = "Safety Index", 
+                        options = list(width = "100%", height = 550,
                                      colors = ul_colors))
+plot(Geo.map)
+Geo.map$html$chart
+cat(Geo.map$html$chart, file = "ul_safety_index_map.html")
 
+ul_table <- gvisTable(ul_table,
+                      options=list(width = "100%", height = 550))
 
-ul_table <- gvisTable(ul_dataset,
-                      options=list(width = "100%", height = 600))
-
-ul_index_map <- gvisMerge(ul_table, Geo.map, horizontal = TRUE) 
-
+ul_index_map <- gvisMerge(ul_table, Geo.map, horizontal = TRUE) # Combining table and map
 ul_index_map$html$chart
-setwd("/Users/Jimbook/Google Drive/Documents/Code for DC/public_policy/attach/UL")
 cat(ul_index_map$html$chart, file="ul_safety_index_map.html")
-
 ```
 </p></div><br><br>
 
 <center>
-<div class = "newspaper1">
-<p style = "text-align: justify;">
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
 <h4> Today, I will be analyzing the global safety index created by the scientists at the Underwriters Laboratories ([click here](http://www.ulsafetyindex.org/app/#view/map) for the data). The Underwriters Laboratories Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources, each driver measured by sixteen indicators. <br><br><br> </p></div>
 
