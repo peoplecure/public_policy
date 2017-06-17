@@ -74,7 +74,7 @@
 <h5> Data & Algorhithm Source: Underwriters Laboratories <br><br><br>
 <h4> <div class="newspaper1">
 <p style="text-align: justify;">
-Today, I will be analyzing the Global Safety Index created by the scientists at the Underwriters Laboratories ([download data](http://www.ulsafetyindex.org/app/#view/map)). The idea of assigning a score for safety is truly fascinating. In the world of public health and emergency services, there had been no attempt at measuring public safety using scientific measures. Perhaps you can find internet blogs or popular media sites ranking countries by their safety level, but the UL Safety Index is unique in that it quantifies a broad range of metrics related to — well, safety. <br><br> Before I begin, I would like to apologize to anyone who is affiliated with South Sudan, Kyrgyzstan, Western Sahara, Frenh Guiana, Democratic Republic of the Congo, Republic of the Congo, Cote I'viotre, Myanmar, and Korea. For some odd reason, these countries may be missing on the global map. Looking at how [other folks](http://www.fabioveronesi.net/Blog/Map.html) have presented the same problem, this technical difficulty may be inherent in the googleVis package that I am using. Nevertheless, I apologize for the missing values in your countries. </p></div><br><br><br>
+Today, I will be analyzing the Global Safety Index created by the scientists at the Underwriters Laboratories ([download data](http://www.ulsafetyindex.org/app/#view/map)).The idea of assigning a score for safety is truly fascinating. In the world of public health and emergency services, there had been no attempt at measuring public safety using scientific standards. Perhaps you can find internet blogs or popular media sites ranking countries by their security level, but the UL Safety Index is unique in that it quantifies a broad range of metrics related to — well, safety. <br><br> Before I begin, I would like to apologize to anyone affiliated with South Sudan, Kyrgyzstan, Western Sahara, French Guiana, the Democratic Republic of the Congo, Republic of the Congo, Cote I’viotre, Myanmar, and Korea. For some odd reason, these countries may be missing on the global map. Looking at how [other folks](http://www.fabioveronesi.net/Blog/Map.html) have also presented the same problem, this technical difficulty may be inherent in the googleVis package that I am using. Nevertheless, I apologize for the missing values in your countries. </p></div><br><br><br>
 <iframe width="80%" height="580px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="yes"></iframe><br></center>
 
 <div class = "code1">
@@ -101,13 +101,32 @@ ul_index_map <- gvisMerge(ul_table, Geo.map, horizontal = TRUE) # Combining tabl
 ul_index_map$html$chart
 cat(ul_index_map$html$chart, file="ul_safety_index_map.html")
 ```
-</p></div><br><br>
+</p></div><br><br><br>
 
 <center>
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-According to the UL Safety Index methodology reading handout, the definition of "safety [is] the freedom from harm, injury or loss, [which] is one of the most basic human needs, second only to physical survival in [Maslow’s Hierarchy of Needs](https://www.psychologytoday.com/blog/hide-and-seek/201205/our-hierarchy-needs)." Indeed, establishing safety is crucial to having anything in life. I mean, it would be at least a bit difficult to plan out a trip to Hawaii when you're on the verge of death from uncontrolled hemorrhage. <br><br> The Underwriters Laboratories Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources, each driver measured by sixteen indicators.</p></div>
+According to the UL Safety Index methodology reading handout, the definition of "safety [is] the freedom from harm, injury or loss, [which] is one of the most basic human needs, second only to physical survival in [Maslow’s Hierarchy of Needs](https://www.psychologytoday.com/blog/hide-and-seek/201205/our-hierarchy-needs)." Indeed, establishing safety is crucial to having anything in life; it would be difficult to plan out a trip to Hawaii when you're on the verge of death from uncontrolled hemorrhage. In short, UL Safety index is a policy tool developed by the researchers at UL. Given that there is no standardized global framework for measuring the safety level of a nation, the UL Safety index has the potential to be utilized in improving safety policy. Here are some key benefits of the UL Safety Index the company claims to provide: <br><br> • Increased awareness of safety and wellbeing, including unintentional injury, as a public health issue; <br><br> • More comprehensive dialog among policy makers and stakeholders about safety issues; and <br><br> • Assistance in identifying priorities for investment in programs and policies that can improve safety, security and well being </p></div> <br><br>
 
+<h3><div class="newspaper1">
+<p style="text-align: justify;">
+Are you still not 100% clear about the significance of developing a global safety index? </p></div><br>
+
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+Well, let me give you an example. The United States is ranked 30th in education  </p></div>
+
+<h3><div class="newspaper1">
+<p style="text-align: justify;">
+United States is behind in emergency services compared to some other nations. </p></div><br><br><br>
+
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+When I tell people that the United States is behind in emergency services compared to some other nations, unsurprisingly, one of the most common reactions I get is a denial stemmed from ego (or, patriotism). This is because people, including those with medical professions, do not have a clear understanding of how we perform *compare* to other nations. </p></div><br>
+
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+The UL Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources, each driver measured by sixteen indicators.</p></div>
 
 <h4> <div class="newspaper1">
 <p style="text-align: justify;">
