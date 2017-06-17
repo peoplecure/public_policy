@@ -106,7 +106,7 @@ cat(ul_index_map$html$chart, file="ul_safety_index_map.html")
 <center>
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-According to the UL Safety Index methodology reading handout, the definition of "safety [is] the freedom from harm, injury or loss, [which] is one of the most basic human needs, second only to physical survival in [Maslow’s Hierarchy of Needs](https://www.psychologytoday.com/blog/hide-and-seek/201205/our-hierarchy-needs)." Indeed, establishing safety is crucial to having anything in life; it would be difficult to plan out a trip to Hawaii when you're on the verge of death from uncontrolled hemorrhage. <br><br> Unfortunately, there is no standardized global framework for measuring the safety level of any given nation, and so the folks at Underwriters Laboratories is working with organizations like the World Health Organization to develop a global framework for both government and non-government entities in improving health and safety related policies by understanding where a nation stands compared to others. Here are some key benefits of the UL Safety Index the company claims to provide: <br><br> • Increased awareness of safety and wellbeing, including unintentional injury, as a public health issue; <br><br> • More comprehensive dialog among policy makers and stakeholders about safety issues; and <br><br> • Assistance in identifying priorities for investment in programs and policies that can improve safety, security and well being </p></div> <br><br>
+According to the UL Safety Index methodology reading handout, the definition of "safety [is] the freedom from harm, injury or loss, [which] is one of the most basic human needs, second only to physical survival in [Maslow’s Hierarchy of Needs](https://www.psychologytoday.com/blog/hide-and-seek/201205/our-hierarchy-needs)." Indeed, establishing one's safety is crucial to having anything in life; it would be difficult to plan out a trip to Hawaii when you're on the verge of death from uncontrolled hemorrhage. <br><br> Unfortunately, there is no standardized global framework for measuring the safety level of any given nation, and so the folks at Underwriters Laboratories is working with organizations like the World Health Organization to develop a global framework by configuring where a nation stands compared to others. Here are some key benefits of the UL Safety Index the company claims to provide: <br><br> • Increased awareness of safety and wellbeing, including unintentional injury, as a public health issue; <br><br> • More comprehensive dialog among policy makers and stakeholders about safety issues; and <br><br> • Assistance in identifying priorities for investment in programs and policies that can improve safety, security and well being </p></div> <br><br>
 
 <h3><div class="newspaper1">
 <p style="text-align: justify;">
@@ -114,15 +114,7 @@ Are you still not 100% clear about the significance of developing a global safet
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-Well, let's put this in a different context. There are many ways in which nations can compare to one another. For instance, "Among the 35 members of the Organization for Economic Cooperation and Development ... the U.S. ranked 30th in math and 19th in science" [Pew Research Center, 2017](http://www.pewresearch.org/fact-tank/2017/02/15/u-s-students-internationally-math-science/); </p></div><br><br><br>
-
-<h3><div class="newspaper1">
-<p style="text-align: justify;">
-"United States is behind in emergency services compared to some other nations." </p></div><br><br><br>
-
-<h4><div class="newspaper1">
-<p style="text-align: justify;">
-When I tell people that the United States is behind in emergency services compared to some other nations, unsurprisingly, one of the most common reactions I get is a denial stemmed from ego (or, patriotism). It may have something to do with the fact that I am relatively a rookie member in the *transportation* commnuity compared to the many veteran emergency service providers, but it also has to do with people, including those with medical professions, not having a clear understanding of how we perform *compare* to other nations. </p></div><br>
+Well, let's put this in a different context. There are many ways in which nations can compare their performance one to another. For instance, looking at performance measures, "among the 35 members of the Organization for Economic Cooperation and Development ... the U.S. ranked [30th in math and 19th in science](http://www.pewresearch.org/fact-tank/2017/02/15/u-s-students-internationally-math-science/)"; by spending, we rank first in the [military](http://www.pgpf.org/chart-archive/0053_defense-comparison); In terms of prison population, we also [top the chart](http://www.prisonstudies.org/world-prison-brief-data). The point is that creating a benchmark provides a point of reference for policymakers and the general public. As such, creating a unified safety index at the global scale can provide a guide point in improving public safety.</p></div>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
