@@ -118,7 +118,7 @@ Well, let's put this in a different context. There are many ways in which nation
 
 <h3><div class="newspaper1">
 <p style="text-align: justify;">
-United States is behind in emergency services compared to some other nations. </p></div><br><br><br>
+"United States is behind in emergency services compared to some other nations." </p></div><br><br><br>
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
