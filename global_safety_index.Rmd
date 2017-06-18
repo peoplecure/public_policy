@@ -118,15 +118,15 @@ Well, let's put this in a different context. There are many ways in which nation
 
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-The UL Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources. Sixteen indicators measure each of these drivers. Here is the algorithm the UL scientists have formulated:</p></div><br><br>
+The UL Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources. Sixteen indicators measure each of these drivers. Here is the algorithm the UL scientists have formulated:</p></div><br><br><br>
 
 <h4>UL Safety Index <br>
 <h5><div class="newspaper1">
-<p style="text-align: justify;">The scientists at UL used the geometric mean to quantify the index score (Geometric mean is the square cubic root of the multiplied scores). Their justification for using the geometric mean is that "the use of geometric mean balances the substitutability of one Driver for another with the complementary nature of the Drivers. The use of arithmetic means implies perfect substitutability of the [driver] components (Underwriters Laboratories, 2017)." </p></div> 
+<p style="text-align: justify;">The scientists at UL used the geometric mean to quantify the index score (Geometric mean is the square cubic root of the multiplied scores). Their justification for using the geometric mean is that "the use of geometric mean balances the substitutability of one Driver for another with the complementary nature of the Drivers. The use of arithmetic means implies perfect substitutability of the [driver] components" (Underwriters Laboratories, 2017). </p></div> 
 <h4>$$\sqrt[\leftroot{-1}\uproot{2}\scriptstyle 3]
 {~Institutions~~Resources~ * ~
 Safety~Frameworks~ * ~
-Safety~Outcomes}$$ <br><br>
+Safety~Outcomes}$$ <br><br><br>
 
 <h4>Driver 1: Institutions & Resources
 <h5><div class="newspaper1">
@@ -137,17 +137,18 @@ Here is one of the three drivers mentioned in the safety index: Institutions & R
 I_{Technology}~ +~
 I_{Government~ Effectiveness}~ +~
 I_{Education}
-}{4}$$ <br><br>
+}{4}$$ <br><br><br>
 
 <h4>Driver 2: Safety Framworks
 <div class="newspaper1">
 <p style="text-align: justify;">
+
 </p></div>
 <h4>$$
 \frac{ I_{Codes~ and~ Standards}~ +~
 I_{Consumer~ Protections}~ +~
 I_{Labor~ Protections}
-}{3}$$ <br><br>
+}{3}$$ <br><br><br>
 
 <h4>Drivers 3: Safety Outcomes
 <h6>$$
