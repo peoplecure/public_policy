@@ -121,9 +121,3 @@ Well, let's put this in a different context. There are many ways in which nation
 The UL Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources. Sixteen indicators measure each of these drivers. Here is the algorithm the UL scientists have formulated:</p></div><br><br>
 
 <iframe width="100%" height="100" src="attach/UL/UL_Safety_Index_equation.html" frameBorder="0" scrolling="no"></iframe><br><br><br>
-
-<h4> $$UL~~Safety~~Index = \sqrt[\leftroot{-1}\uproot{2}\scriptstyle 3]
-{Institutions~~Resources~~ * ~~Safety~~Frameworks~~ * ~~Safety~~Outcomes}$$
-
-
-<h5>$$UL~~Safety~~Index = \frac{Institutions}{Total~~Population} * 100$$
