@@ -116,8 +116,40 @@ Still not 100% clear about the significance of the global safety index? </p></di
 <p style="text-align: justify;">
 Well, let's put this in a different context. There are many ways in which nations can compare their performance to another. For instance, looking at performance measures, "among the 35 members of the Organization for Economic Cooperation and Development ... the U.S. ranked [30th in math and 19th in science](http://www.pewresearch.org/fact-tank/2017/02/15/u-s-students-internationally-math-science/)"; by spending, we rank first in the [military](http://www.pgpf.org/chart-archive/0053_defense-comparison); in terms of prison population, we also [top the chart](http://www.prisonstudies.org/world-prison-brief-data). Certainly, ranking metrics are often subject to bias. However, by developing a benchmark, we can create a point of reference for policymakers and the general public, which can be utilized to open up a dialogue in an otherwise situation not possible. As such, creating a unified safety index at the global scale can provide a guide point for improving public safety.</p></div>
 
-<h5><div class="newspaper1">
+<h4><div class="newspaper1">
 <p style="text-align: justify;">
 The UL Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources. Sixteen indicators measure each of these drivers. Here is the algorithm the UL scientists have formulated:</p></div><br><br>
 
-<iframe width="100%" height="100" src="attach/UL/UL_Safety_Index_equation.html" frameBorder="0" scrolling="no"></iframe><br><br><br>
+<h4>UL Safety Index <br>
+<h4>$$\sqrt[\leftroot{-1}\uproot{2}\scriptstyle 3]
+{~Institutions~~Resources~ * ~
+Safety~Frameworks~ * ~
+Safety~Outcomes}$$ <br><br>
+
+<h4>Driver 1: Institutions & Resources
+<h4>$$
+\frac{ I_{Wealth}~ +~
+I_{Technology}~ +~
+I_{Government~ Eectiveness}~ +~
+I_{Education}
+}{4}$$ <br><br>
+
+<h4>Driver 2: Safety Framworks
+<h4>$$
+\frac{ I_{Codes~ and~ Standards}~ +~
+I_{Consumer~ Protections}~ +~
+I_{Labor~ Protections}
+}{3}$$ <br><br>
+
+<h4>Drivers 3: Safety Outcomes
+<h6>$$
+\frac{ I_{Transport~ Injuries}~ +~
+I_{Falls}~ +~
+I_{Drowning}~ +~
+I_{Fire}~ +~
+I_{Poisoning}~ +~
+I_{Mechanical~ Forces}~ +~
+I_{Foreign~ Bodies}~ +~
+I_{Foreign~ Nature}~ +~
+I_{Other}~
+}{9}$$
