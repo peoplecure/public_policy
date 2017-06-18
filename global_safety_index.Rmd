@@ -153,9 +153,7 @@ I_{Labor~ Protections}
 <h4>Drivers 3: Safety Outcomes
 <h4><div class="newspaper1">
 <p style="text-align: justify;">
-The safety outcomes has a long list: 
-
-These are "normalized indicators reflecting the Disability Adjusted Life Years (DALY) per 100,000 of population for causes associated with unintentional injury" (Underwriters Laboratories).
+The safety outcomes has a long list: Transport injuries, falls, drowning, fire, poisoning, mechanical forces, foreign bodies, foreign nature, and other. These are "normalized indicators reflecting the Disability Adjusted Life Years (DALY) per 100,000 of population for causes associated with unintentional injury" (Underwriters Laboratories).
 </p></div>
 <h6>$$
 \frac{ I_{Transport~ Injuries}~ +~
