@@ -1,0 +1,168 @@
+<head>
+<style>
+.hr hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    max-width: 800px
+}
+.abstract {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 500px;
+    height: 50%
+}
+.newspaper1 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+.newspaper2 {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+.code1 { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 600px;
+}
+.code2 {
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+    -moz-column-width: 80%; /* Firefox */
+    width: 80%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 50%
+}
+<link rel="stylesheet" href="css/animate.css">
+<script src="js/wow.min.js"> </script>
+<script> new WOW().init(); </script>
+</style>
+<script type="text/javascript">
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+      heap.load("2042091030");
+</script>
+</head>
+
+
+
+<center><br><br><br>
+<h3> Global Safety Index <br>
+<h5> Data & Algorhithm Source: Underwriters Laboratories <br><br><br>
+<h4> <div class="newspaper1">
+<p style="text-align: justify;">
+Today, I will be analyzing the Global Safety Index created by the scientists at the Underwriters Laboratories ([download data](http://www.ulsafetyindex.org/app/#view/map)). The idea of assigning a score for safety is truly fascinating. In the world of public health and emergency services, there had been no attempt at measuring public safety using scientific standards. Perhaps you can find internet blogs or popular media sites ranking countries by their security level, but the UL Safety Index is unique in that it quantifies a broad range of metrics related to — well, safety. <br><br> Before I begin, I would like to apologize to anyone affiliated with South Sudan, Kyrgyzstan, Western Sahara, French Guiana, the Democratic Republic of the Congo, Republic of the Congo, Cote I’viotre, Myanmar, and Korea. For some odd reason, these countries may be missing on the global map. Looking at how [other folks](http://www.fabioveronesi.net/Blog/Map.html) have also presented the same problem, this technical difficulty may be inherent in the googleVis package that I am using. Nevertheless, I apologize for the missing values in your countries. </p></div><br><br><br>
+<iframe width="80%" height="580px" src="attach/UL/ul_safety_index_map.html" frameBorder="0" scrolling="yes"></iframe><br></center>
+
+<div class = "code1">
+<p style = "text-align: left;">
+```{r, eval = FALSE}
+# This map was created using the googleVis package
+library(googleVis)
+library(pwt8)
+
+ul_colors = list(colors="['#F5A064', '#B70030', '#610039']")
+Geo.map <- gvisGeoChart(ul_dataset, 
+                        locationvar = "Country", 
+                        colorvar = "Safety Index", 
+                        options = list(width = "100%", height = 550,
+                                     colors = ul_colors))
+plot(Geo.map)
+Geo.map$html$chart
+cat(Geo.map$html$chart, file = "ul_safety_index_map.html")
+
+ul_table <- gvisTable(ul_table,
+                      options=list(width = "100%", height = 550))
+
+ul_index_map <- gvisMerge(ul_table, Geo.map, horizontal = TRUE) # Combining table and map
+ul_index_map$html$chart
+cat(ul_index_map$html$chart, file="ul_safety_index_map.html")
+```
+</p></div><br><br><br>
+
+<center>
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+According to the UL Safety Index methodology reading handout, the definition of "safety [is] the freedom from harm, injury or loss, [which] is one of the most basic human needs, second only to physical survival in [Maslow’s Hierarchy of Needs](https://www.psychologytoday.com/blog/hide-and-seek/201205/our-hierarchy-needs)." Indeed, establishing one's safety is crucial to having anything in life; it would be difficult to plan out a trip to Hawaii when you're on the verge of death from uncontrolled hemorrhage. <br><br> Unfortunately, there is no standardized global framework for measuring the safety level of any given nation, and so the folks at Underwriters Laboratories is working with organizations like the World Health Organization to develop a global framework by configuring where a country stands compared to others. Here are some key benefits of the UL Safety Index the company claims to provide: <br><br> • Increased awareness of safety and wellbeing, including unintentional injury, as a public health issue; <br><br> • More comprehensive dialog among policy makers and stakeholders about safety issues; and <br><br> • Assistance in identifying priorities for investment in programs and policies that can improve safety, security and well being </p></div> <br><br>
+
+<h3><div class="newspaper1">
+<p style="text-align: justify;">
+Still not 100% clear about the significance of the global safety index? </p></div><br><br>
+
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+Well, let's put this in a different context. There are many ways in which nations can compare their performance to another. For instance, looking at performance measures, "among the 35 members of the Organization for Economic Cooperation and Development ... the U.S. ranked [30th in math and 19th in science](http://www.pewresearch.org/fact-tank/2017/02/15/u-s-students-internationally-math-science/)"; by spending, we rank first in the [military](http://www.pgpf.org/chart-archive/0053_defense-comparison); in terms of prison population, we also [top the chart](http://www.prisonstudies.org/world-prison-brief-data). Certainly, ranking metrics are often subject to bias. However, by developing a benchmark, we can create a point of reference for policymakers and the general public, which can be utilized to open up a dialogue in an otherwise situation not possible. As such, creating a unified safety index at the global scale can provide a guide point for improving public safety.</p></div>
+
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+The UL Safety Index is comprised of three drivers: Safety Outcomes, Safety Framework, and Institutions & Resources. Sixteen indicators measure each of these drivers. Here is the algorithm the UL scientists have formulated:</p></div><br><br><br><br>
+
+<h4>UL Safety Index <br>
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+The scientists at UL used the geometric mean to quantify the index score (Geometric mean is the square cubic root of the multiplied scores). Their justification for using the geometric mean is that "the use of geometric mean balances the substitutability of one Driver for another with the complementary nature of the Drivers. The use of arithmetic means implies perfect substitutability of the [driver] components" (Underwriters Laboratories, 2017). </p></div> 
+<h4>$$\sqrt[\leftroot{-1}\uproot{2}\scriptstyle 3]
+{~Institutions~~Resources~ * ~
+Safety~Frameworks~ * ~
+Safety~Outcomes}$$ <br><br><br>
+
+<h4>Driver 1: Institutions & Resources
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+Here is one of the three drivers mentioned in the safety index: Institutions & Resources. UL folks have chosen wealth, technology, government effectiveness, and education to describe institutional resources of a nation. Quantifying qualitative assessments like government effectiveness as numeric scores seem subjective, but we have to use some form of metrics. If you want to read into the rationale behind these variables, [click here](http://www.ulsafetyindex.org/app/#view/map), then click "Methodology" button in the top-right corner, and select "Methodology Paper" for Select your Download(s) option. It is a document 19 pages in length, and describing each of these variables is beyond the scope of this blog post.</p></div>
+<h4>$$
+\frac{ I_{Wealth}~ +~
+I_{Technology}~ +~
+I_{Government~ Effectiveness}~ +~
+I_{Education}
+}{4}$$ <br><br><br>
+
+<h4>Driver 2: Safety Framworks
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+Codes and standards, consumer protections, and labor protections together make up the safety frameworks.</p></div>
+<h4>$$
+\frac{ I_{Codes~ and~ Standards}~ +~
+I_{Consumer~ Protections}~ +~
+I_{Labor~ Protections}
+}{3}$$ <br><br><br>
+
+<h4>Drivers 3: Safety Outcomes
+<h4><div class="newspaper1">
+<p style="text-align: justify;">
+The safety outcomes has a long list: Transport injuries, falls, drowning, fire, poisoning, mechanical forces, foreign bodies, foreign nature, and other. These are "normalized indicators reflecting the Disability Adjusted Life Years (DALY) per 100,000 of population for causes associated with unintentional injury" (Underwriters Laboratories).
+</p></div>
+<h6>$$
+\frac{ I_{Transport~ Injuries}~ +~
+I_{Falls}~ +~
+I_{Drowning}~ +~
+I_{Fire}~ +~
+I_{Poisoning}~ +~
+I_{Mechanical~ Forces}~ +~
+I_{Foreign~ Bodies}~ +~
+I_{Foreign~ Nature}~ +~
+I_{Other}~
+}{9}$$
