@@ -5,12 +5,10 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Public Health"
+    - text: "Health & Safety"
       menu:
         - text: "NIH Neuroimaging"
           href: DICOM_learning.html
-    - text: "Public Safety"
-      menu:
         - text: "Fire - San Francisco"
           href: fire_sf.html
         - text: "Global Safety Index"
